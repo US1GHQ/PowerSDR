@@ -38,18 +38,15 @@ namespace PowerSDR
 
         public const string VERSION_SUFFIX = " Base + StarGate Mods"; // Make this "" for production
 
-        public const string ALPHABETA = ""; // change to "Alpha" or "" as appropriate
-
-        public const string SVN = ""; 
 
         public static string GetString()
         {
             string version = GetVerNum();
             string s = "FlexRadio Systems™  PowerSDR™";
-            if (ALPHABETA != "") s += "  " + ALPHABETA;
+
             s += "  v" + version;
             if (VERSION_SUFFIX != "") s += " " + VERSION_SUFFIX;
-            if (SVN != "") s += "   " + SVN;
+
             if (BUILT_BY != "") s += "   " + BUILT_BY;
 
             return s;
