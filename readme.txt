@@ -5,13 +5,9 @@ files to the bin\Debug or bin\Release folder depending on which
 version is being compiled.
 
 
-WARNING!  Before opening the forms in design view in VS2008, the
-PowerSDR project should be compiled.  This is a workaround to
-prevent a bug that is documented at the below link with regards
-to losing custom control information in the project source code.
-Note that it is also necessary to close all design views of
-forms before switching between Debug and Release versions.  A
-good first step would be to compile in Debug and Release mode to
-prevent headaches that result from this issue.
+July 3, 2015
 
-See more at: http://www.kbalertz.com/feedback.aspx?kbnumber=842706
+The PowerSDR solution has been upgraded to Visual Studio 2013.  
+
+Build complains that DttSP has a different linker and target directory.
+Since I have no plans to modify the DttSP, I have unloaded that project.  
