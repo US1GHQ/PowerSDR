@@ -75,6 +75,7 @@ namespace PowerSDR
 		private System.Windows.Forms.LabelTS lblStatus;
 		private System.Windows.Forms.Panel pnlStatus;
         private System.Windows.Forms.Timer timer1;
+        private LabelTS labelTS1;
         private System.ComponentModel.IContainer components = null;
 
 		#endregion
@@ -112,6 +113,7 @@ namespace PowerSDR
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblTimeRemaining = new System.Windows.Forms.LabelTS();
             this.lblStatus = new System.Windows.Forms.LabelTS();
+            this.labelTS1 = new System.Windows.Forms.LabelTS();
             this.SuspendLayout();
             // 
             // pnlStatus
@@ -151,11 +153,25 @@ namespace PowerSDR
             this.lblStatus.Text = "Status";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelTS1
+            // 
+            this.labelTS1.AutoSize = true;
+            this.labelTS1.BackColor = System.Drawing.Color.Navy;
+            this.labelTS1.Font = new System.Drawing.Font("DejaVu Sans Mono", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTS1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.labelTS1.Image = null;
+            this.labelTS1.Location = new System.Drawing.Point(23, 137);
+            this.labelTS1.Name = "labelTS1";
+            this.labelTS1.Size = new System.Drawing.Size(230, 22);
+            this.labelTS1.TabIndex = 3;
+            this.labelTS1.Text = "StarGate Version 0.1";
+            // 
             // Splash
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(600, 384);
+            this.Controls.Add(this.labelTS1);
             this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.lblTimeRemaining);
             this.Controls.Add(this.lblStatus);
@@ -166,6 +182,7 @@ namespace PowerSDR
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion

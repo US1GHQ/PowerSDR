@@ -34,7 +34,7 @@ namespace PowerSDR
 {
     class TitleBar
     {
-        public const string BUILT_BY = "Built by [CALLSIGN]";
+        public const string BUILT_BY = "Built by WA1GON";
 
         public const string VERSION_SUFFIX = " Base"; // Make this "" for production
 
@@ -46,7 +46,7 @@ namespace PowerSDR
         {
             string version = GetVerNum();
             string s = "FlexRadio Systems™  PowerSDR™";
-            if(ALPHABETA != "") s += "  "+ALPHABETA;
+            if (ALPHABETA != "") s += "  " + ALPHABETA;
             s += "  v" + version;
             if (VERSION_SUFFIX != "") s += " " + VERSION_SUFFIX;
             if (SVN != "") s += "   " + SVN;
