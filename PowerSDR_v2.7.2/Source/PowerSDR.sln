@@ -1,11 +1,13 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerSDR", "Console\PowerSDR.csproj", "{831AEB2F-CA78-4057-85D7-32B4816ED6AE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E8E40DF8-8A3B-422D-B7A1-44BB036F4994} = {E8E40DF8-8A3B-422D-B7A1-44BB036F4994}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DttSP", "DttSP\DttSP.vcproj", "{E8E40DF8-8A3B-422D-B7A1-44BB036F4994}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DttSP", "DttSP\DttSP.vcxproj", "{E8E40DF8-8A3B-422D-B7A1-44BB036F4994}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
