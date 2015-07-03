@@ -36,11 +36,11 @@ namespace PowerSDR
     {
         public const string BUILT_BY = "Built by WA1GON";
 
-        public const string VERSION_SUFFIX = " Base"; // Make this "" for production
+        public const string VERSION_SUFFIX = " Base + StarGate Mods"; // Make this "" for production
 
-        public const string ALPHABETA = "Beta"; // change to "Alpha" or "" as appropriate
+        public const string ALPHABETA = ""; // change to "Alpha" or "" as appropriate
 
-        public const string SVN = "SVN: " + SVNRev.LATEST_REV + "+"; // change to "" for production, remove + for CCNET
+        public const string SVN = ""; 
 
         public static string GetString()
         {
