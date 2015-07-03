@@ -35,6 +35,7 @@
 //#define SDRX
 #define FLEX1500_BUFFER_MUTE                             // Enables muting audio as buffers switch in RX/TX transitions
 //#define WRITE_FFT_TEST
+#undef NO_TNF 
 
 using System;
 using System.Collections;

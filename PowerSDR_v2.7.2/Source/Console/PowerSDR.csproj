@@ -140,6 +140,10 @@
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
     </COMReference>
+    <Reference Include="TNF, Version=1.0.0.2, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Debug\TNF.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
