@@ -31090,7 +31090,7 @@ namespace PowerSDR
 
 						}
 					}
-					else // else if(mox)
+					else
 					{
 						switch(current_ptt_mode)
 						{
@@ -31289,9 +31289,9 @@ namespace PowerSDR
 					UpdatePeakText();
 					break;
 				default:
-					txtDisplayPeakOffset.Text = "";
-					txtDisplayPeakPower.Text = "";
-					txtDisplayPeakFreq.Text = "";
+                    txtDisplayPeakOffset.Text = string.Empty;
+                    txtDisplayPeakPower.Text = string.Empty;
+                    txtDisplayPeakFreq.Text = string.Empty;
 					break;
 			}
 		}
@@ -31320,7 +31320,7 @@ namespace PowerSDR
 					break;
 				case DateTimeMode.UTC:
 					date = DateTime.UtcNow.Date;
-					if(date != last_date || txtDate.Text == "")
+					if(date != last_date || txtDate.Text == string.Empty)
 					{
 						last_date = date;
 						txtDate.Text = DateTime.UtcNow.ToShortDateString();
@@ -31398,63 +31398,61 @@ namespace PowerSDR
         {
             while (chkPower.Checked)
             {
-                //if(!mox)
+                int val;
+                FWC.ReadPAADC(3, out val);
+                float volts = (float)val / 4096 * 2.5f;
+                double temp_c = 301 - volts * 1000 / 2.2;
+
+                if (temp_c < 150.0 && temp_c > -30.0) // filter unreasonable temps
                 {
-                    int val;
-                    FWC.ReadPAADC(3, out val);
-                    float volts = (float)val / 4096 * 2.5f;
-                    double temp_c = 301 - volts * 1000 / 2.2;
+                    int MAX = 15;
+                    int fan_on = MAX;
+                    int fan_off = MAX;
+                    double speed;
 
-                    if (temp_c < 150.0 && temp_c > -30.0) // filter unreasonable temps
+                    if (mox || tx_cal)
                     {
-                        int MAX = 15;
-                        int fan_on = MAX;
-                        int fan_off = MAX;
-                        double speed;
+                        speed = (temp_c - 40.0) / (70.0 - 40.0);
+                        if (speed > 1.0) speed = 1.0;
+                        if (speed < 0.0) speed = 0.0;
 
-                        if (mox || tx_cal)
+                        if (speed < 0.5)
                         {
-                            speed = (temp_c - 40.0) / (70.0 - 40.0);
-                            if (speed > 1.0) speed = 1.0;
-                            if (speed < 0.0) speed = 0.0;
-
-                            if (speed < 0.5)
-                            {
-                                fan_on = (int)(MAX * speed * 2);
-                                fan_off = MAX;
-                            }
-                            else
-                            {
-                                fan_on = MAX;
-                                fan_off = (int)(MAX * (1.0 - speed) * 2);
-                            }
+                            fan_on = (int)(MAX * speed * 2);
+                            fan_off = MAX;
                         }
                         else
                         {
-                            speed = ((float)temp_c - f3k_temp_thresh) / (100.0 - f3k_temp_thresh);
-                            if (speed > 1.0) speed = 1.0;
-                            if (speed < 0.0) speed = 0.0;
-                            if (speed < 0.5)
-                            {
-                                fan_on = (int)(MAX * speed * 2);
-                                fan_off = MAX;
-                            }
-                            else
-                            {
-                                fan_on = MAX;
-                                fan_off = (int)(MAX * (1.0 - speed) * 2);
-                            }
-                        }
-
-                        if (fan_on != last_3k_fan_on || fan_off != last_3k_fan_off)
-                        {
-                            FWC.SetFanPWM(fan_on, fan_off);
-                            Debug.WriteLine("Fan Speed: " + speed.ToString("f2") + "  on: " + fan_on + "  off: " + fan_off);
-                            last_3k_fan_on = fan_on;
-                            last_3k_fan_off = fan_off;
+                            fan_on = MAX;
+                            fan_off = (int)(MAX * (1.0 - speed) * 2);
                         }
                     }
+                    else
+                    {
+                        speed = ((float)temp_c - f3k_temp_thresh) / (100.0 - f3k_temp_thresh);
+                        if (speed > 1.0) speed = 1.0;
+                        if (speed < 0.0) speed = 0.0;
+                        if (speed < 0.5)
+                        {
+                            fan_on = (int)(MAX * speed * 2);
+                            fan_off = MAX;
+                        }
+                        else
+                        {
+                            fan_on = MAX;
+                            fan_off = (int)(MAX * (1.0 - speed) * 2);
+                        }
+                    }
+
+                    if (fan_on != last_3k_fan_on || fan_off != last_3k_fan_off)
+                    {
+                        FWC.SetFanPWM(fan_on, fan_off);
+                        Debug.WriteLine("Fan Speed: " + speed.ToString("f2") + "  on: " + fan_on + "  off: " + fan_off);
+                        last_3k_fan_on = fan_on;
+                        last_3k_fan_off = fan_off;
+                    }
                 }
+
                 Thread.Sleep(2500);
             }
         }
@@ -34564,7 +34562,6 @@ namespace PowerSDR
                                     MessageBoxIcon.Error);
                                 chkMOX.Checked = false;
                                 return;
-                                // break;
                         }
                     }
 
@@ -36506,10 +36503,9 @@ namespace PowerSDR
 							if ( rx1_dsp_mode  == DSPMode.DRM ) // if we're in DRM mode we need to be offset 12khz
 							{
 								osc_freq = osc_freq + 12000; 
-								// System.Console.WriteLine("setting osc_freq: " + osc_freq); 
 							}
 							tuned_freq = freq;
-							//Debug.WriteLine("osc_freq: "+osc_freq.ToString("f6"));
+
 							dsp.GetDSPRX(0, 0).RXOsc = osc_freq;
 							break;
 					}
@@ -36776,11 +36772,9 @@ namespace PowerSDR
 						break;
 				}
 
-				//Debug.WriteLine("freq: "+freq.ToString("f6"));
                 if (!rx1_sub_drag)
                 {
                     uint tw = (uint)Freq2TW(freq);
-                    //FWC.SetTXFreqTW(tw, (float)freq);
                     tx_dds_freq_tw = tw;
                     tx_dds_freq_mhz = (float)freq;
                     tx_dds_freq_updated = true;
@@ -36859,8 +36853,7 @@ namespace PowerSDR
 
                 UpdateRX1SubNotches();
 			}
-
-			//txtVFOBFreq.Text = freq.ToString("f6"); 
+ 
 			UpdateVFOBFreq(freq.ToString("f6"));
             if (rx2_enabled)
             {
@@ -36934,8 +36927,6 @@ namespace PowerSDR
 			if(transmit == false)
 			{
 				txtVFOBBand.BackColor = Color.DimGray;
-				//if(chkVFOSplit.Checked && mox)
-				//	chkMOX.Checked = false;
 			}
 			else txtVFOBBand.BackColor = band_background_color;
 			txtVFOBBand.Text = bandInfo;
@@ -36956,11 +36947,7 @@ namespace PowerSDR
 			else goto end;
 
         set_tx_freq:
-            //int old_tx_xvtr_index = tx_xvtr_index;
             tx_xvtr_index = xvtr_index;
-
-            //if (old_tx_xvtr_index != tx_xvtr_index)
-            //    last_tx_xvtr_index = old_tx_xvtr_index;
 
             if (fwc_init && current_model == Model.FLEX5000 && FWCEEPROM.VUOK &&
                 tx_xvtr_index != last_tx_xvtr_index &&
@@ -37055,17 +37042,6 @@ namespace PowerSDR
 
 			if(tx_freq < min_freq) tx_freq = min_freq;
 			else if(tx_freq > max_freq) tx_freq = max_freq;
-			
-			/*if(!IsHamBand(current_band_plan, freq))	// out of band
-				{
-					MessageBox.Show("The frequency "+freq.ToString("f6")+"MHz is not within the "+
-						"IARU Band specifications.",
-						"Transmit Error: Out Of Band",
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error);
-					chkMOX.Checked = false;
-					return;
-				}*/
 
             DSPMode tx_mode = dsp.GetDSPTX(0).CurrentDSPMode;
 
@@ -37125,7 +37101,6 @@ namespace PowerSDR
 			else if(tx_mode == DSPMode.CWU)
 				tx_freq -= (double)cw_pitch * 0.0000010;
 
-			//Debug.WriteLine("freq: "+freq.ToString("f6"));
 			if(!rx1_sub_drag)
 			{
 				if(!((fwc_init && (current_model == Model.FLEX5000 || current_model == Model.FLEX3000)) ||
@@ -37140,7 +37115,7 @@ namespace PowerSDR
 						case Model.FLEX3000:
 						case Model.FLEX5000:
                             uint tw = (uint)Freq2TW(tx_freq);
-                            //FWC.SetTXFreqTW(tw, (float)tx_freq);
+
                             tx_dds_freq_tw = tw;
                             tx_dds_freq_mhz = (float)tx_freq;
                             tx_dds_freq_updated = true;
@@ -37161,28 +37136,15 @@ namespace PowerSDR
 
         set_rx2_freq:
 
-            //int old_rx2_xvtr_index = rx2_xvtr_index;
+
             rx2_xvtr_index = xvtr_index;
-            
-            //if (old_rx2_xvtr_index != rx2_xvtr_index)
-                //last_rx2_xvtr_index = old_rx2_xvtr_index;
+
 
             SetRX2Band(BandByFreq(freq, rx2_xvtr_index, false, current_region));
             if(rx2_xvtr_index >= 0) freq = xvtrForm.TranslateFreq(freq);
 
             if (rx2_xvtr_index != last_rx2_xvtr_index)       //restrict to band changes
             {
-                //don't want to disable this because it works on RX2 IN
-                //if (rx2_xvtr_index >= 2)
-                //{
-                //    MessageBox.Show("Error: Cannot recieve through XVTR interface on RX2",
-                //                        "RX2 XVTR Error",
-                //                        MessageBoxButtons.OK,
-                //                        MessageBoxIcon.Error);
-                //    VFOBFreq = saved_vfob_freq;
-                //    //Give an error message, set to the last set frequency
-                //    return;
-                //}
                 if (FWCEEPROM.VUOK)
                 {
                     if (rx1_xvtr_index == 0 && rx2_xvtr_index == 0 && !swapping)
@@ -37256,16 +37218,6 @@ namespace PowerSDR
 
 			RX2DDSFreq = freq;
             UpdateRX2Notches();
-			goto end;
-
-
-#if false
-				// wjtFIXME! sr xmit support 
-				else if ( current_model == Model.SOFTROCK40 )
-				{
-					SetSoftRockOscFreqs();
-				}
-#endif 
 				
 		end:
 
@@ -37284,11 +37236,6 @@ namespace PowerSDR
             //provides proper operation when using split with either V or U on VFOB
             if ((VFOBFreq >= 144.0 && VFOBFreq <= 148.0) || (VFOBFreq >= 420.0 && VFOBFreq <= 450.0))
             {
-                //if (VFOAFreq >= 144.0 && VFOAFreq <= 148.0)
-                //{
-                //    FWC.SetXVTRSplit(true);
-                //}
-                //only do SetVURXPath() when receiving on VU (for VFOB, check if rx2 is being used.  If not, then VU is in TX mode (split) and SetVURXPath() shouldn't be called)
                 if (last_rx2_xvtr_index != rx2_xvtr_index)
                 {
                     if (rx2_xvtr_index == 0 || rx2_xvtr_index == 1)
@@ -37388,9 +37335,6 @@ namespace PowerSDR
 			int x_offset = c1.Left-c2.Left - client_width/2;
 			int y_offset = c1.Top-c2.Top - client_height/2;
 			txtVFOAFreq_MouseMove(sender, new MouseEventArgs(e.Button, e.Clicks, e.X+x_offset, e.Y+y_offset, e.Delta));
-			
-			/*txtVFOAFreq_MouseMove(sender, new MouseEventArgs(MouseButtons.None, 0,
-				e.X+panelVFOAHover.Left-10, e.Y+panelVFOAHover.Top, 0));*/
 		}
 
 		private void panelVFOBHover_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -37402,9 +37346,6 @@ namespace PowerSDR
 			int x_offset = c1.Left-c2.Left - client_width/2;
 			int y_offset = c1.Top-c2.Top - client_height/2;
 			txtVFOBFreq_MouseMove(sender, new MouseEventArgs(e.Button, e.Clicks, e.X+x_offset, e.Y+y_offset, e.Delta));
-
-			/*txtVFOBFreq_MouseMove(sender, new MouseEventArgs(MouseButtons.None, 0,
-				e.X+panelVFOBHover.Left-10, e.Y+panelVFOBHover.Top, 0));*/
 		}
 
 		private void txtVFOALSD_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -37424,9 +37365,7 @@ namespace PowerSDR
 			int x_offset = c1.Left-c2.Left - client_width/2;
 			int y_offset = c1.Top-c2.Top - client_height/2;
 			txtVFOAFreq_MouseMove(sender, new MouseEventArgs(e.Button, e.Clicks, e.X+x_offset, e.Y+y_offset, e.Delta));
-			
-			/*txtVFOAFreq_MouseMove(txtVFOALSD,
-				new MouseEventArgs(e.Button, e.Clicks, e.X+165, e.Y+25, e.Delta));*/
+		
 		}
 
 		private void txtVFOAMSD_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -37485,9 +37424,6 @@ namespace PowerSDR
 			int x_offset = c1.Left-c2.Left - client_width/2;
 			int y_offset = c1.Top-c2.Top - client_height/2;
 			txtVFOBFreq_MouseMove(sender, new MouseEventArgs(e.Button, e.Clicks, e.X+x_offset, e.Y+y_offset, e.Delta));
-
-			/*txtVFOBFreq_MouseMove(txtVFOBLSD,
-				new MouseEventArgs(e.Button, e.Clicks, e.X+165, e.Y+25, e.Delta));*/
 		}
 
 		#endregion
@@ -37721,7 +37657,7 @@ namespace PowerSDR
                                     }
                                 }
 
-                                //Debug.WriteLine("x: " + e.X);
+
                                 int low = (int)PixelToHz(e.X - 3);
                                 int high = (int)PixelToHz(e.X + 3);
 
@@ -37779,14 +37715,14 @@ namespace PowerSDR
                             if (current_click_tune_mode == ClickTuneMode.Off && 
                                 picDisplay.Cursor != Cursors.Hand && next_cursor != Cursors.SizeNS && next_cursor != Cursors.VSplit)
 							{
-								if(Math.Abs(e.X-filt_low_x) < 3 || // RX low filter edge
-									Math.Abs(e.X-filt_high_x) < 3 || // RX high filter edge
-									rx1_high_filter_drag || rx1_low_filter_drag || // already dragging a filter edge
-									(chkEnableMultiRX.Checked && // RX1 Sub
-										((rx2_enabled && e.Y < picDisplay.Height/2) || !rx2_enabled) && (e.X > vfoa_sub_low_x-3 && e.X < vfoa_sub_high_x+3)) ||
-									(rx2_enabled && e.Y > picDisplay.Height/2 && (Math.Abs(e.X-vfob_low_x) < 3)) || // RX2 low filter edge
-									(rx2_enabled && e.Y > picDisplay.Height/2 && (Math.Abs(e.X-vfob_high_x) < 3)) ||
-									rx2_high_filter_drag || rx2_low_filter_drag) // already dragging a filter edge
+                                if (Math.Abs(e.X - filt_low_x) < 3 || // RX low filter edge
+                                    Math.Abs(e.X - filt_high_x) < 3 || // RX high filter edge
+                                    rx1_high_filter_drag || rx1_low_filter_drag || // already dragging a filter edge
+                                    (chkEnableMultiRX.Checked && // RX1 Sub
+                                        ((rx2_enabled && e.Y < picDisplay.Height / 2) || !rx2_enabled) && (e.X > vfoa_sub_low_x - 3 && e.X < vfoa_sub_high_x + 3)) ||
+                                    (rx2_enabled && e.Y > picDisplay.Height / 2 && (Math.Abs(e.X - vfob_low_x) < 3)) || // RX2 low filter edge
+                                    (rx2_enabled && e.Y > picDisplay.Height / 2 && (Math.Abs(e.X - vfob_high_x) < 3)) ||
+                                    rx2_high_filter_drag || rx2_low_filter_drag) // already dragging a filter edge
 								{
                                     next_cursor = Cursors.SizeWE;
 								}
@@ -37803,7 +37739,7 @@ namespace PowerSDR
                             if (notch_drag)
                             {
                                 // do nothing -- already handled above
-                                }
+                            }
 							else if(rx1_high_filter_drag)
 							{
 								SelectRX1VarFilter();
@@ -37883,9 +37819,9 @@ namespace PowerSDR
 						}
 						break;
 					default:
-						txtDisplayCursorOffset.Text = "";
-						txtDisplayCursorPower.Text = "";
-						txtDisplayCursorFreq.Text = "";
+                        txtDisplayCursorOffset.Text = string.Empty;
+                        txtDisplayCursorPower.Text = string.Empty;
+                        txtDisplayCursorFreq.Text = string.Empty;
 						break;
 				}
 
@@ -37923,9 +37859,9 @@ namespace PowerSDR
 
 		private void picDisplay_MouseLeave(object sender, System.EventArgs e)
 		{
-			txtDisplayCursorOffset.Text = "";
-			txtDisplayCursorPower.Text = "";
-			txtDisplayCursorFreq.Text = "";
+			txtDisplayCursorOffset.Text = string.Empty;
+            txtDisplayCursorPower.Text = string.Empty;
+            txtDisplayCursorFreq.Text = string.Empty;
 			DisplayCursorX = -1;
 			DisplayCursorY = -1;
 			Cursor = Cursors.Default;
@@ -37997,7 +37933,7 @@ namespace PowerSDR
                                         notch_drag_start = list[index].Copy();
                                         notch_drag_start_point = new Point(e.X, e.Y);
                                         list[index].Details = true;
-                                        // mark which receiver the click occurred on so that we can show the callout only there
+                                        // mark which receiver the click occurred on so that we can show the call out only there
                                         list[index].RX = 1;
                                         if (rx2_enabled && e.Y > picDisplay.Height / 2)
                                             list[index].RX = 2;
@@ -38119,7 +38055,7 @@ namespace PowerSDR
 								break;
 						}
 					}
-                    else if(!near_notch)// current_click_tune_mode == ClickTuneMode.Off) 
+                    else if(!near_notch)
 					{
 						switch(Display.CurrentDisplayMode)
 						{
@@ -38254,7 +38190,8 @@ namespace PowerSDR
                                                     tx_high_filter_drag = true;
                                                     break;
                                             }
-                                            // thank you for calling flexradio systems sales dept.  We are out for the holidays and will get back to you on Monday.  Thanks and have a great weekend.
+                                            // thank you for calling flexradio systems sales dept.  We are out for the holidays 
+                                            // and will get back to you on Monday.  Thanks and have a great weekend.
                                         }
                                         else rx1_high_filter_drag = true;
                                     }
@@ -38307,14 +38244,7 @@ namespace PowerSDR
                                         if (rx2_enabled && e.Y > picDisplay.Height / 2) rx2_spectrum_drag = true;
                                         else rx1_spectrum_drag = true;
                                     }
-                                    /*}
-                                    else
-                                    {
-                                        spectrum_drag_last_x = e.X;
-                                        if(rx2_enabled && e.Y > picDisplay.Height/2) rx2_spectrum_drag = true;
-                                        else rx1_spectrum_drag = true;
-                                    }*/
-                                 // spaghetti?
+
                                 break;
 						}
 					}
@@ -38425,7 +38355,6 @@ namespace PowerSDR
                             notch_drag_active = null;
                         }
 #endif
-                        //rx2_sub_drag = false;
                         break;
                 }
 
@@ -38442,9 +38371,6 @@ namespace PowerSDR
 					txtVFOAFreq_LostFocus(this, EventArgs.Empty);
 				}
 				rx2_spectrum_drag = false;
-				//Cursor = Cursors.Default;
-
-				//picDisplay_MouseMove(this, e);
 			}
 		}
 
@@ -38492,7 +38418,6 @@ namespace PowerSDR
 		{
 			Display.Target = picDisplay;
 			Display.Init();
-			//Display.DrawBackground();
 			UpdateDisplay();
 		}
 
@@ -38504,8 +38429,6 @@ namespace PowerSDR
 
 		private void btnDisplayPanCenter_Click(object sender, System.EventArgs e)
 		{
-			//double edge_alias = 7200.0;
-			//double if_freq = 11025.0;
 			double spur_tune_width = 200e6 / Math.Pow(2, 16);
 			if(fwc_init && (current_model == Model.FLEX5000 || current_model == Model.FLEX3000))
 				spur_tune_width = 500e6 / Math.Pow(2, 16);
@@ -38641,50 +38564,24 @@ namespace PowerSDR
 
         private void radBand60_Click(object sender, EventArgs e)
         {
-           /* if (RX1IsIn60m() && !RX1IsOn60mChannel())
+
+            SaveBand();
+            if (last_band.Equals("60M"))
             {
-                // jump to nearest 60m band
-                double jump_freq = 0;
-                double min_delta = double.MaxValue;
-                double offset = ModeFreqOffset(rx1_dsp_mode);
-                int index = 0;
-                int min_index = 0;
-                foreach (Channel c in Display.Channels60m)
-                {
-                    double freq = c.Freq + offset;
-                    double delta = Math.Abs(freq-VFOAFreq);
-                    if (delta < min_delta)
-                    {
-                        min_delta = delta;
-                        jump_freq = freq;
-                        min_index = index;
-                    }
-                    index++;
-                }
-
-                VFOAFreq = jump_freq;
-                band_60m_index = min_index; // sets the band stack index
-                last_band = "60M";
+                if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
+                    band_60m_index = (band_60m_index - 1 + band_60m_register) % band_60m_register;
+                else
+                    band_60m_index = (band_60m_index + 1) % band_60m_register;
             }
-            else
-            { */
-                SaveBand();
-                if (last_band.Equals("60M"))
-                {
-                    if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
-                        band_60m_index = (band_60m_index - 1 + band_60m_register) % band_60m_register;
-                    else
-                        band_60m_index = (band_60m_index + 1) % band_60m_register;
-                }
-                last_band = "60M";
+            last_band = "60M";
 
-                string filter, mode;
-                double freq;
-                if (DB.GetBandStack(last_band, band_60m_index, out mode, out filter, out freq))
-                {
-                    SetBand(mode, filter, freq);
-                }
-           /*  } */
+            string filter, mode;
+            double freq;
+            if (DB.GetBandStack(last_band, band_60m_index, out mode, out filter, out freq))
+            {
+                SetBand(mode, filter, freq);
+            }
+
             UpdateWaterfallLevelValues();
         }
 
@@ -39276,7 +39173,6 @@ namespace PowerSDR
                     if ((current_txprofile != lsb_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = lsb_txprofile;
 
-                    //grpMode.Text = "Mode - LSB";
 					if(!rx_only && chkPower.Checked)
 						chkMOX.Enabled = true;
                     if (chkVFOATX.Checked || !rx2_enabled)
@@ -39292,7 +39188,6 @@ namespace PowerSDR
                     if ((current_txprofile != usb_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = usb_txprofile;
 
-					//grpMode.Text = "Mode - USB";
 					if(!rx_only && chkPower.Checked)
 						chkMOX.Enabled = true;
                     if (chkVFOATX.Checked || !rx2_enabled)
@@ -39308,7 +39203,6 @@ namespace PowerSDR
                     if ((current_txprofile != dsb_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = dsb_txprofile;
 
-					//grpMode.Text = "Mode - DSB";
 					if(!rx_only && chkPower.Checked)
 						chkMOX.Enabled = true;
                     if (chkVFOATX.Checked || !rx2_enabled)
@@ -39324,18 +39218,15 @@ namespace PowerSDR
                     if ((current_txprofile != cwl_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = cwl_txprofile;
 
-					//grpMode.Text = "Mode - CWL";
+
                     if (chkVFOATX.Checked || !rx2_enabled)
 					{
                         CWPitch = cw_pitch;
 						dsp.GetDSPTX(0).TXOsc = 0.0;
-						//DSP.KeyerFreq = cw_pitch;
+
 						if(!rx_only && chkPower.Checked)
 						{
 							chkMOX.Enabled = true;
-							//DttSP.StopKeyer();
-							//DttSP.CWRingRestart();
-							//DttSP.StartKeyer();
 						}
 
                         if (old_mode != DSPMode.CWL && old_mode != DSPMode.CWU)
@@ -39372,18 +39263,13 @@ namespace PowerSDR
                     if ((current_txprofile != cwu_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = cwu_txprofile;
 
-					//grpMode.Text = "Mode - CWU";
                     if (chkVFOATX.Checked || !rx2_enabled)
 					{
                         CWPitch = cw_pitch;
 						dsp.GetDSPTX(0).TXOsc = 0.0;
-						//DSP.KeyerFreq = -cw_pitch;
 						if(!rx_only && chkPower.Checked)
 						{
 							chkMOX.Enabled = true;
-							//DttSP.StopKeyer();
-							//DttSP.CWRingRestart();
-							//DttSP.StartKeyer();
 						}
 
                         if (rx1_dsp_mode != DSPMode.CWL)
@@ -39457,7 +39343,6 @@ namespace PowerSDR
                     if ((current_txprofile != am_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = am_txprofile;
 
-					//grpMode.Text = "Mode - AM";
 					if(!rx_only && chkPower.Checked)
 						chkMOX.Enabled = true;
                     if (chkVFOATX.Checked || chkVFOBTX.Checked || !rx2_enabled)
@@ -39477,7 +39362,6 @@ namespace PowerSDR
                     if ((current_txprofile != sam_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = sam_txprofile;
 
-					//grpMode.Text = "Mode - SAM";
 					if(!rx_only && chkPower.Checked)
 						chkMOX.Enabled = true;
                     if (chkVFOATX.Checked || chkVFOBTX.Checked || !rx2_enabled)
@@ -39497,7 +39381,6 @@ namespace PowerSDR
                     if ((current_txprofile != spec_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = spec_txprofile;
 
-					//grpMode.Text = "Mode - SPEC";
 					if_shift = false;
 					dsp.GetDSPRX(0, 0).RXOsc = 0.0;
 					DisableAllFilters();
@@ -39523,7 +39406,6 @@ namespace PowerSDR
                     if ((current_txprofile != digl_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = digl_txprofile;
 
-					//grpMode.Text = "Mode - DIGL";
                     if (chkVFOATX.Checked || !rx2_enabled)
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -39540,7 +39422,6 @@ namespace PowerSDR
                     if ((current_txprofile != digu_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = digu_txprofile;
 
-					//grpMode.Text = "Mode - DIGU";
 					if(chkVFOATX.Checked) 
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -39559,10 +39440,9 @@ namespace PowerSDR
                     if ((current_txprofile != drm_txprofile) & (TXProfileByMode) & !initializing)
                         comboTXProfile.Text = drm_txprofile;
 
-					//grpMode.Text = "Mode - DRM";
 					if(vac_auto_enable)
 						setupForm.VACEnable = true;
-					//chkMOX.Enabled = false;
+
                     if (chkVFOATX.Checked || !rx2_enabled)
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -39571,10 +39451,9 @@ namespace PowerSDR
 					DisableAllFilters();
 					ptbFilterShift.Enabled = false;
 					btnFilterShiftReset.Enabled = false;
-					//grpFilter.Text = "Filter - DRM";
+
 					dsp.GetDSPRX(0, 0).SetRXFilter(7000, 17000);
-					/*Display.RXDisplayLow = -8000;
-						Display.RXDisplayHigh = 8000;*/
+
                     panelModeSpecificDigital.BringToFront();
                     btnTNFAdd.Enabled = false;
                     chkTNF.Enabled = false;
@@ -39636,12 +39515,9 @@ namespace PowerSDR
                 }
 
 				RX1Filter = Filter.NONE;
-				//grpFilter.Text = "Filter - "+(sample_rate1/1000).ToString("f0")+"kHz";
 			}
 
-			tbFilterWidthScroll_newMode(); // wjt 
-
-			//Display.DrawBackground();
+			tbFilterWidthScroll_newMode(); 
 
 			UpdateDSPBufRX1();
 			UpdateDSPBufTX();
@@ -39707,7 +39583,6 @@ namespace PowerSDR
 			{
 				SetRX1Mode(DSPMode.FM);
 			}
-			//dsp.GetDSP(0, 0).SetRXFilter(-50000, 50000);
 		}
 
 		private void radModeAM_CheckedChanged(object sender, System.EventArgs e)
@@ -39813,15 +39688,11 @@ namespace PowerSDR
 					break;
 				case Filter.VAR1:
 					radFilterVar1.BackColor = SystemColors.Control;
-					//udFilterLow.BackColor = SystemColors.Window;
-					//udFilterHigh.BackColor = SystemColors.Window;
 					udFilterLow.Enabled = false;
 					udFilterHigh.Enabled = false;
 					break;
 				case Filter.VAR2:
 					radFilterVar2.BackColor = SystemColors.Control;
-					//udFilterLow.BackColor = SystemColors.Window;
-					//udFilterHigh.BackColor = SystemColors.Window;
 					udFilterLow.Enabled = false;
 					udFilterHigh.Enabled = false;
 					break;
@@ -39832,8 +39703,6 @@ namespace PowerSDR
 			low = rx1_filters[(int)rx1_dsp_mode].GetLow(new_filter);
 			high = rx1_filters[(int)rx1_dsp_mode].GetHigh(new_filter);
 			rx1_filters[(int)rx1_dsp_mode].LastFilter = new_filter;
-
-			//grpFilter.Text = "Filter - "+rx1_filters[(int)rx1_dsp_mode].GetName(new_filter);
 
 			switch(new_filter)
 			{
@@ -39869,15 +39738,12 @@ namespace PowerSDR
 					break;
 				case Filter.VAR1:
 					radFilterVar1.BackColor = button_selected_color;
-					//udFilterLow.BackColor = button_selected_color;
-					//udFilterHigh.BackColor = button_selected_color;
+
 					udFilterLow.Enabled = true;
 					udFilterHigh.Enabled = true;
 					break;
 				case Filter.VAR2:
 					radFilterVar2.BackColor = button_selected_color;
-					//udFilterLow.BackColor = button_selected_color;
-					//udFilterHigh.BackColor = button_selected_color;
 					udFilterLow.Enabled = true;
 					udFilterHigh.Enabled = true;
 					break;
@@ -39990,9 +39856,6 @@ namespace PowerSDR
 
 			if(save_filter_changes && rx1_filter >= Filter.F1 && rx1_filter <= Filter.VAR2)
 				rx1_filters[(int)rx1_dsp_mode].SetLow(rx1_filter, (int)udFilterLow.Value);
-
-			/*if(udFilterLow.Focused)
-				btnHidden.Focus();*/
 		}
 		
 		private void udFilterHigh_ValueChanged(object sender, System.EventArgs e)
@@ -40013,9 +39876,6 @@ namespace PowerSDR
 
             if (save_filter_changes && rx1_filter >= Filter.F1 && rx1_filter <= Filter.VAR2)
 				rx1_filters[(int)rx1_dsp_mode].SetHigh(rx1_filter, (int)udFilterHigh.Value);
-
-			/*if(udFilterHigh.Focused)
-				btnHidden.Focus();*/
 		}
 		
 		private void DoFilterShift(int shift, bool redraw)
@@ -40192,15 +40052,7 @@ namespace PowerSDR
 			if(new_val < ptbFilterShift.Minimum) new_val = ptbFilterShift.Minimum;
 			ptbFilterShift.Value = new_val;
 		}
-		/*
-				private void tbFilterShift_Scroll(object sender, System.EventArgs e)
-				{
-					DoFilterShift(tbFilterShift.Value, true);
 
-					if(tbFilterShift.Focused)
-						btnHidden.Focus();
-				}
-		*/
 		private void btnFilterShiftReset_Click(object sender, System.EventArgs e)
 		{
 			int bw = (int)udFilterHigh.Value - (int)udFilterLow.Value;
@@ -40406,12 +40258,8 @@ namespace PowerSDR
 				case DSPMode.DIGL:
 					low = current_center - new_bw/2;
 					high = current_center + new_bw/2;
-					/*if(high > -default_low_cut && (int)udFilterHigh.Value <= -default_low_cut)
-					{
-						high = -default_low_cut;
-						low = high - new_bw;
-					}
-					else*/ if(low < -9999)
+
+                    if(low < -9999)
 					{
 						low = -9999;
 						high = low + new_bw;
@@ -40425,12 +40273,7 @@ namespace PowerSDR
 				case DSPMode.DIGU:
 					low = current_center - new_bw/2;
 					high = current_center + new_bw/2;
-					/*if(low < default_low_cut && (int)udFilterLow.Value >= default_low_cut)
-					{
-						low = default_low_cut;
-						high = low + new_bw;
-					}
-					else*/ if(high > 9999)
+                    if(high > 9999)
 					{
 						high = 9999;
 						low = high - new_bw;
@@ -40726,8 +40569,6 @@ namespace PowerSDR
                 chkFMTXRev.Checked = false;
                 udFMOffset.Enabled = false;
                 current_fm_tx_mode = FMTXMode.Simplex;
-                //fm_tx_offset_mhz = 0;
-
             }
             else
             {
@@ -40739,7 +40580,6 @@ namespace PowerSDR
                 chkFMTXSimplex.Checked = true;
                 chkFMTXRev.Enabled = true;
                 udFMOffset.Enabled = true;
-                //fm_tx_offset_mhz = 0;
             }
 
 			if(rx2_enabled)
@@ -40764,7 +40604,7 @@ namespace PowerSDR
 					grpVFOB.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
 					grpVFOB.ForeColor = Color.Red;
 					chkVFOBTX.Checked = true;
-					//chkVFOBTX.ForeColor = Color.Black;
+
 					if(chkPower.Checked)
 					{
 						txtVFOBFreq.ForeColor = Color.Red;
@@ -40778,7 +40618,6 @@ namespace PowerSDR
 				}
 				else
 				{
-				
 					grpVFOB.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular);
 					grpVFOB.ForeColor = SystemColors.ControlLightLight;
 					chkVFOATX.Checked = true;
@@ -40806,15 +40645,6 @@ namespace PowerSDR
 						CurrentClickTuneMode = ClickTuneMode.VFOA;
 				}
 			}
-#if false 
-			// wjtFIXME! 
-			// if we're doing soft rock stuff may need to update osc (tx mainly) when split is on
-			if ( current_model ==  Model.SOFTROCK40 )
-			
-			{
-				SetSoftRockOscFreqs();
-			}
-#endif
 		}
 
 
@@ -40830,13 +40660,6 @@ namespace PowerSDR
 				chkXIT.BackColor = SystemColors.Control;
 				Display.XIT = 0;
 			}
-#if false
-			// wjtFIXME!
-			if ( current_model == Model.SOFTROCK40 )			
-			{
-				SetSoftRockOscFreqs();
-			}
-#endif 
 
 			if(fwc_init && (current_model == Model.FLEX5000 || current_model == Model.FLEX3000))
 			{
@@ -40880,8 +40703,6 @@ namespace PowerSDR
 				txtVFOAFreq_LostFocus(this, EventArgs.Empty);
 			if(chkRIT.Checked) Display.RIT = (int)udRIT.Value;
 
-			/*if(udRIT.Focused)
-				btnHidden.Focus();*/
 		}
 
 		private void udXIT_ValueChanged(object sender, System.EventArgs e)
@@ -40912,10 +40733,8 @@ namespace PowerSDR
 #endif 
 
 
-			if(chkXIT.Checked) Display.XIT = (int)udXIT.Value;
-
-			/*if(udXIT.Focused)
-				btnHidden.Focus();*/
+			if(chkXIT.Checked) 
+                Display.XIT = (int)udXIT.Value;
 		}
 
 		private void btnXITReset_Click(object sender, System.EventArgs e)
@@ -40941,7 +40760,6 @@ namespace PowerSDR
 			{
 				return; // find peak croaked - bail
 			}
-			// Debug.WriteLine("peak: " + peak_hz);
 			int delta_hz = 0;
 			
 			// if we're in CW mode, zero beat to CWPitch, provided it is in the passband
@@ -40961,7 +40779,6 @@ namespace PowerSDR
 						local_pitch <= udFilterHigh.Value )
 					{
 						delta_hz = peak_hz - local_pitch;
-						// Debug.WriteLine("delta(cw): " + delta_hz);
 					}				
 					else
 					{
@@ -41010,10 +40827,6 @@ namespace PowerSDR
 					delta_hz = peak_hz;
 					break;
 			}
-
-			//          Debug.WriteLine("peak: " + peak_hz);
-			//          Debug.WriteLine("center: " + center_hz);
-			//          Debug.WriteLine("delta: " + delta_hz + "\n");
 
 			if(zero_beat_rit)
 			{
@@ -41095,8 +40908,6 @@ namespace PowerSDR
 
 			current_if_shift = ptbFilterShift.Value;
 
-			//			Debug.WriteLine("current if shift: " + current_if_shift);
-
 			if ( current_if_shift == 0 ) return; // nothing to do
 
 			switch ( RX1DSPMode )
@@ -41133,7 +40944,6 @@ namespace PowerSDR
 
 			int current_width = (int)udFilterHigh.Value - (int)udFilterLow.Value;
 			int current_center = (int)udFilterLow.Value + (current_width/2);
-			//			Debug.WriteLine("w: " + current_width + " center: " + current_center + " vfo: " +  VFOAFreq);
 
 			double new_vfo = 0;
 			int new_lo = 0;
@@ -41165,7 +40975,7 @@ namespace PowerSDR
 				new_lo = new_center - ( current_width/2 );
 				new_hi = new_center + ( current_width/2 );
 			}
-			//			Debug.WriteLine("new vfo: " + new_vfo + " lo: " + new_lo + " hi: " + new_hi );
+
 			if ( VFOAFreq > new_vfo  )  // need to change this in the right order!
 			{
 				udFilterHigh.Value = new_hi;
@@ -41308,7 +41118,7 @@ namespace PowerSDR
 		private void btnMemoryQuickRestore_Click(object sender, System.EventArgs e)
 		{
 			SaveBand();
-			last_band = "";
+			last_band = string.Empty;
 			RX1DSPMode = quick_save_mode;
 			txtVFOAFreq.Text = txtMemoryQuick.Text;
 			txtVFOAFreq_LostFocus(this, EventArgs.Empty);
@@ -41538,17 +41348,16 @@ namespace PowerSDR
         // Sub RX Events
         // ======================================================
 
-		private void ptbPanMainRX_Scroll(object sender, System.EventArgs e)
-		{
-			//if(chkEnableMultiRX.Checked)
-			{
-				float val = (int)ptbPanMainRX.Value/100.0f;
-				if(chkPanSwap.Checked) val = 1.0f - val;
-				dsp.GetDSPRX(0, 0).Pan = val;
-			}
-			if(ptbPanMainRX.Focused)
-				btnHidden.Focus();
-		}
+        private void ptbPanMainRX_Scroll(object sender, System.EventArgs e)
+        {
+
+            float val = (int)ptbPanMainRX.Value / 100.0f;
+            if (chkPanSwap.Checked) val = 1.0f - val;
+            dsp.GetDSPRX(0, 0).Pan = val;
+
+            if (ptbPanMainRX.Focused)
+                btnHidden.Focus();
+        }
 
 		private void ptbPanSubRX_Scroll(object sender, System.EventArgs e)
 		{
@@ -41565,8 +41374,6 @@ namespace PowerSDR
 			dsp.GetDSPRX(0, 1).Active = chkEnableMultiRX.Checked;
 			if(chkEnableMultiRX.Checked)
 			{
-				//tbPanMainRX_Scroll(this, EventArgs.Empty);
-				//tbRX0Gain_Scroll(this, EventArgs.Empty);
 				
 				chkEnableMultiRX.BackColor = button_selected_color;
 				if(chkPower.Checked)
@@ -41593,48 +41400,42 @@ namespace PowerSDR
 					dsp.GetDSPRX(0, 0).RXFilterHigh);
 			}
 			else
-			{
-				//dsp.GetDSPRX(0, 0).RXOutputGain = 1.0;
-				//dsp.GetDSPRX(0, 0).Pan = 0.5f;
-				chkEnableMultiRX.BackColor = SystemColors.Control;
-				//if(chkPower.Checked)
-				{
-					if(rx2_enabled)
-					{
-						UpdateVFOASub();
-					}
-					else
-					{
-						if(chkVFOSplit.Checked && !rx2_enabled) chkVFOSplit_CheckedChanged(this, EventArgs.Empty);
-						else if(rx2_enabled) chkRX2_CheckedChanged(this, EventArgs.Empty);
-						else
-						{
-							txtVFOBFreq.ForeColor = vfo_text_dark_color;
-							txtVFOBMSD.ForeColor = vfo_text_dark_color;
-							txtVFOBLSD.ForeColor = vfo_text_dark_color;
-							txtVFOBBand.ForeColor = band_text_dark_color;
-						}
-					}
-				}
-				if(current_click_tune_mode == ClickTuneMode.VFOB && !chkFullDuplex.Checked && !chkVFOSplit.Checked)
-					CurrentClickTuneMode = ClickTuneMode.VFOA;
-			}
+            {
+
+                chkEnableMultiRX.BackColor = SystemColors.Control;
+
+                if (rx2_enabled)
+                {
+                    UpdateVFOASub();
+                }
+                else
+                {
+                    if (chkVFOSplit.Checked && !rx2_enabled) chkVFOSplit_CheckedChanged(this, EventArgs.Empty);
+                    else if (rx2_enabled) chkRX2_CheckedChanged(this, EventArgs.Empty);
+                    else
+                    {
+                        txtVFOBFreq.ForeColor = vfo_text_dark_color;
+                        txtVFOBMSD.ForeColor = vfo_text_dark_color;
+                        txtVFOBLSD.ForeColor = vfo_text_dark_color;
+                        txtVFOBBand.ForeColor = band_text_dark_color;
+                    }
+                }
+
+                if (current_click_tune_mode == ClickTuneMode.VFOB && !chkFullDuplex.Checked && !chkVFOSplit.Checked)
+                    CurrentClickTuneMode = ClickTuneMode.VFOA;
+            }
 			Display.SubRX1Enabled = chkEnableMultiRX.Checked;
             UpdateRX1SubNotches();
 		}
 
 		private void chkPanSwap_CheckedChanged(object sender, System.EventArgs e)
-		{
-			//if(chkEnableMultiRX.Checked)
-			{
-				ptbPanMainRX_Scroll(this, EventArgs.Empty);
-				ptbPanSubRX_Scroll(this, EventArgs.Empty);
-			}
-		}
+        {
+            ptbPanMainRX_Scroll(this, EventArgs.Empty);
+            ptbPanSubRX_Scroll(this, EventArgs.Empty);
+        }
 
 		private void ptbRX0Gain_Scroll(object sender, System.EventArgs e)
 		{
-			//if(chkEnableMultiRX.Checked)
             dsp.GetDSPRX(0, 0).RXOutputGain = (double)ptbRX0Gain.Value / ptbRX0Gain.Maximum * 0.5;  //max 0.5 to allow for headroom
 			if(ptbRX0Gain.Focused)
 				btnHidden.Focus();
@@ -41649,17 +41450,6 @@ namespace PowerSDR
 		}
 
 		#endregion
-
-		/*private void button1_Click(object sender, System.EventArgs e)
-		{
-            p = new Progress("Test TX Spur");
-            Thread t = new Thread(new ThreadStart(CallCalTXSpur));
-            t.Name = "Test TX Spur Thread";
-            t.IsBackground = true;
-            t.Priority = ThreadPriority.Normal;
-            t.Start();
-            p.Show();
-		}*/
 
 		public void TestTXCarrier()
 		{
@@ -41706,7 +41496,6 @@ namespace PowerSDR
 			FWC.SetTXMon(false);
 
 			Audio.TXInputSignal = Audio.SignalSource.SILENCE;
-			//Audio.SourceScale = 1.0;
 
 			double start = 14.0;
 			double end = 14.350;
@@ -41816,7 +41605,6 @@ namespace PowerSDR
 			Audio.FullDuplex = chkFullDuplex.Checked;
 			if(chkFullDuplex.Checked)
 			{
-				//MessageBox.Show("Full Duplex is On");
 				chkFullDuplex.BackColor = Color.Red;
 				txtVFOBFreq_LostFocus(this, EventArgs.Empty);
 				DttSP.SetThreadProcessingMode(0,2);
@@ -41860,7 +41648,6 @@ namespace PowerSDR
                 case WM_QUERYENDSESSION:                   
                     chkPower.Checked = false;
                     ExitConsole();
-                    //this.Close();
                     break;
                 case WM_DEVICECHANGE:
                     if (flexcontrol_autodetect)
@@ -41960,36 +41747,7 @@ namespace PowerSDR
 
 		private void comboDisplayModeTop_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			/*switch(comboDisplayModeTop.Text)
-			{
-				case "Spectrum":
-					Display.CurrentDisplayModeTop = DisplayMode.SPECTRUM;
-					if(chkSplitDisplay.Checked) UpdateRXDisplayVars((int)udFilterLow.Value, (int)udFilterHigh.Value);
-					break;
-				case "Panadapter":
-					Display.CurrentDisplayModeTop = DisplayMode.PANADAPTER;
-					if(chkSplitDisplay.Checked) CalcDisplayFreq();
-					break;
-				case "Scope":
-					Display.CurrentDisplayModeTop = DisplayMode.SCOPE;
-					break;
-				case "Phase":
-					Display.CurrentDisplayModeTop = DisplayMode.PHASE;
-					break;
-				case "Phase2":
-					Display.CurrentDisplayModeTop = DisplayMode.PHASE2;
-					break;
-				case "Waterfall":
-					Display.CurrentDisplayModeTop = DisplayMode.WATERFALL;
-					if(chkSplitDisplay.Checked) CalcDisplayFreq();
-					break;
-				case "Histogram":
-					Display.CurrentDisplayModeTop = DisplayMode.HISTOGRAM;
-					break;
-				case "Off":
-					Display.CurrentDisplayModeTop = DisplayMode.OFF;
-					break;
-			}*/
+
 		}
 
 		private void comboDisplayModeBottom_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -42081,9 +41839,6 @@ namespace PowerSDR
 			else
 			{
 
-				//this.Size = new Size (console_basis_size.Width + h_delta,console_basis_size.Height + v_delta);
-				//this.Width = console_basis_size.Width + h_delta;
-				//this.Height = console_basis_size.Height + v_delta;
                 panelFilter.Location = new Point(gr_filter_basis_location.X + h_delta, gr_filter_basis_location.Y + v_delta);
 
 				grpMultimeter.Location = new Point(gr_Multimeter_basis_location.X + h_delta,gr_Multimeter_basis_location.Y);
@@ -42132,12 +41887,8 @@ namespace PowerSDR
 				ptbSquelch.Location = new Point(tb_sql_basis.X,tb_sql_basis.Y+(v_delta/2));
                 panelAntenna.Location = new Point(gr_antenna_basis.X, gr_antenna_basis.Y + (v_delta / 8) + (v_delta / 2));
 				chkBCI.Location = new Point(chk_bci_basis.X,chk_bci_basis.Y+(v_delta/8)+(v_delta/2));
-				//button1.Location = new Point(button1_basis.X,button1_basis.Y+(v_delta/8)+(v_delta/2));
+
                 panelDateTime.Location = new Point(gr_date_time_basis.X, gr_date_time_basis.Y + (v_delta / 2) + (v_delta / 4));
-				//lblCPUMeter.Location = new Point(lbl_cpu_meter_basis.X,lbl_cpu_meter_basis.Y+(v_delta/8)+(v_delta/2)+(v_delta/4));
-			
-				//panelRX2Divider.Location = new Point(pan_rx2_divider_basis.X, pan_rx2_divider_basis.Y+v_delta);
-				//panelRX2Divider.Size = new Size(pan_rx2_divider_size_basis.Width+h_delta, pan_rx2_divider_size_basis.Height);
 
                 grpDisplaySplit.Location = new Point(gr_display_split_basis.X+(h_delta/2), gr_display_split_basis.Y+v_delta);
 				grpRX2Meter.Location = new Point(gr_rx2_meter_basis.X+h_delta, gr_rx2_meter_basis.Y+v_delta);
@@ -42186,7 +41937,6 @@ namespace PowerSDR
 		{
 			console_basis_size = this.Size;
             gr_filter_basis_location = this.panelFilter.Location;
-			//Debug.WriteLine("console basis:  "+console_basis_size+"  "+gr_filter_basis_location);
 
 			gr_Multimeter_basis_location = this.grpMultimeter.Location;
             gr_BandHF_basis_location = this.panelBandHF.Location;
@@ -42232,12 +41982,7 @@ namespace PowerSDR
 			tb_sql_basis = this.ptbSquelch.Location;
             gr_antenna_basis = this.panelAntenna.Location;
 			chk_bci_basis = this.chkBCI.Location;
-			//button1_basis = this.button1.Location;
             gr_date_time_basis = this.panelDateTime.Location;
-			//lbl_cpu_meter_basis = this.lblCPUMeter.Location;
-
-			//pan_rx2_divider_basis = this.panelRX2Divider.Location;
-			//pan_rx2_divider_size_basis = this.panelRX2Divider.Size;
 
 			gr_display_split_basis = this.grpDisplaySplit.Location;
 			gr_rx2_meter_basis = this.grpRX2Meter.Location;
@@ -42322,7 +42067,6 @@ namespace PowerSDR
 				}
 				else
 				{
-                   // rx2_xvtr_index = -1;
 					if(chkPower.Checked)
 					{
 						if(chkVFOSplit.Checked) chkVFOSplit_CheckedChanged(this, EventArgs.Empty);
@@ -42343,11 +42087,6 @@ namespace PowerSDR
 					dsp.GetDSPRX(1, 0).Active = false;
 					DttSP.SetThreadProcessingMode(2, 0);
 					DSP.SetThreadNumber(2);
-
-					/*if(comboMeterRXMode.Items.Contains("ADC2_L"))
-						comboMeterRXMode.Items.Remove("ADC2_L");
-					if(comboMeterRXMode.Items.Contains("ADC2_R"))
-						comboMeterRXMode.Items.Remove("ADC2_R");*/
 
 					if(chkEnableMultiRX.Checked)
 						txtVFOBFreq_LostFocus(this, EventArgs.Empty);
@@ -42409,37 +42148,22 @@ namespace PowerSDR
 		}
 
 		private void panelVFOASubHover_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-		{
-			if(!rx2_enabled || (!chkEnableMultiRX.Checked && !chkVFOSplit.Checked)) return;
-			if(vfoa_sub_hover_digit < 0) return;
+        {
+            if (!rx2_enabled || (!chkEnableMultiRX.Checked && !chkVFOSplit.Checked)) return;
+            if (vfoa_sub_hover_digit < 0) return;
 
-			int x = 0;
-			int width = 0;
+            int x = 0;
+            int width = 0;
 
-			/*if(small_lsd && txtVFOALSD.Visible)
-			{
-				x += (vfo_char_width+vfo_char_space)*vfoa_hover_digit;
-				if(vfoa_hover_digit > 3)
-					x += (vfo_decimal_space-vfo_char_space);
-				
-				if(vfoa_hover_digit > 6)
-				{
-					x += vfo_small_char_width;
-					x += (vfo_small_char_width+vfo_small_char_space-vfo_char_width-vfo_char_space)*(vfoa_hover_digit-6);
-					width = x+vfo_small_char_width;
-				}
-				else width = x+vfo_char_width;
-			}
-			else*/
-			{
-				x += (vfo_sub_char_width+vfo_sub_char_space)*vfoa_sub_hover_digit;
-				if(vfoa_sub_hover_digit > 3)
-					x += (vfo_sub_decimal_space-vfo_sub_char_space);
-				width = x+vfo_sub_char_width;
-			}
 
-			e.Graphics.DrawLine(new Pen(txtVFOABand.ForeColor, 2.0f), x, 1, width, 1);
-		}
+            x += (vfo_sub_char_width + vfo_sub_char_space) * vfoa_sub_hover_digit;
+            if (vfoa_sub_hover_digit > 3)
+                x += (vfo_sub_decimal_space - vfo_sub_char_space);
+            width = x + vfo_sub_char_width;
+
+
+            e.Graphics.DrawLine(new Pen(txtVFOABand.ForeColor, 2.0f), x, 1, width, 1);
+        }
 
 		private void panelVFOASubHover_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
@@ -42465,38 +42189,23 @@ namespace PowerSDR
 					GetVFOSubCharWidth();
 
 				int x = txtVFOABand.Width - (vfo_sub_pixel_offset - 5);
-				while(x < e.X)
-				{
-					digit_index++;
-					
-					/*if(small_lsd && txtVFOALSD.Visible)
-					{
-						if(digit_index < 6)
-							x += (vfo_char_width+vfo_char_space);
-						else 
-							x += (vfo_small_char_width+vfo_small_char_space);
+                while (x < e.X)
+                {
+                    digit_index++;
 
-						if(digit_index == 3)
-							x += (vfo_decimal_space-vfo_char_space);
-						if(digit_index == 6)
-							x += vfo_small_char_width;
-					}
-					else
-					{*/
-						x += vfo_sub_char_width;
-						if(digit_index == 3)
-							x += vfo_sub_decimal_space;
-						else
-							x += vfo_sub_char_space;
-					//}
-				}
+
+                    x += vfo_sub_char_width;
+                    if (digit_index == 3)
+                        x += vfo_sub_decimal_space;
+                    else
+                        x += vfo_sub_char_space;
+                }
 
 				if(digit_index < 3) digit_index = -1;
 				if(digit_index > 9) digit_index = 9;
 				vfoa_sub_hover_digit = digit_index;
 				if(vfoa_sub_hover_digit != old_digit)
 					panelVFOASubHover.Invalidate();
-				//Debug.WriteLine("vfoa_sub_hover_digit:"+vfoa_sub_hover_digit);
 			}
 		}
 
@@ -42526,8 +42235,6 @@ namespace PowerSDR
 				}
 			}
 			Display.RX2DSPMode = new_mode;
-			//if(fwc_init && current_model == Model.FLEX5000)
-				//FWC.SetRX2DSPMode(new_mode);
 
 			double rx2_freq = VFOBFreq;
             int old_txosc = (int)dsp.GetDSPTX(0).TXOsc;
@@ -42692,7 +42399,6 @@ namespace PowerSDR
 			{
 				case DSPMode.LSB:
 					radRX2ModeLSB.BackColor = button_selected_color;
-					//panelRX2Mode.Text = "RX2 Mode - LSB";
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -42701,7 +42407,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.USB:
 					radRX2ModeUSB.BackColor = button_selected_color;
-                    //panelRX2Mode.Text = "RX2 Mode - USB";
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -42710,7 +42415,7 @@ namespace PowerSDR
 					break;
 				case DSPMode.DSB:
 					radRX2ModeDSB.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - DSB";
+
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
@@ -42719,7 +42424,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.CWL:
 					radRX2ModeCWL.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - CWL";
 
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
@@ -42746,7 +42450,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.CWU:
 					radRX2ModeCWU.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - CWU";
 
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
@@ -42785,7 +42488,7 @@ namespace PowerSDR
 
                     picRX2Squelch.Visible = false;
 
-                    //chkRX2Squelch.Enabled = false;
+
                     rx2_squelch_on = chkRX2Squelch.Checked;    //save state of non-FM squelch
                     chkRX2Squelch.Checked = true;
 
@@ -42811,7 +42514,7 @@ namespace PowerSDR
 					break;
 				case DSPMode.AM:
 					radRX2ModeAM.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - AM";
+
                     if (chkVFOBTX.Checked)
                     {
                         if (!rx_only && chkPower.Checked)
@@ -42831,7 +42534,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.SAM:
 					radRX2ModeSAM.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - SAM";
 
                     if (chkVFOBTX.Checked)
                     {
@@ -42852,7 +42554,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.DIGL:
 					radRX2ModeDIGL.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - DIGL";
 
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
@@ -42865,7 +42566,6 @@ namespace PowerSDR
 					break;
 				case DSPMode.DIGU:
 					radRX2ModeDIGU.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - DIGU";
 
                     if (chkVFOBTX.Checked && rx2_enabled)
 					{
@@ -42879,7 +42579,7 @@ namespace PowerSDR
 					rx2_if_shift = false;
 					rx2_vfo_offset = -0.012;
 					radRX2ModeDRM.BackColor = button_selected_color;
-					//grpRX2Mode.Text = "RX2 Mode - DRM";
+
                     if (rx2_enabled && vac2_auto_enable)
 						setupForm.VAC2Enable = true;
 
@@ -42888,12 +42588,9 @@ namespace PowerSDR
 						SetTXFilters(new_mode, tx_filter_low, tx_filter_high);
 						dsp.GetDSPTX(0).TXOsc = 0.0;
 					}
-					//DisableAllRX2Filters(); // !FIXME
 
-					//grpFilter.Text = "Filter - DRM";
 					dsp.GetDSPRX(1, 0).SetRXFilter(7000, 17000);
-					/*Display.RXDisplayLow = -8000;
-						Display.RXDisplayHigh = 8000;*/
+
 					break;
 			}
 
@@ -42958,9 +42655,7 @@ namespace PowerSDR
                 RX2Filter = Filter.NONE;
             }
 
-			tbFilterWidthScroll_newMode(); // wjt */
-
-			//Display.DrawBackground();
+			tbFilterWidthScroll_newMode(); 
 
             if (rx2_enabled)
             {
@@ -43107,16 +42802,10 @@ namespace PowerSDR
 					radRX2Filter7.BackColor = SystemColors.Control;
 					break;
 				case Filter.VAR1:
-					//radRX2FilterVar1.BackColor = SystemColors.Control;
-					//udRX2FilterLow.BackColor = SystemColors.Window;
-					//udRX2FilterHigh.BackColor = SystemColors.Window;
 					udRX2FilterLow.Enabled = false;
 					udRX2FilterHigh.Enabled = false;
 					break;
 				case Filter.VAR2:
-					//radRX2FilterVar2.BackColor = SystemColors.Control;
-					//udRX2FilterLow.BackColor = SystemColors.Window;
-					//udRX2FilterHigh.BackColor = SystemColors.Window;
 					udRX2FilterLow.Enabled = false;
 					udRX2FilterHigh.Enabled = false;
 					break;
@@ -43154,16 +42843,10 @@ namespace PowerSDR
 					radRX2Filter7.BackColor = button_selected_color;
 					break;
 				case Filter.VAR1:
-					//radRX2FilterVar1.BackColor = button_selected_color;
-					//udRX2FilterLow.BackColor = button_selected_color;
-					//udRX2FilterHigh.BackColor = button_selected_color;
 					udRX2FilterLow.Enabled = true;
 					udRX2FilterHigh.Enabled = true;
 					break;
 				case Filter.VAR2:
-					//radRX2FilterVar2.BackColor = button_selected_color;
-					//udRX2FilterLow.BackColor = button_selected_color;
-					//udRX2FilterHigh.BackColor = button_selected_color;
 					udRX2FilterLow.Enabled = true;
 					udRX2FilterHigh.Enabled = true;
 					break;
@@ -43258,8 +42941,6 @@ namespace PowerSDR
             if (save_filter_changes && rx2_filter >= Filter.F1 && rx2_filter <= Filter.VAR2)
 				rx2_filters[(int)rx2_dsp_mode].SetLow(rx2_filter, (int)udRX2FilterLow.Value);
 
-			/*if(udFilterLow.Focused)
-				btnHidden.Focus();*/
 		}
 
 		private void udRX2FilterHigh_ValueChanged(object sender, System.EventArgs e)
@@ -43282,8 +42963,6 @@ namespace PowerSDR
             if (save_filter_changes && rx2_filter >= Filter.F1 && rx2_filter <= Filter.VAR2)
 				rx2_filters[(int)rx2_dsp_mode].SetHigh(rx2_filter, (int)udRX2FilterHigh.Value);
 
-			/*if(udFilterHigh.Focused)
-				btnHidden.Focus();*/
 		}
 
 		private void chkRX2NR_CheckedChanged(object sender, System.EventArgs e)
@@ -43576,23 +43255,6 @@ namespace PowerSDR
 			{
 				chkRX2DisplayAVG.BackColor = SystemColors.Control;
 			}
-			
-			/*if(chkRX2DisplayAVG.Checked)
-			{
-				switch(Display.CurrentDisplayMode)
-				{
-					case DisplayMode.PANADAPTER:
-					case DisplayMode.HISTOGRAM:
-					case DisplayMode.SPECTRUM:
-					case DisplayMode.WATERFALL:
-						btnZeroBeat.Enabled = true; // only allow zerobeat when avg is on 
-						break;
-					default:
-						btnZeroBeat.Enabled = false;
-						break;
-				}
-			}
-			else btnZeroBeat.Enabled = false;*/
 		}
 
 		private void chkRX2DisplayPeak_CheckedChanged(object sender, System.EventArgs e)
@@ -43988,11 +43650,10 @@ namespace PowerSDR
             }
         }
 
-		//bool done_console_basis = false;
 		int dpi = 0;
 		Size base_size = new Size(0, 0);
 		bool dpi_resize_done = false;
-		//bool set_min_size = false;
+
 		private void Console_Resize(object sender, System.EventArgs e)
 		{
 			if (this.WindowState == FormWindowState.Minimized)
@@ -44009,45 +43670,6 @@ namespace PowerSDR
 					dpi_resize_done = true;
 				else return;
 			}
-
-			/*if(!done_console_basis)
-			{
-				GrabConsoleSizeBasis();
-				done_console_basis = true;
-				/*if(dpi > 96)
-				{
-					ArrayList a = DB.GetVars("State");
-					foreach(string s in a)
-					{
-						string[] vals = s.Split('/');
-						string name = vals[0];
-						string val = vals[1];
-						
-						switch(name)
-						{
-							case "console_width":
-								this.Width = int.Parse(val);
-								break;
-							case "console_height":
-								this.Height = int.Parse(val);
-								break;
-						}
-					}						
-				}
-			}*/
-
-			/*if(!set_min_size)
-			{
-				int W = console_basis_size.Width;
-				int H;
-
-				if(fwc_init && current_model == Model.FLEX5000 && FWCEEPROM.RX2OK)
-					H = console_basis_size.Height - (panelRX2Filter.Height+8);
-				else H = console_basis_size.Height;
-				
-				this.MinimumSize = new Size(W, H);
-				set_min_size = true;
-			}*/
 
 			if(this.Width < console_basis_size.Width)
 			{
@@ -44084,33 +43706,24 @@ namespace PowerSDR
 				case AGCMode.LONG:
 					toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n"+
 						"Long (Attack 2ms, Hang 750ms, Decay 200ms)");
-					//comboRX2AGC.BackColor = SystemColors.Window;
 					break;
 				case AGCMode.SLOW:
 					toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n"+
 						"Slow (Attack 2ms, Hang 500ms, Decay 500ms)");
-					//comboRX2AGC.BackColor = SystemColors.Window;
 					break;
 				case AGCMode.MED:
 					toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n"+
 						"Medium (Attack 2ms, Hang 250ms, Decay 250ms)");
-					//comboRX2AGC.BackColor = SystemColors.Window;
 					break;
 				case AGCMode.FAST:
 					toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n"+
 						"Fast (Attack 2ms, Hang 100ms, Decay 100ms)");
-					//comboRX2AGC.BackColor = SystemColors.Window;
 					break;
-				/*case AGCMode.CUSTOM:
-					toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n"+
-						"Custom - Set specifics in Setup Form -> DSP -> AGC/ALC");
-					comboRX2AGC.BackColor = SystemColors.Window;
-					break;*/
+
 				case AGCMode.FIXD:
 					setupForm.CustomRXAGCEnabled = false;
 					toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n"+
 						"Fixed - Set gain with AGC-T control above");
-					//comboRX2AGC.BackColor = Color.Orange;
 					break;
 			}
 
@@ -44485,11 +44098,6 @@ namespace PowerSDR
                 if (del >= 0.1)
                 {
                     del *= -Math.Sign(r.Y) / 1e6;
-#if false
-					if(current_click_tune_mode == ClickTuneMode.VFOB && scroll_vfob_on_split)
-						VFOBFreq += del;
-					else 
-#endif
                     if (TDxCurrentVFO)
                         VFOBFreq += del;
                     else
@@ -44506,7 +44114,6 @@ namespace PowerSDR
                     val = Math.Max(ptbDisplayZoom.Minimum, val);
                     ptbDisplayZoom.Value = val;
                     ptbDisplayZoom_Scroll(this, EventArgs.Empty);
-                    //btnDisplayPanCenter_Click(this, EventArgs.Empty);
                 }
 
                 if (Math.Abs(t.X) > 1.0)
@@ -44517,7 +44124,6 @@ namespace PowerSDR
                     val = Math.Max(ptbDisplayPan.Minimum, val);
                     ptbDisplayPan.Value = val;
                     CalcDisplayFreq();
-                    //if(ptbDisplayPan.Focused) btnHidden.Focus();
                 }
 
                 if (Math.Abs(t.Y) > 1.0)
@@ -44542,17 +44148,6 @@ namespace PowerSDR
         }
 
         private HiPerfTimer t9 = new HiPerfTimer();
-
-        /*private void buttonTS1_Click(object sender, EventArgs e)
-        {
-            ptbRF.Value = 0;
-            ptbRF_Scroll(this, EventArgs.Empty);
-            Application.DoEvents();
-            Thread.Sleep(1000);
-
-            ptbRF.Value = 120;
-            ptbRF_Scroll(this, EventArgs.Empty);
-        }*/
 
         public string getVersion()
         {
@@ -44816,7 +44411,6 @@ namespace PowerSDR
         private void addNotch(int thread, int subrx, uint count, double freq, double bw)
         {
 #if(!NO_TNF)
-            //Debug.WriteLine("addNotch( " + thread + "," + subrx + "," + count + "," + freq + "," + bw);
             if (count < MAX_NOTCHES_IN_PASSBAND)
             {
                 dsp.GetDSPRX(thread, subrx).SetNotchBW(count, bw);
@@ -44968,7 +44562,6 @@ namespace PowerSDR
             }
 
             double vfo = VFOBFreq;
-            //if (chkRIT.Checked) vfo += (double)udRIT.Value * 1e-6;
 
             switch (rx2_dsp_mode)
             {
@@ -45458,7 +45051,6 @@ namespace PowerSDR
                 return;
             }
 
-            //	cw_key_mode = true;
             if (cwxForm == null || cwxForm.IsDisposed)
             {
                 cwxForm = new CWX(this);
@@ -45524,13 +45116,12 @@ namespace PowerSDR
 
         private void relaysToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if(fwc_init && current_model == Model.FLEX5000)
-            {
-                if (flex5000RelayForm == null || flex5000RelayForm.IsDisposed)
-                    flex5000RelayForm = new FLEX5000RelayForm(this);
-                flex5000RelayForm.Show();
-                flex5000RelayForm.Focus();
-            }
+
+            if (flex5000RelayForm == null || flex5000RelayForm.IsDisposed)
+                flex5000RelayForm = new FLEX5000RelayForm(this);
+            flex5000RelayForm.Show();
+            flex5000RelayForm.Focus();
+
         }
 
         private void aTUToolStripMenuItem_Click(object sender, EventArgs e)
