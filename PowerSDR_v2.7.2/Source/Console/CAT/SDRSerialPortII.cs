@@ -84,7 +84,6 @@ namespace PowerSDR
 			commPort.Encoding = System.Text.Encoding.ASCII;
 			commPort.RtsEnable = true; // hack for soft rock ptt 
 			commPort.DtrEnable = true; // set dtr off 
-            //commPort.ErrorReceived += new SerialErrorReceivedEventHandler(this.SerialErrorReceived);
             commPort.DataReceived += new SerialDataReceivedEventHandler(this.SerialReceivedData);
 			commPort.PinChanged += new SerialPinChangedEventHandler(this.SerialPinChanged);
 

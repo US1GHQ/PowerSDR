@@ -34,7 +34,7 @@ namespace PowerSDR
 {
     class TitleBar
     {
-        public const string BUILT_BY = "Built by WA1GON";
+        public const string BUILT_BY = "Built by WA1GON (StarGate)";
 
         public const string VERSION_SUFFIX = " Base + StarGate Mods"; // Make this "" for production
 

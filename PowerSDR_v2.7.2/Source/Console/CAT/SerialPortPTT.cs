@@ -26,8 +26,7 @@ using System;
 
 namespace PowerSDR
 {
-	/// <summary>
-	/// Summary description for SerialPortPTT.
+	/// <summary> Summary description for SerialPortPTT.
 	/// </summary>
 	public class SerialPortPTT
 	{

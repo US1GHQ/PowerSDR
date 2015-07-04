@@ -24,8 +24,7 @@ namespace PowerSDR
 		private System.Windows.Forms.DataGrid dataGrid1;
 		private System.Windows.Forms.Button btnExecute;
 
-		/// <summary>
-		/// Required designer variable.
+		/// <summary> Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -41,8 +40,7 @@ namespace PowerSDR
 			Setup();
 		}
 
-		/// <summary>
-		/// Clean up any resources being used.
+		/// <summary> Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -64,8 +62,7 @@ namespace PowerSDR
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
+		/// <summary> Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -182,8 +179,7 @@ namespace PowerSDR
 		{
 			string answer = parser.Get(txtInput.Text);
 			txtResult.Text = answer;
-			txtInput.Clear();
-	
+			txtInput.Clear();	
 		}
 
 		private void btnExecute_Click(object sender, System.EventArgs e)
@@ -197,8 +193,5 @@ namespace PowerSDR
 				txtInput.Text += ";";
 			ExecuteCommand();
 		}
-
-
-
 	}
 }

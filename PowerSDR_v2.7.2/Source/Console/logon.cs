@@ -76,8 +76,7 @@ namespace PowerSDR
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
+		/// <summary> Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -161,14 +160,14 @@ namespace PowerSDR
 		private void btnSubmit_Click(object sender, System.EventArgs e)
 		{
 			Encryption enc = new Encryption("FlexRadio Systems", "PowerSDR");
-			string text = enc.Encrypt(txtUser.Text+"/"+txtPass.Text);
+            string text = enc.Encrypt(txtUser.Text + "/" + txtPass.Text);
 			if(text == data)
 			{
 				MessageBox.Show("Access Granted");
 				console.Extended = true;
 				
 				ArrayList a = new ArrayList();
-				a.Add("extended/"+text);
+                a.Add("extended/" + text);
 				DB.SaveVars("State", ref a);
                 
 				this.Close();
@@ -183,7 +182,7 @@ namespace PowerSDR
 					this.Close();
 					return;
 				}
-				statusBar1.Text = "Invalid User/Pass.  "+count.ToString()+" tries left.";
+                statusBar1.Text = "Invalid User/Pass.  " + count.ToString() + " tries left.";
 			}
 		}
 	}

@@ -67,67 +67,8 @@ namespace PowerSDR
 						MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
-
-//			SIOMonitor = new System.Timers.Timer();
-//			SIOMonitor.Elapsed+=new
-//				System.Timers.ElapsedEventHandler(SIOMonitor_Elapsed);
-//
-//			SIOMonitor.Interval = 60000;
-//			SIOMonitor.Start();
-//
-//			if(!File.Exists("SIOTestLog.txt"))
-//				File.Create("SIOTestLog.txt");
-
 		}
 
-//		private void SIOMonitor_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-//		{
-//			if(!console.MOX) 
-//			{
-//				SIOMonitorCount++;			// increments the counter when in receive
-//				Debug.WriteLine("SIOMonitorCount: "+SIOMonitorCount.ToString());
-//				if(SIOMonitorCount < 12)	// if the counter is less than 12 (60 seconds),reinitialize the serial port
-//				{
-//					Debug.WriteLine("The SIO Timer has elapsed");			
-//					if(!SIO.PortIsOpen)
-//					{
-//						Debug.WriteLine("The port is closed");
-//						SIO.OpenPort = true;
-//						StreamWriter sw = new StreamWriter("SIOTestLog.txt", true);
-//						sw.WriteLine("The serial port was forced open");
-//						sw.WriteLine("Time: "+DateTime.Now.ToString());
-//						sw.Flush();
-//						sw.Close();
-//						SIOMonitor.Enabled = true;
-//						SIOMonitorCount = 0;
-//						Fpass = true;
-//						disableCAT();
-//						enableCAT();
-//					}
-//					//Initialize();
-//				}
-//				else						// consider the remote program on the serial port as being shut down
-//				{
-//					if(SIO.PortIsOpen)
-//					{
-//						port_status = "open";
-//					}
-//					else
-//					{
-//
-//						port_status = "closed";
-//					}
-//
-//
-//					SIOMonitorCount = 0;
-//					disableCAT();
-//					enableCAT();
-//	//				SIOMonitor.Stop();
-//				}
-//			}
-//			else
-//				SIOMonitorCount = 0;
-//		}
 
 		public void enableCAT() 
 		{
@@ -225,16 +166,13 @@ namespace PowerSDR
 
 		#region Variables
 
-        //HiPerfTimer testTimer1 = new HiPerfTimer();
-        //HiPerfTimer testTimer2 = new HiPerfTimer();
 		public SDRSerialPort SIO; 
 		Console console;
 		ASCIIEncoding AE = new ASCIIEncoding();
 		private bool Fpass = true;
 		private bool cat_enabled = false;  // is cat currently enabled by user? 
-//		private System.Timers.Timer SIOMonitor;
+
 		CATParser parser;		
-//		private int SIOMonitorCount = 0;
 
 		#endregion variables
 
@@ -330,7 +268,6 @@ namespace PowerSDR
 		{
 			if ( console.CATEnabled ) 
 			{ 
-				// Initialize();   // wjt enable CAT calls Initialize 
 				enableCAT(); 
 			}
 		}
@@ -338,17 +275,10 @@ namespace PowerSDR
 		StringBuilder CommBuffer = new StringBuilder();//"";				//holds incoming serial data from the port
 		private void SerialRXEventHandler(object source, SerialRXEvent e)
 		{
-//			SIOMonitor.Interval = 5000;		// set the timer for 5 seconds
-//			SIOMonitor.Enabled = true;		// start or restart the timer
-
-            //double T0 = 0.00;
-            //double T1 = 0.00;
-            //int bufferLen = 0;
 
             CommBuffer.Append(e.buffer);                                		// put the data in the string
 			if(parser != null)													// is the parser instantiated
 			{
-                //bufferLen = CommBuffer.Length;
 				try
 				{
 					Regex rex = new Regex(".*?;");										//accept any string ending in ;
@@ -357,28 +287,17 @@ namespace PowerSDR
 
 					for(Match m = rex.Match(CommBuffer.ToString()); m.Success; m = m.NextMatch())	//loop thru the buffer and find matches
 					{
-                        //testTimer1.Start();
                         answer = parser.Get(m.Value);                                   //send the match to the parser
-                        //testTimer1.Stop();
-                        //T0 = testTimer1.DurationMsec;
-                        //testTimer2.Start();
+
                         if(answer.Length > 0)
     						result = SIO.put(answer);                           		//send the answer to the serial port
-                        //testTimer2.Stop();
-                        //T1 = testTimer2.DurationMsec;
+
 						CommBuffer = CommBuffer.Replace(m.Value, "", 0, m.Length);                   //remove the match from the buffer
-                        //Debug.WriteLine("Parser decode time for "+m.Value.ToString()+":  "+T0.ToString()+ "ms");
-                        //Debug.WriteLine("SIO send answer time:  " + T1.ToString() + "ms");
-                        //Debug.WriteLine("CommBuffer Length:  " + bufferLen.ToString());
-                        //if (bufferLen > 100)
-                            //Debug.WriteLine("Buffer contents:  "+CommBuffer.ToString());
                     }
 				}
 				catch(Exception)
 				{
-					//Add ex name to exception above to enable
-					//Debug.WriteLine("RX Event:  "+ex.Message);
-					//Debug.WriteLine("RX Event:  "+ex.StackTrace);
+
 				}
 			}
 		}

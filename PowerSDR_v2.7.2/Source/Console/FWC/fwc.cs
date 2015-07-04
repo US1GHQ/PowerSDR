@@ -26,7 +26,6 @@
 //    USA
 //=================================================================
 
-//#define TIMING
 
 using System;
 using System.Diagnostics;
@@ -820,7 +819,6 @@ namespace PowerSDR
 			dash = ((data & 0x02) == 2);
 			rca_ptt = ((data & 0x04) == 4);
 			mic_ptt = ((data & 0x08) == 8);
-			//Debug.WriteLine("dot: "+dot+" dash: "+dash+" rca: "+rca_ptt+" mic: "+mic_ptt);
 			return rtn;
 		}
 
@@ -888,7 +886,6 @@ namespace PowerSDR
 			if((data & 0x02) == 2) dash = 1; else dash = 0;
 			rca_ptt = ((data & 0x04) == 4);
 			mic_ptt = ((data & 0x08) == 8);
-			//Debug.WriteLine("dot: "+dot+" dash: "+dash+" rca: "+rca_ptt+" mic: "+mic_ptt);
 			return rtn;
 		}
 
@@ -919,7 +916,6 @@ namespace PowerSDR
 
 		public static int SetFan(bool b)
 		{
-			//FWCMidi.SendSetMessage(Opcode.RDAL_OP_SET_FAN, Convert.ToUInt32(b), 0);
 			return 0;
 		}
 
@@ -1031,18 +1027,9 @@ namespace PowerSDR
 		}
 
 		public static int SetMOX(bool b)
-		{
-			//Debug.WriteLine("FWC.SetMOX("+b+")");
-            /*if (FWCMidi.Init)
-            {
-                FWCMidi.SetMOX(b);
-                return 0;
-            }
-            else*/
-            {
-                return Pal.WriteOp(Opcode.RDAL_OP_SET_MOX, Convert.ToUInt32(b), 0);
-            }
-		}
+        {
+            return Pal.WriteOp(Opcode.RDAL_OP_SET_MOX, Convert.ToUInt32(b), 0);
+        }
 
 		public static int SetIntLED(bool b)
 		{
@@ -1095,10 +1082,6 @@ namespace PowerSDR
 			return Pal.WriteOp(Opcode.RDAL_OP_SET_AMP_TX3, Convert.ToUInt32(b), 0);
 		}
 
-        //public static int SetXVTRActive(bool b)
-        //{
-        //    return Pal.WriteOp(Opcode.RDAL_OP_SET_XVTR_ACTIVE, Convert.ToUInt32(b), 0);
-        //}
 
         public static int SetXVTRRXOn(bool b)
         {
@@ -1438,69 +1421,58 @@ namespace PowerSDR
 
         public static int SetVU_VIFGain_PAEnable_00(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_VIFGain_PAEnable_00, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_VIFGain_PAEnable_01(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_VIFGain_PAEnable_01, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_VIFGain_PAEnable_10(bool b)
         {
-           // return Pal.WriteOp(Opcode.FWC_OP_SET_VU_VIFGain_PAEnable_10, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_VIFGain_PAEnable_11(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_VIFGain_PAEnable_11, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         //UHF
         public static int SetVU_UIFGain_PAEnable_00(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_UIFGain_PAEnable_00, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_UIFGain_PAEnable_01(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_UIFGain_PAEnable_01, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_UIFGain_PAEnable_10(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_UIFGain_PAEnable_10, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_UIFGain_PAEnable_11(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_UIFGain_PAEnable_11, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_VRX2Enable(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_VRX2Enable, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         public static int SetVU_URX2Enable(bool b)
         {
-            //return Pal.WriteOp(Opcode.FWC_OP_SET_VU_URX2Enable, Convert.ToUInt32(b), 0);
             return 0;
         }
 
         //New
         public static int SetVU_RXPath(int b)
         {
-           // Debug.WriteLine("*****RXPath(" + b + ")");
             return Pal.WriteOp(Opcode.FWC_OP_SET_VU_RXPATH, Convert.ToUInt32(b), 0);
         }         
 
@@ -1570,16 +1542,8 @@ namespace PowerSDR
 #else
             if (console == null) return;
 
-			//Debug.WriteLine("FWCNotify: "+bmp.ToString("X"));
 			bool temp = (bmp & 0x01) != 0; // dot
-            /*if (temp)
-            {
-                console.sp.RtsEnable = true;
-                //Thread.Sleep(10);
-                //console.sp.RtsEnable = false;
-            }*/
-            
-			//if(temp != console.Keyer.FWCDot) console.Keyer.FWCDot = temp;
+
             if((bmp & 0x01) != (last_bmp & 0x01))
             {
                 CWSensorItem.InputType type = CWSensorItem.InputType.Dot;
@@ -1588,20 +1552,9 @@ namespace PowerSDR
                 CWSensorItem item = new CWSensorItem(type, temp);
                 CWKeyer.SensorEnqueue(item);
             }
-            /*if (temp && !console.MOX && console.PowerOn)
-            {
-                if(console.CheckForTXCW())
-                    Audio.MOX = true;
-            }*/
  
 			temp = (bmp & 0x02) != 0; // dash
-            /*if (temp)
-            {
-                console.sp.RtsEnable = true;
-                //Thread.Sleep(10);
-                //console.sp.RtsEnable = false;
-            }*/
-            //if (!ignore_dash && temp != console.Keyer.FWCDash) console.Keyer.FWCDash = temp;
+
             if (!ignore_dash && ((bmp & 0x02) != (last_bmp & 0x02)))
             {
                 CWSensorItem.InputType type = CWSensorItem.InputType.Dash;
@@ -1610,11 +1563,6 @@ namespace PowerSDR
                 CWSensorItem item = new CWSensorItem(type, temp);
                 CWKeyer.SensorEnqueue(item);
             }
-            /*if (!ignore_dash && temp && !console.MOX && console.PowerOn)
-            {
-                if (console.CheckForTXCW())
-                Audio.MOX = true;
-            }*/
 
 			temp = (bmp & 0x04) != 0; // RCA PTT
 			if(temp != console.FWCRCAPTT) console.FWCRCAPTT = temp;

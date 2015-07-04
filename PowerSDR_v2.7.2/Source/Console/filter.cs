@@ -94,6 +94,5 @@ namespace PowerSDR
 		{
 			return name[(int)f]+": "+low[(int)f].ToString()+"| "+high[(int)f].ToString();
 		}
-
 	}
 }

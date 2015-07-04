@@ -61,7 +61,7 @@ namespace PowerSDR
         private static string path;
         private const string pic_file_ext = ".png";
 
-        private static string app_data_path = "";
+        private static string app_data_path = string.Empty;
         public static string AppDataPath
         {
             set { app_data_path = value; }
@@ -70,8 +70,7 @@ namespace PowerSDR
         #endregion
 
         #region Main
-        /// <summary>
-        /// Saves a forms appearance including properties of the form and its controls to xml.
+        /// <summary> Saves a forms appearance including properties of the form and its controls to xml.
         /// </summary>
         /// <param name="name">name of file to be saved</param>
         /// <param name="path">path to save file</param>
@@ -98,8 +97,7 @@ namespace PowerSDR
             writer.Close();    
         }
 
-        /// <summary>
-        /// Restores a forms appearance including properties of the form and its controls from xml.
+        /// <summary> Restores a forms appearance including properties of the form and its controls from xml.
         /// </summary>
         /// <param name="name">name of file to be used</param>
         /// <param name="path">path to file</param>
@@ -119,14 +117,6 @@ namespace PowerSDR
 
             if (!File.Exists(path + "\\" + name + ".xml"))
             {
-                /*TextWriter writer = new StreamWriter(app_data_path + "\\xml_error.log", true);
-               writer.WriteLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " +
-                   "File not found ("+path + ".xml.\n");
-               writer.Close();
-               MessageBox.Show("Error reading skin.  File not found.",
-                   "Skin file error",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);*/
                 return true;
             }
 
@@ -459,9 +449,6 @@ namespace PowerSDR
                     case "Text":
                         ctrl.Text = node.InnerText;
                         break;
-                    /*case "TransparencyKey":
-                        ctrl.TransparencyKey = StringToColor(node.InnerText);
-                        break;*/
                 }
             }
         }

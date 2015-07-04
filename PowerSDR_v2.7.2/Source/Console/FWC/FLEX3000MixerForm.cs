@@ -35,86 +35,84 @@ using System.Windows.Forms;
 
 namespace PowerSDR
 {
-	/// <summary>
-	/// Summary description for fwcmixform.
-	/// </summary>
-	public class FLEX3000MixerForm : System.Windows.Forms.Form
-	{
-		#region Variable Declaration
+    /// <summary>
+    /// Summary description for fwcmixform.
+    /// </summary>
+    public class FLEX3000MixerForm : System.Windows.Forms.Form
+    {
+        #region Variable Declaration
 
-		private Console console;
-		private System.Windows.Forms.TrackBarTS tbMic;
-		private System.Windows.Forms.GroupBoxTS grpInput;
-		private System.Windows.Forms.LabelTS lblMic;
-		private System.Windows.Forms.GroupBoxTS grpOutput;
-		private System.Windows.Forms.CheckBoxTS chkInputMuteAll;
-		private System.Windows.Forms.CheckBoxTS chkMicSel;
-		private System.Windows.Forms.LabelTS lblLineInDB9;
-		private System.Windows.Forms.CheckBoxTS chkLineInDB9Sel;
-		private System.Windows.Forms.TrackBarTS tbLineInDB9;
-		private System.Windows.Forms.CheckBoxTS chkOutputMuteAll;
-		private System.Windows.Forms.LabelTS lblExtSpkr;
-		private System.Windows.Forms.CheckBoxTS chkExtSpkrSel;
-		private System.Windows.Forms.TrackBarTS tbExtSpkr;
-		private System.Windows.Forms.LabelTS lblHeadphone;
-		private System.Windows.Forms.CheckBoxTS chkHeadphoneSel;
-		private System.Windows.Forms.TrackBarTS tbHeadphone;
-		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.LabelTS lblLineOutDB9;
-		private System.Windows.Forms.CheckBoxTS chkLineOutDB9Sel;
-		private System.Windows.Forms.TrackBarTS tbLineOutDB9;
-		private System.ComponentModel.IContainer components;
+        private Console console;
+        private System.Windows.Forms.TrackBarTS tbMic;
+        private System.Windows.Forms.GroupBoxTS grpInput;
+        private System.Windows.Forms.LabelTS lblMic;
+        private System.Windows.Forms.GroupBoxTS grpOutput;
+        private System.Windows.Forms.CheckBoxTS chkInputMuteAll;
+        private System.Windows.Forms.CheckBoxTS chkMicSel;
+        private System.Windows.Forms.LabelTS lblLineInDB9;
+        private System.Windows.Forms.CheckBoxTS chkLineInDB9Sel;
+        private System.Windows.Forms.TrackBarTS tbLineInDB9;
+        private System.Windows.Forms.CheckBoxTS chkOutputMuteAll;
+        private System.Windows.Forms.LabelTS lblExtSpkr;
+        private System.Windows.Forms.CheckBoxTS chkExtSpkrSel;
+        private System.Windows.Forms.TrackBarTS tbExtSpkr;
+        private System.Windows.Forms.LabelTS lblHeadphone;
+        private System.Windows.Forms.CheckBoxTS chkHeadphoneSel;
+        private System.Windows.Forms.TrackBarTS tbHeadphone;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.LabelTS lblLineOutDB9;
+        private System.Windows.Forms.CheckBoxTS chkLineOutDB9Sel;
+        private System.Windows.Forms.TrackBarTS tbLineOutDB9;
+        private System.ComponentModel.IContainer components;
 
-		#endregion
+        #endregion
 
-		#region Constructor and Destructor
+        #region Constructor and Destructor
 
-		public FLEX3000MixerForm(Console c)
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
-			console = c;
-			
-			Common.RestoreForm(this, "FLEX3000MixerForm", false);
+        public FLEX3000MixerForm(Console c)
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+            console = c;
+            
+            Common.RestoreForm(this, "FLEX3000MixerForm", false);
 
-			chkMicSel_CheckedChanged(this, EventArgs.Empty);
-			chkLineInDB9Sel_CheckedChanged(this, EventArgs.Empty);
-			chkExtSpkrSel_CheckedChanged(this, EventArgs.Empty);
-			chkHeadphoneSel_CheckedChanged(this, EventArgs.Empty);
-			chkLineOutDB9Sel_CheckedChanged(this, EventArgs.Empty);
-			tbMic_Scroll(this, EventArgs.Empty);
-			tbLineInDB9_Scroll(this, EventArgs.Empty);
-			tbExtSpkr_Scroll(this, EventArgs.Empty);
-			tbHeadphone_Scroll(this, EventArgs.Empty);
-			tbLineOutDB9_Scroll(this, EventArgs.Empty);
-		}
+            chkMicSel_CheckedChanged(this, EventArgs.Empty);
+            chkLineInDB9Sel_CheckedChanged(this, EventArgs.Empty);
+            chkExtSpkrSel_CheckedChanged(this, EventArgs.Empty);
+            chkHeadphoneSel_CheckedChanged(this, EventArgs.Empty);
+            chkLineOutDB9Sel_CheckedChanged(this, EventArgs.Empty);
+            tbMic_Scroll(this, EventArgs.Empty);
+            tbLineInDB9_Scroll(this, EventArgs.Empty);
+            tbExtSpkr_Scroll(this, EventArgs.Empty);
+            tbHeadphone_Scroll(this, EventArgs.Empty);
+            tbLineOutDB9_Scroll(this, EventArgs.Empty);
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary> Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if(components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose( disposing );
+        }
 
-		#endregion
+        #endregion
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary> Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FLEX3000MixerForm));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -416,337 +414,343 @@ namespace PowerSDR
             this.grpInput.PerformLayout();
             this.ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
-		#region Misc Routines
+        #region Misc Routines
 
-		private byte InputSliderToRegVal(int slider)
-		{
-			byte retval;
-			if(slider < 0) retval = (byte)(0x100 + slider);
-			else retval = (byte)slider;
-			//Debug.WriteLine("slider: "+slider+" Reg: "+retval.ToString("X"));
-			return retval;
-		}
+        private byte InputSliderToRegVal(int slider)
+        {
+            byte retval;
+            if (slider < 0)
+            {
+                retval = (byte)(0x100 + slider);
+            }
+            else
+            {
+                retval = (byte)slider;
+            }
 
-		#endregion
+            return retval;
+        }
 
-		#region Properties
+        #endregion
 
-		public int MicInput
-		{
-			get{return tbMic.Value;}
-			set
-			{
-				tbMic.Value = value;
-				tbMic_Scroll(this,EventArgs.Empty);}
-		}
+        #region Properties
 
-		public int LineInDB9
-		{
-			get{return tbLineInDB9.Value;}
-			set
-			{
-				tbLineInDB9.Value = value;
-				tbLineInDB9_Scroll(this,EventArgs.Empty);}
-		}
+        public int MicInput
+        {
+            get{return tbMic.Value;}
+            set
+            {
+                tbMic.Value = value;
+                tbMic_Scroll(this,EventArgs.Empty);}
+        }
 
-		public string MicInputSelected
-		{
-			get
-			{
-				if(chkMicSel.Checked)
-					return "1";
-				else
-					return "0";}
+        public int LineInDB9
+        {
+            get{return tbLineInDB9.Value;}
+            set
+            {
+                tbLineInDB9.Value = value;
+                tbLineInDB9_Scroll(this,EventArgs.Empty);}
+        }
 
-			set
-			{
-				if(value == "1")
-					chkMicSel.Checked = true;
-				else
-					chkMicSel.Checked = false;
-			}
-		}
+        public string MicInputSelected
+        {
+            get
+            {
+                if(chkMicSel.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public string LineInDB9Selected
-		{
-			get
-			{
-				if(chkLineInDB9Sel.Checked)
-					return "1";
-				else
-					return "0";}
+            set
+            {
+                if(value == "1")
+                    chkMicSel.Checked = true;
+                else
+                    chkMicSel.Checked = false;
+            }
+        }
 
-			set
-			{
-				if(value == "1")
-					chkLineInDB9Sel.Checked = true;
-				else
-					chkLineInDB9Sel.Checked = false;
-			}
-		}
+        public string LineInDB9Selected
+        {
+            get
+            {
+                if(chkLineInDB9Sel.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public string InputMuteAll
-		{
-			get
-			{
-				if(chkInputMuteAll.Checked)
-					return "1";
-				else
-					return "0";}
+            set
+            {
+                if(value == "1")
+                    chkLineInDB9Sel.Checked = true;
+                else
+                    chkLineInDB9Sel.Checked = false;
+            }
+        }
 
-			set
-			{
-				if(value == "1")
-					chkInputMuteAll.Checked = true;
-				else
-					chkInputMuteAll.Checked = false;
-			}
-		}
+        public string InputMuteAll
+        {
+            get
+            {
+                if(chkInputMuteAll.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public int ExternalSpkr
-		{
-			get{return tbExtSpkr.Value;}
-			set
-			{
-				tbExtSpkr.Value = value;
-				tbExtSpkr_Scroll(this,EventArgs.Empty);}
-		}
+            set
+            {
+                if(value == "1")
+                    chkInputMuteAll.Checked = true;
+                else
+                    chkInputMuteAll.Checked = false;
+            }
+        }
 
-		public int Headphone
-		{
-			get{return tbHeadphone.Value;}
-			set
-			{
-				tbHeadphone.Value = value;
-				tbHeadphone_Scroll(this,EventArgs.Empty);}
-		}
+        public int ExternalSpkr
+        {
+            get{return tbExtSpkr.Value;}
+            set
+            {
+                tbExtSpkr.Value = value;
+                tbExtSpkr_Scroll(this,EventArgs.Empty);}
+        }
 
-		public int LineOutDB9
-		{
-			get{return tbLineOutDB9.Value;}
-			set
-			{
-				tbLineOutDB9.Value = value;
-				tbLineOutDB9_Scroll(this,EventArgs.Empty);}
-		}
+        public int Headphone
+        {
+            get{return tbHeadphone.Value;}
+            set
+            {
+                tbHeadphone.Value = value;
+                tbHeadphone_Scroll(this,EventArgs.Empty);}
+        }
 
-		public string ExternalSpkrSelected
-		{
-			get
-			{
-				if(chkExtSpkrSel.Checked)
-					return "1";
-				else
-					return "0";}
+        public int LineOutDB9
+        {
+            get{return tbLineOutDB9.Value;}
+            set
+            {
+                tbLineOutDB9.Value = value;
+                tbLineOutDB9_Scroll(this,EventArgs.Empty);}
+        }
 
-			set
-			{
-				if(value == "1")
-					chkExtSpkrSel.Checked = true;
-				else
-					chkExtSpkrSel.Checked = false;
-			}
-		}
+        public string ExternalSpkrSelected
+        {
+            get
+            {
+                if(chkExtSpkrSel.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public string HeadphoneSelected
-		{
-			get
-			{
-				if(chkHeadphoneSel.Checked)
-					return "1";
-				else
-					return "0";}
+            set
+            {
+                if(value == "1")
+                    chkExtSpkrSel.Checked = true;
+                else
+                    chkExtSpkrSel.Checked = false;
+            }
+        }
 
-			set
-			{
-				if(value == "1")
-					chkHeadphoneSel.Checked = true;
-				else
-					chkHeadphoneSel.Checked = false;
-			}
-		}
+        public string HeadphoneSelected
+        {
+            get
+            {
+                if(chkHeadphoneSel.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public string LineOutDB9Selected
-		{
-			get
-			{
-				if(chkLineOutDB9Sel.Checked)
-					return "1";
-				else
-					return "0";}
+            set
+            {
+                if(value == "1")
+                    chkHeadphoneSel.Checked = true;
+                else
+                    chkHeadphoneSel.Checked = false;
+            }
+        }
 
-			set
-			{
-				if(value == "1")
-					chkLineOutDB9Sel.Checked = true;
-				else
-					chkLineOutDB9Sel.Checked = false;
-			}
-		}
+        public string LineOutDB9Selected
+        {
+            get
+            {
+                if(chkLineOutDB9Sel.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		public string OutputMuteAll
-		{
-			get
-			{
-				if(chkOutputMuteAll.Checked)
-					return "1";
-				else
-					return "0";}
+            set
+            {
+                if(value == "1")
+                    chkLineOutDB9Sel.Checked = true;
+                else
+                    chkLineOutDB9Sel.Checked = false;
+            }
+        }
 
-			set
-			{
-				if(value == "1")
-					chkOutputMuteAll.Checked = true;
-				else
-					chkOutputMuteAll.Checked = false;
-			}
-		}
+        public string OutputMuteAll
+        {
+            get
+            {
+                if(chkOutputMuteAll.Checked)
+                    return "1";
+                else
+                    return "0";}
 
-		#endregion Properties
+            set
+            {
+                if(value == "1")
+                    chkOutputMuteAll.Checked = true;
+                else
+                    chkOutputMuteAll.Checked = false;
+            }
+        }
 
-		#region Input Event Handlers
+        #endregion Properties
 
-		private void tbMic_Scroll(object sender, System.EventArgs e)
-		{
-			if(chkMicSel.Checked && !chkInputMuteAll.Checked)
-				FWC.WriteCodecReg(0x12, InputSliderToRegVal(tbMic.Value));
-		}
+        #region Input Event Handlers
 
-		private void tbLineInDB9_Scroll(object sender, System.EventArgs e)
-		{
-			if(chkLineInDB9Sel.Checked && !chkInputMuteAll.Checked)
-				FWC.WriteCodecReg(0x11, InputSliderToRegVal(tbLineInDB9.Value));
-		}
+        private void tbMic_Scroll(object sender, System.EventArgs e)
+        {
+            if(chkMicSel.Checked && !chkInputMuteAll.Checked)
+                FWC.WriteCodecReg(0x12, InputSliderToRegVal(tbMic.Value));
+        }
 
-		private void chkMicSel_CheckedChanged(object sender, System.EventArgs e)
-		{
-			if(chkMicSel.Checked)
-			{ 
-				chkLineInDB9Sel.Checked = false;
+        private void tbLineInDB9_Scroll(object sender, System.EventArgs e)
+        {
+            if(chkLineInDB9Sel.Checked && !chkInputMuteAll.Checked)
+                FWC.WriteCodecReg(0x11, InputSliderToRegVal(tbLineInDB9.Value));
+        }
 
-				if(!chkInputMuteAll.Checked) 
-					FWC.WriteCodecReg(0x12, InputSliderToRegVal(tbMic.Value));
-				Audio.IN_TX_L = 3;
-			}
-			else FWC.WriteCodecReg(0x12, 0x80);
-		}
+        private void chkMicSel_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if(chkMicSel.Checked)
+            { 
+                chkLineInDB9Sel.Checked = false;
 
-		private void chkLineInDB9Sel_CheckedChanged(object sender, System.EventArgs e)
-		{
-			if(chkLineInDB9Sel.Checked)
-			{
-				chkMicSel.Checked = false;
+                if(!chkInputMuteAll.Checked) 
+                    FWC.WriteCodecReg(0x12, InputSliderToRegVal(tbMic.Value));
+                Audio.IN_TX_L = 3;
+            }
+            else FWC.WriteCodecReg(0x12, 0x80);
+        }
 
-				if(!chkInputMuteAll.Checked)
-					FWC.WriteCodecReg(0x11, InputSliderToRegVal(tbLineInDB9.Value));
-				Audio.IN_TX_L = 2;
-			}
-			else FWC.WriteCodecReg(0x11, 0x80);
-		}
+        private void chkLineInDB9Sel_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if(chkLineInDB9Sel.Checked)
+            {
+                chkMicSel.Checked = false;
 
-		private void chkInputMuteAll_CheckedChanged(object sender, System.EventArgs e)
-		{
-			if(chkInputMuteAll.Checked)
-			{
-				chkInputMuteAll.BackColor = console.ButtonSelectedColor;
-				for(int i=0x11; i<=0x12; i++)
-					FWC.WriteCodecReg(i, 0x80);
-			}
-			else
-			{
-				chkInputMuteAll.BackColor = SystemColors.Control;
-				if(chkMicSel.Checked) tbMic_Scroll(this, EventArgs.Empty);
-				if(chkLineInDB9Sel.Checked) tbLineInDB9_Scroll(this, EventArgs.Empty);
-			}
-		}
+                if(!chkInputMuteAll.Checked)
+                    FWC.WriteCodecReg(0x11, InputSliderToRegVal(tbLineInDB9.Value));
+                Audio.IN_TX_L = 2;
+            }
+            else FWC.WriteCodecReg(0x11, 0x80);
+        }
 
-		#endregion
+        private void chkInputMuteAll_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if(chkInputMuteAll.Checked)
+            {
+                chkInputMuteAll.BackColor = console.ButtonSelectedColor;
+                for(int i=0x11; i<=0x12; i++)
+                    FWC.WriteCodecReg(i, 0x80);
+            }
+            else
+            {
+                chkInputMuteAll.BackColor = SystemColors.Control;
+                if(chkMicSel.Checked) tbMic_Scroll(this, EventArgs.Empty);
+                if(chkLineInDB9Sel.Checked) tbLineInDB9_Scroll(this, EventArgs.Empty);
+            }
+        }
 
-		#region Output Event Handlers
+        #endregion
 
-		private void tbExtSpkr_Scroll(object sender, System.EventArgs e)
-		{
+        #region Output Event Handlers
+
+        private void tbExtSpkr_Scroll(object sender, System.EventArgs e)
+        {
             FWC.WriteCodecReg(0x0C, (byte)(0xFF - tbExtSpkr.Value));
             FWC.WriteCodecReg(0x0D, (byte)(0xFF - tbExtSpkr.Value));
-		}
+        }
 
-		private void tbHeadphone_Scroll(object sender, System.EventArgs e)
-		{
+        private void tbHeadphone_Scroll(object sender, System.EventArgs e)
+        {
             FWC.WriteCodecReg(0x0A, (byte)(0xFF - tbHeadphone.Value));
             FWC.WriteCodecReg(0x0B, (byte)(0xFF - tbHeadphone.Value));
-		}
+        }
 
-		private void tbLineOutDB9_Scroll(object sender, System.EventArgs e)
-		{
+        private void tbLineOutDB9_Scroll(object sender, System.EventArgs e)
+        {
             FWC.WriteCodecReg(0x0E, (byte)(0xFF - (byte)tbLineOutDB9.Value));
-		}
+        }
 
-		private void chkExtSpkrSel_CheckedChanged(object sender, System.EventArgs e)
-		{
-			byte val = 0;
+        private void chkExtSpkrSel_CheckedChanged(object sender, System.EventArgs e)
+        {
+            byte val = 0;
             FWC.ReadCodecReg(0x07, out val);
-			if(chkExtSpkrSel.Checked)
+            if(chkExtSpkrSel.Checked)
                 FWC.WriteCodecReg(0x07, (byte)(val & 0xCC));
-			else
+            else
                 FWC.WriteCodecReg(0x07, (byte)(val | 0x30));
-		}
+        }
 
-		private void chkHeadphoneSel_CheckedChanged(object sender, System.EventArgs e)
-		{
-			byte val = 0;
+        private void chkHeadphoneSel_CheckedChanged(object sender, System.EventArgs e)
+        {
+            byte val = 0;
             FWC.ReadCodecReg(0x07, out val);
-			if(chkHeadphoneSel.Checked)
-			{
-				FWC.SetHeadphone(true);
+            if(chkHeadphoneSel.Checked)
+            {
+                FWC.SetHeadphone(true);
                 FWC.WriteCodecReg(0x07, (byte)(val & 0xF0));
-			}
-			else
-			{
+            }
+            else
+            {
                 FWC.WriteCodecReg(0x07, (byte)(val | 0x0C));
-				FWC.SetHeadphone(false);
-			}
-		}
+                FWC.SetHeadphone(false);
+            }
+        }
 
-		private void chkLineOutDB9Sel_CheckedChanged(object sender, System.EventArgs e)
-		{
-			byte val = 0;
+        private void chkLineOutDB9Sel_CheckedChanged(object sender, System.EventArgs e)
+        {
+            byte val = 0;
             FWC.ReadCodecReg(0x07, out val);
-			if(chkLineOutDB9Sel.Checked)
+            if(chkLineOutDB9Sel.Checked)
                 FWC.WriteCodecReg(0x07, (byte)(val & 0xBC));
-			else
+            else
                 FWC.WriteCodecReg(0x07, (byte)(val | 0x40));
-		}
+        }
 
-		private void chkOutputMuteAll_CheckedChanged(object sender, System.EventArgs e)
-		{
-			if(chkOutputMuteAll.Checked)
-			{
-				chkOutputMuteAll.BackColor = console.ButtonSelectedColor;
+        private void chkOutputMuteAll_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if(chkOutputMuteAll.Checked)
+            {
+                chkOutputMuteAll.BackColor = console.ButtonSelectedColor;
                 FWC.WriteCodecReg(0x07, 0xFC);
-			}
-			else
-			{
-				chkOutputMuteAll.BackColor = SystemColors.Control;
-				chkExtSpkrSel_CheckedChanged(this, EventArgs.Empty);
-				chkHeadphoneSel_CheckedChanged(this, EventArgs.Empty);
-				chkLineOutDB9Sel_CheckedChanged(this, EventArgs.Empty);
-			}
-		}
+            }
+            else
+            {
+                chkOutputMuteAll.BackColor = SystemColors.Control;
+                chkExtSpkrSel_CheckedChanged(this, EventArgs.Empty);
+                chkHeadphoneSel_CheckedChanged(this, EventArgs.Empty);
+                chkLineOutDB9Sel_CheckedChanged(this, EventArgs.Empty);
+            }
+        }
 
-		#endregion
+        #endregion
 
-		#region Other Event Handlers
+        #region Other Event Handlers
 
-		private void FWCMixForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			this.Hide();
-			e.Cancel = true;
-			Common.SaveForm(this, "FLEX3000MixerForm");
-		}
+        private void FWCMixForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+            Common.SaveForm(this, "FLEX3000MixerForm");
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

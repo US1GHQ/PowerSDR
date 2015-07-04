@@ -9,14 +9,12 @@ using System.Xml.XPath;
 
 namespace PowerSDR
 {
-	/// <summary>
-	/// Summary description for RemoteProfiles.
+	/// <summary> Summary description for RemoteProfiles.
 	/// </summary>
 	public class RemoteProfiles : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Button btnClose;
-		/// <summary>
-		/// Required designer variable.
+		/// <summary> Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
@@ -37,7 +35,6 @@ namespace PowerSDR
 			//
 			InitializeComponent();
 
-
 			console = c;
 			parser = new CATParser(console);
 			model = console.CurrentModel.ToString().ToLower();
@@ -45,12 +42,9 @@ namespace PowerSDR
 				this.Text = "Remote Profiles for an "+model.ToUpper();
 			else
 				this.Text = "Remote Profiles for a "+model.ToUpper();
-
-//			GetProfiles();
 		}
 
-		/// <summary>
-		/// Clean up any resources being used.
+		/// <summary> Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -121,8 +115,7 @@ namespace PowerSDR
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
+		/// <summary> Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
@@ -191,6 +184,5 @@ namespace PowerSDR
 			GetProfiles();
 			updating = false;
 		}
-
 	}
 }

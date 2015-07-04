@@ -1160,7 +1160,7 @@ namespace PowerSDR
 			if(radGenModelFLEX5000.Checked && DB.GetVars("Options").Count != 0)
 				radGenModelFLEX5000_CheckedChanged(this, EventArgs.Empty);
 
-			//ForceAllEvents();
+
 			EventArgs e = EventArgs.Empty;
             tbOptUSBBuf_Scroll(this, e);
 			comboGeneralLPTAddr_LostFocus(this, e);
@@ -2530,31 +2530,15 @@ namespace PowerSDR
             // udSoftRockCenterFreq
             // 
             this.udSoftRockCenterFreq.DecimalPlaces = 6;
-            this.udSoftRockCenterFreq.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
+            this.udSoftRockCenterFreq.Increment = new decimal(new int[] { 1, 0, 0, 196608 });
             this.udSoftRockCenterFreq.Location = new System.Drawing.Point(16, 40);
-            this.udSoftRockCenterFreq.Maximum = new decimal(new int[] {
-            65,
-            0,
-            0,
-            0});
-            this.udSoftRockCenterFreq.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udSoftRockCenterFreq.Maximum = new decimal(new int[] { 65, 0, 0, 0 });
+            this.udSoftRockCenterFreq.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udSoftRockCenterFreq.Name = "udSoftRockCenterFreq";
             this.udSoftRockCenterFreq.Size = new System.Drawing.Size(80, 20);
             this.udSoftRockCenterFreq.TabIndex = 0;
             this.toolTip1.SetToolTip(this.udSoftRockCenterFreq, "Sets the center frequency for the SoftRock 40.");
-            this.udSoftRockCenterFreq.Value = new decimal(new int[] {
-            7056,
-            0,
-            0,
-            196608});
+            this.udSoftRockCenterFreq.Value = new decimal(new int[] { 7056, 0, 0, 196608 });
             this.udSoftRockCenterFreq.ValueChanged += new System.EventHandler(this.udSoftRockCenterFreq_ValueChanged);
             this.udSoftRockCenterFreq.LostFocus += new System.EventHandler(this.udSoftRockCenterFreq_LostFocus);
             // 
@@ -2585,11 +2569,7 @@ namespace PowerSDR
             // 
             // udDDSCorrection
             // 
-            this.udDDSCorrection.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.udDDSCorrection.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             this.udDDSCorrection.Location = new System.Drawing.Point(104, 24);
             this.udDDSCorrection.Maximum = new decimal(new int[] {
             1000000,
@@ -2605,11 +2585,7 @@ namespace PowerSDR
             this.udDDSCorrection.Size = new System.Drawing.Size(64, 20);
             this.udDDSCorrection.TabIndex = 7;
             this.toolTip1.SetToolTip(this.udDDSCorrection, "Correction for DDS frequency");
-            this.udDDSCorrection.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udDDSCorrection.Value = new decimal(new int[] { 0, 0, 0, 0 });
             this.udDDSCorrection.Visible = false;
             this.udDDSCorrection.ValueChanged += new System.EventHandler(this.udDDSCorrection_ValueChanged);
             this.udDDSCorrection.LostFocus += new System.EventHandler(this.udDDSCorrection_LostFocus);
@@ -2626,31 +2602,15 @@ namespace PowerSDR
             // 
             // udDDSIFFreq
             // 
-            this.udDDSIFFreq.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udDDSIFFreq.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udDDSIFFreq.Location = new System.Drawing.Point(112, 72);
-            this.udDDSIFFreq.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.udDDSIFFreq.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
+            this.udDDSIFFreq.Maximum = new decimal(new int[] { 20000, 0, 0, 0 });
+            this.udDDSIFFreq.Minimum = new decimal(new int[] { 20000, 0, 0, -2147483648 });
             this.udDDSIFFreq.Name = "udDDSIFFreq";
             this.udDDSIFFreq.Size = new System.Drawing.Size(56, 20);
             this.udDDSIFFreq.TabIndex = 5;
             this.toolTip1.SetToolTip(this.udDDSIFFreq, "Intermediate Frequency");
-            this.udDDSIFFreq.Value = new decimal(new int[] {
-            9000,
-            0,
-            0,
-            0});
+            this.udDDSIFFreq.Value = new decimal(new int[] { 9000, 0, 0, 0 });
             this.udDDSIFFreq.Visible = false;
             this.udDDSIFFreq.ValueChanged += new System.EventHandler(this.udDDSIFFreq_ValueChanged);
             this.udDDSIFFreq.LostFocus += new System.EventHandler(this.udDDSIFFreq_LostFocus);
@@ -2667,31 +2627,15 @@ namespace PowerSDR
             // 
             // udDDSPLLMult
             // 
-            this.udDDSPLLMult.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udDDSPLLMult.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udDDSPLLMult.Location = new System.Drawing.Point(120, 48);
-            this.udDDSPLLMult.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.udDDSPLLMult.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udDDSPLLMult.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
+            this.udDDSPLLMult.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udDDSPLLMult.Name = "udDDSPLLMult";
             this.udDDSPLLMult.Size = new System.Drawing.Size(48, 20);
             this.udDDSPLLMult.TabIndex = 3;
             this.toolTip1.SetToolTip(this.udDDSPLLMult, "Multiplier for external clock (1 if using internal clock)");
-            this.udDDSPLLMult.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udDDSPLLMult.Value = new decimal(new int[] { 1, 0, 0, 0 });
             this.udDDSPLLMult.Visible = false;
             this.udDDSPLLMult.ValueChanged += new System.EventHandler(this.udDDSPLLMult_ValueChanged);
             this.udDDSPLLMult.LostFocus += new System.EventHandler(this.udDDSPLLMult_LostFocus);
@@ -2846,31 +2790,15 @@ namespace PowerSDR
             // 
             // udF3KFanTempThresh
             // 
-            this.udF3KFanTempThresh.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udF3KFanTempThresh.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udF3KFanTempThresh.Location = new System.Drawing.Point(104, 216);
-            this.udF3KFanTempThresh.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udF3KFanTempThresh.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
+            this.udF3KFanTempThresh.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udF3KFanTempThresh.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             this.udF3KFanTempThresh.Name = "udF3KFanTempThresh";
             this.udF3KFanTempThresh.Size = new System.Drawing.Size(40, 20);
             this.udF3KFanTempThresh.TabIndex = 14;
             this.toolTip1.SetToolTip(this.udF3KFanTempThresh, "Temperature in degrees Celsius at which the fan will stay on.");
-            this.udF3KFanTempThresh.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
+            this.udF3KFanTempThresh.Value = new decimal(new int[] { 40, 0, 0, 0 });
             this.udF3KFanTempThresh.Visible = false;
             this.udF3KFanTempThresh.ValueChanged += new System.EventHandler(this.udF3KFanTempThresh_ValueChanged);
             // 
@@ -3064,11 +2992,7 @@ namespace PowerSDR
             // 
             // udGeneralLPTDelay
             // 
-            this.udGeneralLPTDelay.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udGeneralLPTDelay.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udGeneralLPTDelay.Location = new System.Drawing.Point(96, 56);
             this.udGeneralLPTDelay.Maximum = new decimal(new int[] {
             100,
