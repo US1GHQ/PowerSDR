@@ -9695,207 +9695,91 @@ namespace PowerSDR
             this.udPAADC20.Name = "udPAADC20";
             this.udPAADC20.Size = new System.Drawing.Size(48, 20);
             this.udPAADC20.TabIndex = 76;
-            this.udPAADC20.Value = new decimal(new int[] {
-            108,
-            0,
-            0,
-            0});
+            this.udPAADC20.Value = new decimal(new int[] { 108, 0, 0, 0 });
             this.udPAADC20.LostFocus += new System.EventHandler(this.udPAADC20_LostFocus);
             // 
             // udPAADC12
             // 
-            this.udPAADC12.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC12.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC12.Location = new System.Drawing.Point(144, 96);
-            this.udPAADC12.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC12.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC12.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC12.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC12.Name = "udPAADC12";
             this.udPAADC12.Size = new System.Drawing.Size(48, 20);
             this.udPAADC12.TabIndex = 79;
-            this.udPAADC12.Value = new decimal(new int[] {
-            110,
-            0,
-            0,
-            0});
+            this.udPAADC12.Value = new decimal(new int[] { 110, 0, 0, 0 });
             this.udPAADC12.LostFocus += new System.EventHandler(this.udPAADC12_LostFocus);
             // 
             // udPAADC10
             // 
-            this.udPAADC10.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC10.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC10.Location = new System.Drawing.Point(144, 120);
-            this.udPAADC10.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC10.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC10.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC10.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC10.Name = "udPAADC10";
             this.udPAADC10.Size = new System.Drawing.Size(48, 20);
             this.udPAADC10.TabIndex = 80;
-            this.udPAADC10.Value = new decimal(new int[] {
-            111,
-            0,
-            0,
-            0});
+            this.udPAADC10.Value = new decimal(new int[] { 111, 0, 0, 0 });
             this.udPAADC10.LostFocus += new System.EventHandler(this.udPAADC10_LostFocus);
             // 
             // udPAADC160
             // 
-            this.udPAADC160.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC160.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC160.Location = new System.Drawing.Point(56, 24);
-            this.udPAADC160.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC160.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC160.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC160.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC160.Name = "udPAADC160";
             this.udPAADC160.Size = new System.Drawing.Size(48, 20);
             this.udPAADC160.TabIndex = 71;
-            this.udPAADC160.Value = new decimal(new int[] {
-            107,
-            0,
-            0,
-            0});
+            this.udPAADC160.Value = new decimal(new int[] { 107, 0, 0, 0 });
             this.udPAADC160.LostFocus += new System.EventHandler(this.udPAADC160_LostFocus);
             // 
             // udPAADC80
             // 
-            this.udPAADC80.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC80.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC80.Location = new System.Drawing.Point(56, 48);
-            this.udPAADC80.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC80.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC80.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC80.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC80.Name = "udPAADC80";
             this.udPAADC80.Size = new System.Drawing.Size(48, 20);
             this.udPAADC80.TabIndex = 72;
-            this.udPAADC80.Value = new decimal(new int[] {
-            107,
-            0,
-            0,
-            0});
+            this.udPAADC80.Value = new decimal(new int[] { 107, 0, 0, 0 });
             this.udPAADC80.LostFocus += new System.EventHandler(this.udPAADC80_LostFocus);
             // 
             // udPAADC60
             // 
-            this.udPAADC60.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC60.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC60.Location = new System.Drawing.Point(56, 72);
-            this.udPAADC60.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC60.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC60.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC60.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC60.Name = "udPAADC60";
             this.udPAADC60.Size = new System.Drawing.Size(48, 20);
             this.udPAADC60.TabIndex = 73;
-            this.udPAADC60.Value = new decimal(new int[] {
-            107,
-            0,
-            0,
-            0});
+            this.udPAADC60.Value = new decimal(new int[] { 107, 0, 0, 0 });
             this.udPAADC60.LostFocus += new System.EventHandler(this.udPAADC60_LostFocus);
             // 
             // udPAADC40
             // 
-            this.udPAADC40.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC40.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC40.Location = new System.Drawing.Point(56, 96);
-            this.udPAADC40.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC40.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC40.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC40.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC40.Name = "udPAADC40";
             this.udPAADC40.Size = new System.Drawing.Size(48, 20);
             this.udPAADC40.TabIndex = 74;
-            this.udPAADC40.Value = new decimal(new int[] {
-            106,
-            0,
-            0,
-            0});
+            this.udPAADC40.Value = new decimal(new int[] { 106, 0, 0, 0 });
             this.udPAADC40.LostFocus += new System.EventHandler(this.udPAADC40_LostFocus);
             // 
             // udPAADC30
             // 
-            this.udPAADC30.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPAADC30.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPAADC30.Location = new System.Drawing.Point(56, 120);
-            this.udPAADC30.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.udPAADC30.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPAADC30.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            this.udPAADC30.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPAADC30.Name = "udPAADC30";
             this.udPAADC30.Size = new System.Drawing.Size(48, 20);
             this.udPAADC30.TabIndex = 75;
-            this.udPAADC30.Value = new decimal(new int[] {
-            108,
-            0,
-            0,
-            0});
+            this.udPAADC30.Value = new decimal(new int[] { 108, 0, 0, 0 });
             this.udPAADC30.LostFocus += new System.EventHandler(this.udPAADC30_LostFocus);
             // 
             // chkPANewCal
@@ -9957,30 +9841,14 @@ namespace PowerSDR
             // 
             // udPACalPower
             // 
-            this.udPACalPower.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPACalPower.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPACalPower.Location = new System.Drawing.Point(96, 160);
-            this.udPACalPower.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPACalPower.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPACalPower.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPACalPower.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPACalPower.Name = "udPACalPower";
             this.udPACalPower.Size = new System.Drawing.Size(40, 20);
             this.udPACalPower.TabIndex = 35;
-            this.udPACalPower.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.udPACalPower.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // lblPACalTarget
             // 
@@ -10145,30 +10013,14 @@ namespace PowerSDR
             // udPAGain10
             // 
             this.udPAGain10.DecimalPlaces = 1;
-            this.udPAGain10.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain10.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain10.Location = new System.Drawing.Point(152, 120);
-            this.udPAGain10.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain10.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain10.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain10.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain10.Name = "udPAGain10";
             this.udPAGain10.Size = new System.Drawing.Size(48, 20);
             this.udPAGain10.TabIndex = 18;
-            this.udPAGain10.Value = new decimal(new int[] {
-            430,
-            0,
-            0,
-            65536});
+            this.udPAGain10.Value = new decimal(new int[] { 430, 0, 0, 65536 });
             this.udPAGain10.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain10.LostFocus += new System.EventHandler(this.udPAGain10_LostFocus);
             // 
@@ -10184,30 +10036,14 @@ namespace PowerSDR
             // udPAGain12
             // 
             this.udPAGain12.DecimalPlaces = 1;
-            this.udPAGain12.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain12.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain12.Location = new System.Drawing.Point(152, 96);
-            this.udPAGain12.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain12.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain12.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain12.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain12.Name = "udPAGain12";
             this.udPAGain12.Size = new System.Drawing.Size(48, 20);
             this.udPAGain12.TabIndex = 16;
-            this.udPAGain12.Value = new decimal(new int[] {
-            474,
-            0,
-            0,
-            65536});
+            this.udPAGain12.Value = new decimal(new int[] { 474, 0, 0, 65536 });
             this.udPAGain12.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain12.LostFocus += new System.EventHandler(this.udPAGain12_LostFocus);
             // 
@@ -10223,30 +10059,14 @@ namespace PowerSDR
             // udPAGain15
             // 
             this.udPAGain15.DecimalPlaces = 1;
-            this.udPAGain15.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain15.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain15.Location = new System.Drawing.Point(152, 72);
-            this.udPAGain15.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain15.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain15.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain15.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain15.Name = "udPAGain15";
             this.udPAGain15.Size = new System.Drawing.Size(48, 20);
             this.udPAGain15.TabIndex = 14;
-            this.udPAGain15.Value = new decimal(new int[] {
-            481,
-            0,
-            0,
-            65536});
+            this.udPAGain15.Value = new decimal(new int[] { 481, 0, 0, 65536 });
             this.udPAGain15.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain15.LostFocus += new System.EventHandler(this.udPAGain15_LostFocus);
             // 
@@ -10262,30 +10082,14 @@ namespace PowerSDR
             // udPAGain17
             // 
             this.udPAGain17.DecimalPlaces = 1;
-            this.udPAGain17.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain17.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain17.Location = new System.Drawing.Point(152, 48);
-            this.udPAGain17.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain17.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain17.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain17.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain17.Name = "udPAGain17";
             this.udPAGain17.Size = new System.Drawing.Size(48, 20);
             this.udPAGain17.TabIndex = 12;
-            this.udPAGain17.Value = new decimal(new int[] {
-            493,
-            0,
-            0,
-            65536});
+            this.udPAGain17.Value = new decimal(new int[] { 493, 0, 0, 65536 });
             this.udPAGain17.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain17.LostFocus += new System.EventHandler(this.udPAGain17_LostFocus);
             // 
@@ -10301,30 +10105,14 @@ namespace PowerSDR
             // udPAGain20
             // 
             this.udPAGain20.DecimalPlaces = 1;
-            this.udPAGain20.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain20.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain20.Location = new System.Drawing.Point(152, 24);
-            this.udPAGain20.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain20.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain20.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain20.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain20.Name = "udPAGain20";
             this.udPAGain20.Size = new System.Drawing.Size(48, 20);
             this.udPAGain20.TabIndex = 10;
-            this.udPAGain20.Value = new decimal(new int[] {
-            483,
-            0,
-            0,
-            65536});
+            this.udPAGain20.Value = new decimal(new int[] { 483, 0, 0, 65536 });
             this.udPAGain20.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain20.LostFocus += new System.EventHandler(this.udPAGain20_LostFocus);
             // 
@@ -10340,30 +10128,14 @@ namespace PowerSDR
             // udPAGain30
             // 
             this.udPAGain30.DecimalPlaces = 1;
-            this.udPAGain30.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain30.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain30.Location = new System.Drawing.Point(56, 120);
-            this.udPAGain30.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain30.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain30.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain30.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain30.Name = "udPAGain30";
             this.udPAGain30.Size = new System.Drawing.Size(48, 20);
             this.udPAGain30.TabIndex = 8;
-            this.udPAGain30.Value = new decimal(new int[] {
-            489,
-            0,
-            0,
-            65536});
+            this.udPAGain30.Value = new decimal(new int[] { 489, 0, 0, 65536 });
             this.udPAGain30.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain30.LostFocus += new System.EventHandler(this.udPAGain30_LostFocus);
             // 
@@ -10379,30 +10151,14 @@ namespace PowerSDR
             // udPAGain40
             // 
             this.udPAGain40.DecimalPlaces = 1;
-            this.udPAGain40.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain40.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain40.Location = new System.Drawing.Point(56, 96);
-            this.udPAGain40.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain40.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain40.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain40.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain40.Name = "udPAGain40";
             this.udPAGain40.Size = new System.Drawing.Size(48, 20);
             this.udPAGain40.TabIndex = 6;
-            this.udPAGain40.Value = new decimal(new int[] {
-            469,
-            0,
-            0,
-            65536});
+            this.udPAGain40.Value = new decimal(new int[] { 469, 0, 0, 65536 });
             this.udPAGain40.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain40.LostFocus += new System.EventHandler(this.udPAGain40_LostFocus);
             // 
@@ -10418,30 +10174,14 @@ namespace PowerSDR
             // udPAGain60
             // 
             this.udPAGain60.DecimalPlaces = 1;
-            this.udPAGain60.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udPAGain60.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udPAGain60.Location = new System.Drawing.Point(56, 72);
-            this.udPAGain60.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPAGain60.Minimum = new decimal(new int[] {
-            38,
-            0,
-            0,
-            0});
+            this.udPAGain60.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPAGain60.Minimum = new decimal(new int[] { 38, 0, 0, 0 });
             this.udPAGain60.Name = "udPAGain60";
             this.udPAGain60.Size = new System.Drawing.Size(48, 20);
             this.udPAGain60.TabIndex = 4;
-            this.udPAGain60.Value = new decimal(new int[] {
-            474,
-            0,
-            0,
-            65536});
+            this.udPAGain60.Value = new decimal(new int[] { 474, 0, 0, 65536 });
             this.udPAGain60.ValueChanged += new System.EventHandler(this.udPAGain_ValueChanged);
             this.udPAGain60.LostFocus += new System.EventHandler(this.udPAGain60_LostFocus);
             // 
@@ -10919,30 +10659,14 @@ namespace PowerSDR
             // udDisplayLineWidth
             // 
             this.udDisplayLineWidth.DecimalPlaces = 1;
-            this.udDisplayLineWidth.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udDisplayLineWidth.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udDisplayLineWidth.Location = new System.Drawing.Point(316, 61);
-            this.udDisplayLineWidth.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            65536});
-            this.udDisplayLineWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.udDisplayLineWidth.Maximum = new decimal(new int[] { 50, 0, 0, 65536 });
+            this.udDisplayLineWidth.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
             this.udDisplayLineWidth.Name = "udDisplayLineWidth";
             this.udDisplayLineWidth.Size = new System.Drawing.Size(40, 20);
             this.udDisplayLineWidth.TabIndex = 42;
-            this.udDisplayLineWidth.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+            this.udDisplayLineWidth.Value = new decimal(new int[] { 10, 0, 0, 65536 });
             this.udDisplayLineWidth.ValueChanged += new System.EventHandler(this.udDisplayLineWidth_ValueChanged);
             this.udDisplayLineWidth.LostFocus += new System.EventHandler(this.udDisplayLineWidth_LostFocus);
             // 
@@ -11081,30 +10805,14 @@ namespace PowerSDR
             // 
             this.udBandSegmentBoxLineWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.udBandSegmentBoxLineWidth.DecimalPlaces = 1;
-            this.udBandSegmentBoxLineWidth.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udBandSegmentBoxLineWidth.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udBandSegmentBoxLineWidth.Location = new System.Drawing.Point(316, 110);
-            this.udBandSegmentBoxLineWidth.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            65536});
-            this.udBandSegmentBoxLineWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udBandSegmentBoxLineWidth.Maximum = new decimal(new int[] { 50, 0, 0, 65536 });
+            this.udBandSegmentBoxLineWidth.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.udBandSegmentBoxLineWidth.Name = "udBandSegmentBoxLineWidth";
             this.udBandSegmentBoxLineWidth.Size = new System.Drawing.Size(40, 20);
             this.udBandSegmentBoxLineWidth.TabIndex = 86;
-            this.udBandSegmentBoxLineWidth.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udBandSegmentBoxLineWidth.Value = new decimal(new int[] { 1, 0, 0, 0 });
             this.udBandSegmentBoxLineWidth.ValueChanged += new System.EventHandler(this.udBandSegmentBoxLineWidth_ValueChanged);
             this.udBandSegmentBoxLineWidth.LostFocus += new System.EventHandler(this.udBandSegmentBoxLineWidth_LostFocus);
             // 
@@ -11598,9 +11306,7 @@ namespace PowerSDR
             // 
             this.comboMeterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMeterType.DropDownWidth = 80;
-            this.comboMeterType.Items.AddRange(new object[] {
-            "Original",
-            "Edge"});
+            this.comboMeterType.Items.AddRange(new object[] { "Original","Edge"});
             this.comboMeterType.Location = new System.Drawing.Point(80, 16);
             this.comboMeterType.Name = "comboMeterType";
             this.comboMeterType.Size = new System.Drawing.Size(80, 21);
@@ -14199,11 +13905,7 @@ namespace PowerSDR
             // 
             this.comboCATRigType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCATRigType.DropDownWidth = 56;
-            this.comboCATRigType.Items.AddRange(new object[] {
-            "PowerSDR",
-            "TS-2000",
-            "TS-50S",
-            "TS-480"});
+            this.comboCATRigType.Items.AddRange(new object[] {"PowerSDR","TS-2000", "TS-50S", "TS-480"});
             this.comboCATRigType.Location = new System.Drawing.Point(442, 24);
             this.comboCATRigType.Name = "comboCATRigType";
             this.comboCATRigType.Size = new System.Drawing.Size(88, 21);
@@ -14321,16 +14023,8 @@ namespace PowerSDR
             // 
             this.comboCATbaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCATbaud.DropDownWidth = 56;
-            this.comboCATbaud.Items.AddRange(new object[] {
-            "300",
-            "1200",
-            "2400",
-            "4800",
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
+            this.comboCATbaud.Items.AddRange(new object[] { "300", "1200","2400", "4800","9600","19200",
+                "38400","57600","115200"});
             this.comboCATbaud.Location = new System.Drawing.Point(72, 88);
             this.comboCATbaud.Name = "comboCATbaud";
             this.comboCATbaud.Size = new System.Drawing.Size(72, 21);
@@ -14471,60 +14165,28 @@ namespace PowerSDR
             // 
             // udRTTYU
             // 
-            this.udRTTYU.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udRTTYU.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udRTTYU.Location = new System.Drawing.Point(104, 88);
-            this.udRTTYU.Maximum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.udRTTYU.Minimum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            -2147483648});
+            this.udRTTYU.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
+            this.udRTTYU.Minimum = new decimal(new int[] { 3000, 0, 0, -2147483648 });
             this.udRTTYU.Name = "udRTTYU";
             this.udRTTYU.Size = new System.Drawing.Size(48, 20);
             this.udRTTYU.TabIndex = 99;
             this.toolTip1.SetToolTip(this.udRTTYU, "Sets the DIGU frequency offset");
-            this.udRTTYU.Value = new decimal(new int[] {
-            2125,
-            0,
-            0,
-            0});
+            this.udRTTYU.Value = new decimal(new int[] { 2125, 0, 0, 0 });
             this.udRTTYU.ValueChanged += new System.EventHandler(this.udRTTYU_ValueChanged);
             // 
             // udRTTYL
             // 
-            this.udRTTYL.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udRTTYL.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udRTTYL.Location = new System.Drawing.Point(16, 88);
-            this.udRTTYL.Maximum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.udRTTYL.Minimum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            -2147483648});
+            this.udRTTYL.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
+            this.udRTTYL.Minimum = new decimal(new int[] { 3000, 0, 0, -2147483648 });
             this.udRTTYL.Name = "udRTTYL";
             this.udRTTYL.Size = new System.Drawing.Size(48, 20);
             this.udRTTYL.TabIndex = 98;
             this.toolTip1.SetToolTip(this.udRTTYL, "Sets the DIGL frequency offset");
-            this.udRTTYL.Value = new decimal(new int[] {
-            2125,
-            0,
-            0,
-            0});
+            this.udRTTYL.Value = new decimal(new int[] { 2125, 0, 0, 0 });
             this.udRTTYL.ValueChanged += new System.EventHandler(this.udRTTYL_ValueChanged);
             // 
             // chkRTTYOffsetEnableB
@@ -14590,31 +14252,15 @@ namespace PowerSDR
             // udPulsePeriod
             // 
             this.udPulsePeriod.DecimalPlaces = 2;
-            this.udPulsePeriod.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
+            this.udPulsePeriod.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.udPulsePeriod.Location = new System.Drawing.Point(351, 86);
-            this.udPulsePeriod.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPulsePeriod.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPulsePeriod.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPulsePeriod.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPulsePeriod.Name = "udPulsePeriod";
             this.udPulsePeriod.Size = new System.Drawing.Size(43, 20);
             this.udPulsePeriod.TabIndex = 105;
             this.toolTip1.SetToolTip(this.udPulsePeriod, "Sets the amplitude of the signal (typically between 0 and 1.0)");
-            this.udPulsePeriod.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+            this.udPulsePeriod.Value = new decimal(new int[] { 10, 0, 0, 65536 });
             this.udPulsePeriod.Visible = false;
             this.udPulsePeriod.ValueChanged += new System.EventHandler(this.udPulsePeriod_ValueChanged);
             // 
@@ -14630,31 +14276,15 @@ namespace PowerSDR
             // 
             // udPulseDuty
             // 
-            this.udPulseDuty.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udPulseDuty.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udPulseDuty.Location = new System.Drawing.Point(351, 64);
-            this.udPulseDuty.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.udPulseDuty.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udPulseDuty.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            this.udPulseDuty.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udPulseDuty.Name = "udPulseDuty";
             this.udPulseDuty.Size = new System.Drawing.Size(40, 20);
             this.udPulseDuty.TabIndex = 103;
             this.toolTip1.SetToolTip(this.udPulseDuty, "Sets the amplitude of the signal (typically between 0 and 1.0)");
-            this.udPulseDuty.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+            this.udPulseDuty.Value = new decimal(new int[] { 10, 0, 0, 65536 });
             this.udPulseDuty.Visible = false;
             this.udPulseDuty.ValueChanged += new System.EventHandler(this.udPulseDuty_ValueChanged);
             // 
@@ -14694,14 +14324,7 @@ namespace PowerSDR
             // 
             this.cmboSigGenTXMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboSigGenTXMode.DropDownWidth = 121;
-            this.cmboSigGenTXMode.Items.AddRange(new object[] {
-            "Radio",
-            "Tone",
-            "Noise",
-            "Triangle",
-            "Sawtooth",
-            "Pulse",
-            "Silence"});
+            this.cmboSigGenTXMode.Items.AddRange(new object[] { "Radio","Tone","Noise", "Triangle", "Sawtooth", "Pulse", "Silence"});
             this.cmboSigGenTXMode.Location = new System.Drawing.Point(56, 16);
             this.cmboSigGenTXMode.Name = "cmboSigGenTXMode";
             this.cmboSigGenTXMode.Size = new System.Drawing.Size(88, 21);
@@ -14768,14 +14391,7 @@ namespace PowerSDR
             // 
             this.cmboSigGenRXMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboSigGenRXMode.DropDownWidth = 121;
-            this.cmboSigGenRXMode.Items.AddRange(new object[] {
-            "Radio",
-            "Tone",
-            "Noise",
-            "Triangle",
-            "Sawtooth",
-            "Pulse",
-            "Silence"});
+            this.cmboSigGenRXMode.Items.AddRange(new object[] {"Radio", "Tone", "Noise", "Triangle", "Sawtooth","Pulse", "Silence"});
             this.cmboSigGenRXMode.Location = new System.Drawing.Point(56, 16);
             this.cmboSigGenRXMode.Name = "cmboSigGenRXMode";
             this.cmboSigGenRXMode.Size = new System.Drawing.Size(88, 21);
@@ -14818,31 +14434,15 @@ namespace PowerSDR
             // udTestGenScale
             // 
             this.udTestGenScale.DecimalPlaces = 6;
-            this.udTestGenScale.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
+            this.udTestGenScale.Increment = new decimal(new int[] { 1, 0, 0, 196608 });
             this.udTestGenScale.Location = new System.Drawing.Point(320, 40);
-            this.udTestGenScale.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.udTestGenScale.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udTestGenScale.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
+            this.udTestGenScale.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udTestGenScale.Name = "udTestGenScale";
             this.udTestGenScale.Size = new System.Drawing.Size(72, 20);
             this.udTestGenScale.TabIndex = 94;
             this.toolTip1.SetToolTip(this.udTestGenScale, "Sets the amplitude of the signal (typically between 0 and 1.0)");
-            this.udTestGenScale.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
+            this.udTestGenScale.Value = new decimal(new int[] { 10, 0, 0, 65536 });
             this.udTestGenScale.Visible = false;
             this.udTestGenScale.ValueChanged += new System.EventHandler(this.updnTestGenScale_ValueChanged);
             this.udTestGenScale.LostFocus += new System.EventHandler(this.udTestGenScale_LostFocus);
@@ -14880,31 +14480,15 @@ namespace PowerSDR
             // 
             // udTestGenHzSec
             // 
-            this.udTestGenHzSec.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udTestGenHzSec.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udTestGenHzSec.Location = new System.Drawing.Point(248, 160);
-            this.udTestGenHzSec.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.udTestGenHzSec.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udTestGenHzSec.Maximum = new decimal(new int[] { 20000, 0, 0, 0 });
+            this.udTestGenHzSec.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udTestGenHzSec.Name = "udTestGenHzSec";
             this.udTestGenHzSec.Size = new System.Drawing.Size(56, 20);
             this.udTestGenHzSec.TabIndex = 87;
             this.toolTip1.SetToolTip(this.udTestGenHzSec, "See the Sweep Button to the right.");
-            this.udTestGenHzSec.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.udTestGenHzSec.Value = new decimal(new int[] { 100, 0, 0, 0 });
             this.udTestGenHzSec.LostFocus += new System.EventHandler(this.udTestGenHzSec_LostFocus);
             // 
             // lblTestGenHigh
@@ -14918,31 +14502,15 @@ namespace PowerSDR
             // 
             // udTestGenHigh
             // 
-            this.udTestGenHigh.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udTestGenHigh.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udTestGenHigh.Location = new System.Drawing.Point(136, 160);
-            this.udTestGenHigh.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.udTestGenHigh.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udTestGenHigh.Maximum = new decimal(new int[] { 20000, 0, 0, 0 });
+            this.udTestGenHigh.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udTestGenHigh.Name = "udTestGenHigh";
             this.udTestGenHigh.Size = new System.Drawing.Size(56, 20);
             this.udTestGenHigh.TabIndex = 85;
             this.toolTip1.SetToolTip(this.udTestGenHigh, "See the Sweep Button to the right.");
-            this.udTestGenHigh.Value = new decimal(new int[] {
-            4000,
-            0,
-            0,
-            0});
+            this.udTestGenHigh.Value = new decimal(new int[] { 4000, 0, 0, 0 });
             this.udTestGenHigh.LostFocus += new System.EventHandler(this.udTestGenHigh_LostFocus);
             // 
             // lblTestGenLow
@@ -14956,31 +14524,15 @@ namespace PowerSDR
             // 
             // udTestGenLow
             // 
-            this.udTestGenLow.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.udTestGenLow.Increment = new decimal(new int[] { 1, 0, 0, 0 });
             this.udTestGenLow.Location = new System.Drawing.Point(40, 160);
-            this.udTestGenLow.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.udTestGenLow.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udTestGenLow.Maximum = new decimal(new int[] { 20000, 0, 0, 0 });
+            this.udTestGenLow.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             this.udTestGenLow.Name = "udTestGenLow";
             this.udTestGenLow.Size = new System.Drawing.Size(56, 20);
             this.udTestGenLow.TabIndex = 83;
             this.toolTip1.SetToolTip(this.udTestGenLow, "See the Sweep Button to the right.");
-            this.udTestGenLow.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            this.udTestGenLow.Value = new decimal(new int[] { 0, 0, 0, 0 });
             this.udTestGenLow.LostFocus += new System.EventHandler(this.udTestGenLow_LostFocus);
             // 
             // btnTestGenSweep
@@ -16061,7 +15613,6 @@ namespace PowerSDR
 					a.Add(c.Name+"/"+((CheckBoxTS)c).Checked.ToString());
 				else if(c.GetType() == typeof(ComboBoxTS))
 				{
-					//if(((ComboBox)c).SelectedIndex >= 0)
 					a.Add(c.Name+"/"+((ComboBoxTS)c).Text);
 				}
 				else if(c.GetType() == typeof(NumericUpDownTS))
@@ -16111,7 +15662,6 @@ namespace PowerSDR
 			ArrayList trackbar_list = new ArrayList();
 			ArrayList colorbutton_list = new ArrayList();
 
-			//ArrayList controls = new ArrayList();	// list of controls to restore
 			foreach(Control c in temp)
 			{
 				if(c.GetType() == typeof(CheckBoxTS))			// the control is a CheckBoxTS
@@ -16373,12 +15923,6 @@ namespace PowerSDR
 			KeyList.Add(Keys.OemCloseBrackets);
 			KeyList.Add(Keys.OemPeriod);
 			KeyList.Add(Keys.OemQuestion);
-			//			KeyList.Add(Keys.OemSemicolon);
-			//			KeyList.Add(Keys.OemQuotes);
-			//			KeyList.Add(Keys.Oemcomma);
-			//			KeyList.Add(Keys.OemPeriod);
-			//			KeyList.Add(Keys.OemBackslash);
-			//			KeyList.Add(Keys.OemQuestion);
 
 			foreach(Control c in tpKeyboard.Controls)
 			{
@@ -16527,12 +16071,7 @@ namespace PowerSDR
 			comboAudioMixer1_SelectedIndexChanged(this, e);
 			comboAudioReceive1_SelectedIndexChanged(this, e);
 			comboAudioTransmit1_SelectedIndexChanged(this, e);
-			//			comboAudioDriver2_SelectedIndexChanged(this, e);
-			//			comboAudioInput2_SelectedIndexChanged(this, e);
-			//			comboAudioOutput2_SelectedIndexChanged(this, e);
-			//			comboAudioMixer2_SelectedIndexChanged(this, e);
-			//			comboAudioReceive2_SelectedIndexChanged(this, e);
-			//			comboAudioTransmit2_SelectedIndexChanged(this, e);
+
 			comboAudioBuffer1_SelectedIndexChanged(this, e);
 			comboAudioBuffer2_SelectedIndexChanged(this, e);
 			comboAudioSampleRate1_SelectedIndexChanged(this, e);
@@ -17929,19 +17468,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/21/05 BT for CAT commands
-		/*public int CATCompThreshold
-		{
-			get{return Convert.ToInt32(udTXFFCompression.Value);}
-			set
-			{
-				value = (int)Math.Max(udTXFFCompression.Minimum, value);
-				value = (int)Math.Min(udTXFFCompression.Maximum, value);
-				udTXFFCompression.Value = value;
-			}
-		}*/
-
-		// Added 06/30/05 BT for CAT commands
 		public int CATCWPitch
 		{
 			get{return (int) udDSPCWPitch.Value;}
@@ -17958,18 +17484,6 @@ namespace PowerSDR
 		{
 			comboCATRigType.Text = rig;
 		}
-
-		// Added 06/30/05 BT for CAT commands
-		//		public int CATTXPreGain
-		//		{
-		//			get{return (int) udTXPreGain.Value;}
-		//			set
-		//			{
-		//				value = Math.Max(-30, value);
-		//				value = Math.Min(70, value);
-		//				udTXPreGain.Value = value;
-		//			}
-		//		}
 
         //Reads or sets the setup form Spectrum Grid Display Maximum value.
         public int CATSGMax
@@ -18240,7 +17754,6 @@ namespace PowerSDR
                 }
                 comboAudioSoundCard.Text = "Unsupported Card";
                 comboAudioSampleRate1.Visible = true;
-                //comboAudioSampleRate1.Text = "96000";
 
                 foreach (PADeviceInfo p in comboAudioDriver1.Items)
                 {
@@ -18261,25 +17774,11 @@ namespace PowerSDR
                     }
                 }
 
-                //if (comboAudioBuffer1.Items.Contains("256"))
-                //    comboAudioBuffer1.Items.Remove("256");
-
                 udAudioVoltage1.Value = 1.0M;
-
                 comboAudioMixer1.Text = "None";
 
                 if (comboAudioInput1.Text.IndexOf("FlexRadio") < 0)
                 {
-                    /*MessageBox.Show("FLEX-5000 hardware not found.  Please check " +
-                        "the following:\n" +
-                        "\t1. Verify that the unit has power and is running (note blue LED).\n" +
-                        "\t2. Verify FireWire cable is securely plugged in on both ends.\n" +
-                        "\t3. Verify that the driver is installed properly and the device shows up as FLEX 5000 in the device manager.\n" +
-                        "Note that after correcting any of these issues, you must restart PowerSDR for the changes to take effect.\n" +
-                        "For more support, see our website at www.flexradio.com or email support@flexradio.com.",
-                        "Hardware Not Found",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);*/
                     console.PowerEnabled = false;
                 }
                 else
@@ -18291,8 +17790,6 @@ namespace PowerSDR
                     rx2_ok = FWCEEPROM.RX2OK;
 
                     chkSigGenRX2.Visible = rx2_ok;
-
-                    /* chkVAC2UseRX2.Visible = rx2_ok; W4TME */
 
                     if (!rx2_ok)
                     {
@@ -18388,15 +17885,6 @@ namespace PowerSDR
                     lblRX2Rev.Text = s;
                     if (!rx2_ok) lblRX2Rev.Visible = false;
 
-
-                    /*if(rx2_ok) 
-                    {
-                        console.dsp.GetDSPRX(1, 0).Active = true;
-                        DttSP.SetThreadProcessingMode(2, 2);
-                        DSP.SetThreadNumber(3);
-                        Audio.RX2Enabled = true;
-                    }
-                    else*/
                     DSP.SetThreadNumber(2);
 
                     string key = comboKeyerConnPrimary.Text;
@@ -18432,7 +17920,6 @@ namespace PowerSDR
             grpGeneralHardwareSDR1000.Visible = false;
             grpGeneralHardwareFLEX5000.Visible = true;
             grpGeneralHardwareFLEX1500.Visible = false;
-            // btnWizard.Visible = !b;
             grpGenAutoMute.Visible = !b;
 
             grpAudioDetails1.Visible = !b;
@@ -18452,15 +17939,6 @@ namespace PowerSDR
             grpGenCalRXImage.Visible = !b;
             chkCalExpert.Visible = !b;
 
-            //chkCalExpert.Visible = b;
-            
-            /* chkCalExpert_CheckedChanged(this, EventArgs.Empty);
-            if (!b)
-            {
-                grpGeneralCalibration.Visible = true;
-                grpGenCalLevel.Visible = true;
-                grpGenCalRXImage.Visible = true;
-            } */
             chkDSPImageExpert.Visible = b;
             chkDSPImageExpert_CheckedChanged(this, EventArgs.Empty);
             if (!b)
@@ -18571,7 +18049,6 @@ namespace PowerSDR
                         comboDSPDigTXBuf.SelectedIndex = comboDSPDigTXBuf.Items.Count - 1;
 
                     chkGenTX1Delay.Visible = false;
-                    //chkGenTX1Delay_CheckedChanged(this, EventArgs.Empty);
                     lblGenTX1Delay.Visible = false;
                     udGenTX1Delay.Visible = false;
                     chkSigGenRX2.Visible = false;
@@ -18583,36 +18060,8 @@ namespace PowerSDR
                     chkRX2AutoMuteRX1OnVFOBTX.Visible = false;
                     chkRX2DisconnectOnTX.Visible = false;
 
-                    //comboAudioSoundCard.Text = "Unsupported Card";
                     comboAudioSampleRate1.Text = "48000";
                     comboAudioSampleRate1.Visible = false;
-
-                    /*foreach (PADeviceInfo p in comboAudioDriver1.Items)
-                    {
-                        if (p.Name == "MME")
-                        {
-                            comboAudioDriver1.SelectedItem = p;
-                            break;
-                        }
-                    }
-
-                    foreach (PADeviceInfo dev in comboAudioInput1.Items)
-                    {
-                        if (dev.Name.IndexOf("FLEX-1500") >= 0)
-                        {
-                            comboAudioInput1.Text = dev.Name;
-                            break;
-                        }
-                    }
-
-                    foreach (PADeviceInfo dev in comboAudioOutput1.Items)
-                    {
-                        if (dev.Name.IndexOf("FLEX-1500") >= 0)
-                        {
-                            comboAudioOutput1.Text = dev.Name;
-                            break;
-                        }
-                    }*/
 
                     udAudioVoltage1.Value = 1.0M;
 
@@ -18629,12 +18078,6 @@ namespace PowerSDR
                         comboDSPDigRXBuf.SelectedIndex = 2;
                         comboDSPDigTXBuf.SelectedIndex = 2;
                     }
-
-                    /*if (comboAudioInput1.Text.IndexOf("FLEX-1500") < 0 ||
-                        comboAudioOutput1.Text.IndexOf("FLEX-1500") < 0)
-                    {                       
-                        console.PowerEnabled = false;
-                    }*/
 
                     // get 1500 config info (firmware rev, board rev/sn, radio sn)
                     lbl1500SN.Text = "S/N: " + HIDEEPROM.SerialToString(HIDEEPROM.SerialNumber);
@@ -18793,7 +18236,6 @@ namespace PowerSDR
                 chkTXLimitSlew.Visible = false;
                 chkTXLimitSlew.Checked = false;
 
-                // grpGeneralHardwareSDR1000.Visible = true;
                 grpGeneralHardwareFLEX5000.Visible = false;
                 grpGeneralHardwareFLEX1500.Visible = false;
 			}
@@ -18821,7 +18263,6 @@ namespace PowerSDR
                 chkTXLimitSlew.Visible = false;
                 chkTXLimitSlew.Checked = false;
 
-                // grpGeneralHardwareSDR1000.Visible = true;
                 grpGeneralHardwareFLEX5000.Visible = false;
                 grpGeneralHardwareFLEX1500.Visible = false;
 			}
@@ -18833,30 +18274,29 @@ namespace PowerSDR
 			if(radGenModelDemoNone.Checked)
             {
                 console.CurrentModel = Model.DEMO;
-                //if(radGenModelDemoNone.Focused || force_model)
-                {
-                    chkGeneralRXOnly.Checked = true;
-                    chkGeneralDisablePTT.Checked = true;
-                    MessageBox.Show("Welcome to the Demo/Test mode of the PowerSDR software.\n\n" +
-                        "Please contact us at support@flexradio.com with any questions.\n\n" +
-                        "If you did not intend to be in Demo/Test mode, please open the Setup Form and change the model " +
-                        "to the appropriate selection (FLEX-5000, FLEX-3000, etc) and then restart PowerSDR.",
-                        "Welcome to the Demo/Test Mode",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    force_model = false;
-                    lblF3KFanTempThresh.Visible = false;
-                    udF3KFanTempThresh.Visible = false;
-                    chkGenTX1Delay.Visible = false;
-                    lblGenTX1Delay.Visible = false;
-                    udGenTX1Delay.Visible = false;
-                    chkTXLimitSlew.Visible = false;
-                    chkTXLimitSlew.Checked = false;
-                }
+
+
+                chkGeneralRXOnly.Checked = true;
+                chkGeneralDisablePTT.Checked = true;
+                MessageBox.Show("Welcome to the Demo/Test mode of the PowerSDR software.\n\n" +
+                    "Please contact us at support@flexradio.com with any questions.\n\n" +
+                    "If you did not intend to be in Demo/Test mode, please open the Setup Form and change the model " +
+                    "to the appropriate selection (FLEX-5000, FLEX-3000, etc) and then restart PowerSDR.",
+                    "Welcome to the Demo/Test Mode",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                force_model = false;
+                lblF3KFanTempThresh.Visible = false;
+                udF3KFanTempThresh.Visible = false;
+                chkGenTX1Delay.Visible = false;
+                lblGenTX1Delay.Visible = false;
+                udGenTX1Delay.Visible = false;
+                chkTXLimitSlew.Visible = false;
+                chkTXLimitSlew.Checked = false;
+
                 chkGeneralRXOnly.Enabled = true;
                 DSP.SetThreadNumber(1);
 
-                // grpGeneralHardwareSDR1000.Visible = true;
                 grpGeneralHardwareFLEX5000.Visible = false;
                 grpGeneralHardwareFLEX1500.Visible = false;
             }
@@ -19489,7 +18929,6 @@ namespace PowerSDR
 			console.NumChannels = new_chan;
 			Audio.NumChannels = new_chan;
 
-			//DSP.SetThreadNumber((uint)new_chan/2);
 			if(power && chkAudioEnableVAC.Checked && old_chan != new_chan)
 				console.PowerOn = true;
 		}
@@ -19731,7 +19170,6 @@ namespace PowerSDR
 				}
 				else console.PowerOn = true;
 
-                // console.PowerOn = true;
 			}
 		}
 
@@ -19815,8 +19253,6 @@ namespace PowerSDR
 			}
 
 			console.BlockSize1 = new_size;
-
-			//DSP.KeyerResetSize = console.BlockSize1*3/2;
 			
 			if(power && old_size != new_size) console.PowerOn = true;
 		}
@@ -19957,39 +19393,6 @@ namespace PowerSDR
 					return;
 				}
 			}
-			/*double def_volt = 0.0;
-			switch(current_sound_card)
-			{
-				case SoundCard.SANTA_CRUZ:
-					def_volt = 1.27;
-					break;
-				case SoundCard.AUDIGY:
-				case SoundCard.AUDIGY_2:
-				case SoundCard.AUDIGY_2_ZS:
-					def_volt = 2.23;
-					break;
-				case SoundCard.EXTIGY:
-					def_volt = 1.96;
-					break;
-				case SoundCard.MP3_PLUS:
-					def_volt = 0.98;
-					break;
-				case SoundCard.DELTA_44:
-					def_volt = 0.98;
-					break;
-				case SoundCard.FIREBOX:
-					def_volt = 6.39;
-					break;
-			}
-
-			if(current_sound_card != SoundCard.UNSUPPORTED_CARD)
-			{
-				if(Math.Abs(def_volt - (double)udAudioVoltage1.Value) > 0.1)
-				{
-					udAudioVoltage1.Value = (decimal)def_volt;
-					return;
-				}
-			}*/
 			console.AudioVolts1 = (double)udAudioVoltage1.Value;
 		}
 
@@ -21194,7 +20597,6 @@ namespace PowerSDR
                     Display.WaterfallLowThreshold = console.WaterfallLowThresholdXVTR;
                     break;
             }
-            // Display.WaterfallLowThreshold = (float)udDisplayWaterfallLowLevel.Value;
 		}
         
 		private void udDisplayWaterfallHighLevel_ValueChanged(object sender, System.EventArgs e)
@@ -21259,7 +20661,6 @@ namespace PowerSDR
                     Display.WaterfallHighThreshold = console.WaterfallHighThresholdXVTR;
                     break;
             }
-            // Display.WaterfallHighThreshold = (float)udDisplayWaterfallHighLevel.Value;
 		}
 
 		private void udDisplayMultiPeakHoldTime_ValueChanged(object sender, System.EventArgs e)
@@ -21282,9 +20683,8 @@ namespace PowerSDR
 
 		private void udDisplayScopeTime_ValueChanged(object sender, System.EventArgs e)
 		{
-			//console.ScopeTime = (int)udDisplayScopeTime.Value;
 			int samples = (int)((double)udDisplayScopeTime.Value*console.SampleRate1*1e-6);
-			//Debug.WriteLine("sample: "+samples);
+
 			Audio.ScopeSamplesPerPixel = samples;
 		}
 
@@ -21303,9 +20703,6 @@ namespace PowerSDR
 				case "GDI+":
 					console.CurrentDisplayEngine = DisplayEngine.GDI_PLUS;
 					break;
-				/*case "DirectX":
-					console.CurrentDisplayEngine = DisplayEngine.DIRECT_X;
-					break;*/
 			}
 		}
 
@@ -21734,7 +21131,7 @@ namespace PowerSDR
 
 		private void udDSPALCThreshold_ValueChanged(object sender, System.EventArgs e)
 		{
-			//DttSP.SetTXALCBot((double)udDSPALCThreshold.Value);
+
 		}
 
 		private void udDSPALCAttack_ValueChanged(object sender, System.EventArgs e)
@@ -22962,24 +22359,24 @@ namespace PowerSDR
 			}
 		} 
 
-		// called in error cases to set the dialiog vars from 
+		// called in error cases to set the dialing vars from 
 		// the console properties -- sort of ugly, we should only have 1 copy 
 		// of this stuff 
-		public void copyCATPropsToDialogVars() 
-		{ 
-			chkCATEnable.Checked = console.CATEnabled; 
-			string port = "COM"+console.CATPort.ToString();
-			if(comboCATPort.Items.Contains(port))
-				comboCATPort.Text = port; 
-			chkCATPTT_RTS.Checked = console.CATPTTRTS;
-			chkCATPTT_DTR.Checked = console.CATPTTDTR; 
-			chkCATPTTEnabled.Checked = console.PTTBitBangEnabled; 
-			port = "COM"+console.CATPTTBitBangPort.ToString();
-			if(comboCATPTTPort.Items.Contains(port))
-				comboCATPTTPort.Text = port; 
+        public void copyCATPropsToDialogVars()
+        {
+            chkCATEnable.Checked = console.CATEnabled;
+            string port = "COM" + console.CATPort.ToString();
+            if (comboCATPort.Items.Contains(port))
+                comboCATPort.Text = port;
+            chkCATPTT_RTS.Checked = console.CATPTTRTS;
+            chkCATPTT_DTR.Checked = console.CATPTTDTR;
+            chkCATPTTEnabled.Checked = console.PTTBitBangEnabled;
+            port = "COM" + console.CATPTTBitBangPort.ToString();
+            if (comboCATPTTPort.Items.Contains(port))
+                comboCATPTTPort.Text = port;
 
-			// wjt fixme -- need to hand baudrate, parity, data, stop -- see initCATandPTTprops 
-		}
+            // wjt fixme -- need to hand baudrate, parity, data, stop -- see initCATandPTTprops 
+        }
 
 		private void chkCATEnable_CheckedChanged(object sender, System.EventArgs e) 
 		{
@@ -23151,13 +22548,11 @@ namespace PowerSDR
                         chkCATPTTEnabled.Checked = false;
                 }
 
-                //chkCATEnable.Enabled = false;
                 doEnablementOnBitBangEnable();
             }
             else
             {
                 if (chkCATPTT_RTS.Checked || chkCATPTT_DTR.Checked)
-                    //chkCATEnable.Enabled = true;
                     doEnablementOnBitBangEnable();
             }
 
@@ -23188,7 +22583,6 @@ namespace PowerSDR
 		private void btnCATTest_Click(object sender, System.EventArgs e)
 		{
 			CATTester cat = new CATTester(console);
-			//this.Close();
 			cat.Show();
 			cat.Focus();
 		}
@@ -23682,7 +23076,7 @@ namespace PowerSDR
             string path = console.AppDataPath;
 			path = path.Substring(0, path.LastIndexOf("\\"));
 			openFileDialog1.InitialDirectory = path;
-			// openFileDialog1.ShowDialog();
+
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 db_import_success = false;
 
@@ -23890,7 +23284,6 @@ namespace PowerSDR
 
 		private void txtKB_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
-			//Debug.WriteLine("KeyUp: "+e.KeyCode.ToString());
 			shift_key = e.Shift;
 			ctrl_key = e.Control;
 			alt_key = e.Alt;
@@ -25009,7 +24402,7 @@ namespace PowerSDR
 
 		private void clrbtnGenBackground_Changed(object sender, System.EventArgs e)//k6jca 1/13/08
 		{
-			//console.GenBackgroundColor = clrbtnGenBackground.Color;
+
 		}
 
 		public MeterTXMode TuneMeterTXMode
