@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\console.cs</string>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\console.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\setup.cs</string>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\setup.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>
