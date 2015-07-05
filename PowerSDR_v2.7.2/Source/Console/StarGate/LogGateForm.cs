@@ -36,7 +36,11 @@ namespace PowerSDR.StarGate
         private void button1_Click(object sender, EventArgs e)
         {
             CouchDbHandler.SetUrl("wa1gon", "kb1etc73", "localhost", "5984", "loggate");
-            CouchDbHandler.CreateDb("loggate");
+            string errorStr = CouchDbHandler.CreateDb("loggate");
+            if (errorStr != null)
+            {
+                MessageBox.Show("Create Database returns: " + errorStr);
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)

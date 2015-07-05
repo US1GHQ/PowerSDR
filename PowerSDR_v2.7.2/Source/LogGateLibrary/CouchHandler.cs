@@ -73,17 +73,17 @@ namespace StarGate.LogGate
                 return retContext;
             }
         }
-        public static bool CreateDb(string name)
+        public static string CreateDb(string name)
         {
             using (var client = new MyCouchServerClient(LogGateServerUrl))
             {
                 var rc = client.Databases.PutAsync(name).Result;
-                if (rc.Error == null)
+                if (rc.Error != null)
                 {
-                    return true;
-                }
+                    return rc.Error;
+                }  
             }
-            return false;
+            return "Unknown Error";
         }
         static public bool SaveQSO(Qso qso)
         {
