@@ -68,7 +68,6 @@ namespace PowerSDR
 					a.Add(c.Name+"/"+((CheckBoxTS)c).Checked.ToString());
 				else if(c.GetType() == typeof(ComboBoxTS))
 				{
-					//if(((ComboBox)c).SelectedIndex >= 0)
 					a.Add(c.Name+"/"+((ComboBoxTS)c).Text);
 				}
 				else if(c.GetType() == typeof(NumericUpDownTS))
@@ -161,25 +160,17 @@ namespace PowerSDR
 					case "Top":
 						form.StartPosition = FormStartPosition.Manual;
 						int top = int.Parse(val);
-						/*if(top < 0) top = 0;
-						if(top > Screen.PrimaryScreen.Bounds.Height-form.Height && Screen.AllScreens.Length == 1)
-							top = Screen.PrimaryScreen.Bounds.Height-form.Height;*/
 						form.Top = top;
 						break;
 					case "Left":
 						form.StartPosition = FormStartPosition.Manual;
 						int left = int.Parse(val);
-						/*if(left < 0) left = 0;
-						if(left > Screen.PrimaryScreen.Bounds.Width-form.Width && Screen.AllScreens.Length == 1)
-							left = Screen.PrimaryScreen.Bounds.Width-form.Width;*/
 						form.Left = left;
 						break;
 					case "Width":
 						if(restore_size)
 						{
 							int width = int.Parse(val);
-							/*if(width + form.Left > Screen.PrimaryScreen.Bounds.Width && Screen.AllScreens.Length == 1)
-								form.Left -= (width+form.Left-Screen.PrimaryScreen.Bounds.Width);*/
 							form.Width = width;
 						}
 						break;
@@ -187,8 +178,6 @@ namespace PowerSDR
 						if(restore_size)
 						{
 							int height = int.Parse(val);
-							/*if(height + form.Top > Screen.PrimaryScreen.Bounds.Height && Screen.AllScreens.Length == 1)
-								form.Top -= (height+form.Top-Screen.PrimaryScreen.Bounds.Height);*/
 							form.Height = height;
 						}
 						break;
@@ -348,8 +337,6 @@ namespace PowerSDR
 
 			if(!on_screen)
 			{
-				//f.Location = new Point(0, 0);
-
 				if(f.Left < left)
 					f.Left = left;
 

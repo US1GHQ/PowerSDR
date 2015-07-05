@@ -55,8 +55,7 @@ namespace PowerSDR
             set { bw = value; }
         }
 
-        /// <summary>
-        /// Creates a channel object
+        /// <summary> Creates a channel object
         /// </summary>
         /// <param name="f">Starting frequency in MHz</param>
         /// <param name="bandwidth">Starting bandwidth in Hz</param>
@@ -72,8 +71,7 @@ namespace PowerSDR
             bw = bandwidth;
         }
 
-        /// <summary>
-        /// Displays the Channel details in a string
+        /// <summary> Displays the Channel details in a string
         /// </summary>
         /// <returns>The contents of the Channel in a string</returns>
         public override string ToString()

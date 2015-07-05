@@ -278,10 +278,6 @@ namespace PowerSDR
 
 			val.dwPort1Level = vari.dwLevelPlus4dBu;
 			val.dwPort2Level = vari.dwLevelPlus4dBu;
-			//val.dwPort3Level = vari.dwLevelMinus10dBV;
-			//val.dwPort4Level = vari.dwLevelMinus10dBV;
-			//val.dwPort5Level = vari.dwLevelMinus10dBV;
-			//val.dwPort6Level = vari.dwLevelMinus10dBV;
 
 			retval = dpSetDevVariLevelIn(0, &val);
 		}

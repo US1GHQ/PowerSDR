@@ -43,10 +43,9 @@ namespace PowerSDR
 
 		public static DataSet ds;
 
-        /// <summary>
-        /// the complete filename of the datbase file to use including the full path
+        /// <summary> the complete filename of the database file to use including the full path
         /// </summary>
-        private static string file_name = "";
+        private static string file_name = string.Empty;
         public static string FileName
         {
             set { file_name = value; }
