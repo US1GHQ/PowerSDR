@@ -45,11 +45,17 @@ namespace LogGateLibrary
             set { mode = value; }
         }
 
-        private string time_on;
-        public string Time_on
+        public string Power
         {
-            get { return time_on; }
-            set { time_on = value; }
+            get { return power; }
+            set { power = value; }
+        }
+
+        private DateTime qsoStartDtg;
+        public DateTime QsoStartDtg
+        {
+            get { return qsoStartDtg; }
+            set { qsoStartDtg = value; }
         }
         private string freq;
 
@@ -75,6 +81,7 @@ namespace LogGateLibrary
         }
 
         private string sat_Name;
+        private string power;
 
         public string Sat_Name
         {

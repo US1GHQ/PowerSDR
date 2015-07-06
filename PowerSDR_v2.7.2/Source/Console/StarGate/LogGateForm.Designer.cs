@@ -35,7 +35,7 @@
             this.PowerTb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ModeCombo = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.call = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -94,7 +94,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.SaveQso_Click);
             // 
             // ModeCombo
             // 
@@ -147,12 +147,12 @@
             this.ModeCombo.Size = new System.Drawing.Size(121, 21);
             this.ModeCombo.TabIndex = 6;
             // 
-            // textBox1
+            // call
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.call.Location = new System.Drawing.Point(77, 12);
+            this.call.Name = "call";
+            this.call.Size = new System.Drawing.Size(100, 20);
+            this.call.TabIndex = 7;
             // 
             // label3
             // 
@@ -181,7 +181,7 @@
             this.ClientSize = new System.Drawing.Size(529, 261);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.call);
             this.Controls.Add(this.ModeCombo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.PowerTb);
@@ -206,7 +206,7 @@
         private System.Windows.Forms.TextBox PowerTb;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox ModeCombo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox call;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }

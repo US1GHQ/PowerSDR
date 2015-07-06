@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PowerSDR;
 using StarGate.LogGate;
+using LogGateLibrary;
 
 namespace PowerSDR.StarGate
 {
@@ -33,14 +34,22 @@ namespace PowerSDR.StarGate
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveQso_Click(object sender, EventArgs e)
         {
             CouchDbHandler.SetUrl("wa1gon", "kb1etc73", "localhost", "5984", "loggate");
             string errorStr = CouchDbHandler.CreateDb("loggate");
-            if (errorStr != null)
-            {
-                MessageBox.Show("Create Database returns: " + errorStr);
-            }
+            //if (errorStr != null)
+            //{
+            //    MessageBox.Show("Create Database returns: " + errorStr);
+            //    return;
+            //}
+
+            var qso = new Qso();
+            qso.Call = call.Text;
+            qso.Power = console.PWR.ToString();
+            qso.Mode = ModeCombo.SelectedText;
+            qso.QsoStartDtg = DateTime.UtcNow;
+
         }
 
         private void label3_Click(object sender, EventArgs e)

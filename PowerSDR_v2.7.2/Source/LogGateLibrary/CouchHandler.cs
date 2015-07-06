@@ -17,12 +17,22 @@ namespace StarGate.LogGate
         static public string Password { get; set; }
 
         static public  string LogGateUrl = "http://wa1gon:****@localhost:5984/loggate";
-        static public string LogGateServerUrl = "";
+        static public string LogGateServerUrl = string.Empty;
 
-
+        /// <summary> Set the URI of the CouchDb server.  
+        /// 
+        /// </summary>
+        /// <param name="user">Couchdb user name.  Must be present if password is used.</param>
+        /// <param name="password">Couchdb Password, must be present if user name is used</param>
+        /// <param name="host">Host name of  CouchDb.  Normally localhost</param>
+        /// <param name="port">Port number of CouchDb</param>
+        /// <param name="dbName">Name of Database.  Normally it will be loggate, but for contest such
+        /// as Field day it could be something else.  MUST BE LOWER CASE!!!</param>
+        /// <returns>true if successful otherwise false</returns>
         static public bool SetUrl(string user,string password, string host,string port,string dbName)
         {
             LogGateUrl = string.Empty;
+            LogGateServerUrl = string.Empty;
             if (string.IsNullOrWhiteSpace(host) || string.IsNullOrWhiteSpace(port) || string.IsNullOrWhiteSpace(dbName))
             {
                 return false;
@@ -45,6 +55,10 @@ namespace StarGate.LogGate
                 return true;
             }
         }
+        /// <summary> Returns a sorted list of QSO in the database
+        /// 
+        /// </summary>
+        /// <returns></returns>
         static public SortedList<string, Qso> GetQsos()
         {
             Qso qso;
