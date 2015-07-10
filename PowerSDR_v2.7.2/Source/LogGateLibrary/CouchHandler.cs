@@ -95,9 +95,19 @@ namespace StarGate.LogGate
                 if (rc.Error != null)
                 {
                     return rc.Error;
-                }  
+                }
+                return null;
             }
-            return "Unknown Error";
+        }
+        public static GetDatabaseResponse GetDb(string name)
+        {
+            using (var client = new MyCouchServerClient(LogGateServerUrl))
+            {
+                var rc = client.Databases.GetAsync(name).Result;
+
+                return rc;
+
+            }
         }
         static public bool SaveQSO(Qso qso)
         {

@@ -92,7 +92,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.SaveQso_Click);
             // 
@@ -149,7 +149,8 @@
             // 
             // call
             // 
-            this.call.Location = new System.Drawing.Point(77, 12);
+            this.call.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.call.Location = new System.Drawing.Point(75, 17);
             this.call.Name = "call";
             this.call.Size = new System.Drawing.Size(100, 20);
             this.call.TabIndex = 7;
@@ -178,6 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(529, 261);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -192,6 +194,7 @@
             this.Name = "LogGateForm";
             this.Text = "LogGateForm";
             this.Load += new System.EventHandler(this.LogGateForm_Load);
+            this.Enter += new System.EventHandler(this.LogGateForm_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
