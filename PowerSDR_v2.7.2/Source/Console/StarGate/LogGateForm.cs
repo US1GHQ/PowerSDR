@@ -26,11 +26,27 @@ namespace PowerSDR.StarGate
             console = con;
         }
 
+        static private string userName = string.Empty;
+
+        static private string password = string.Empty;
+
         private void LogGateForm_Load(object sender, EventArgs e)
         {
             frequencyTb.Text = console.TXFreq.ToString();
             PowerTb.Text = console.PWR.ToString();
             ModeCombo.Text = console.RX1DSPMode.ToString();
+
+            userName = Properties.Settings.Default.UserName;
+            password = Properties.Settings.Default.Password;  
+
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                this.Text = "No Database User Defined";
+            }
+            else
+            {
+                this.Text = "Database User: " + userName;
+            }
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
@@ -51,7 +67,16 @@ namespace PowerSDR.StarGate
             qso.Power = console.PWR.ToString();
             qso.Mode = ModeCombo.Text;
             qso.QsoStartDtg = DateTime.UtcNow;
-
+            qso.Freq = console.TXFreq.ToString();
+            qso.RstRcvd = RecReportTb.Text;
+            qso.RstSent = SentReportTb.Text;
+            qso.Band = console.TXBand.ToString();
+            if (console.VFOBTX == true)
+            {
+                qso.Freq_rx = console.VFOAFreq.ToString();
+                qso.Band_rx = console.RX1Band.ToString();
+            }
+            
 
             CouchDbHandler.SetUrl("wa1gon", "kb1etc73", "localhost", "5984", "loggate");
 

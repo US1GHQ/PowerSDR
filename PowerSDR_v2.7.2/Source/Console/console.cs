@@ -491,7 +491,8 @@ namespace PowerSDR
 
 	#endregion
 
-	unsafe public class Console : System.Windows.Forms.Form
+    [System.Runtime.InteropServices.GuidAttribute("2F5FFC55-D79F-4023-9934-B61FDFF5A669")]
+    unsafe public class Console : System.Windows.Forms.Form
 	{
 		#region Variable Declarations
 		// ======================================================
@@ -884,7 +885,7 @@ namespace PowerSDR
 		private Point lbl_rx2_band_basis = new Point(100, 100);
 		private Point combo_rx2_band_basis = new Point(100, 100);
 
-        public bool swapping = false;   //used to supress V/U on both RX1/RX2 error while swapping
+        public bool swapping = false;   //used to suppress V/U on both RX1/RX2 error while swapping
 
         private Mutex psdr2_mutex;                                  // Mutex for INNO installer
         private string psdr2_mutex_name = "PowerSDRv2.x_Mutex";     // Mutex name
@@ -1958,10 +1959,6 @@ namespace PowerSDR
                 chkSplitDisplay.Checked = false;
             }
 
-#if(DEBUG)
-			//button1.Visible = true;
-            //buttonTS1.Visible = true;
-#endif
             SyncDSP();
 
             initializing = false;
@@ -11779,13 +11776,15 @@ namespace PowerSDR
                 UpdateBandButtonColors();
                 UpdateWaterfallLevelValues();
 
-                if (current_model == Model.FLEX3000 && chkFWCATU.Checked && flex3000ATUForm.chkAutoMode.Checked) //band change atu
+                if (current_model == Model.FLEX3000 && chkFWCATU.Checked && 
+                    flex3000ATUForm.chkAutoMode.Checked) //band change atu
                 {
                     flex3000ATUForm.autoMode = true;
                     flex3000ATUForm.DoTune();   //make sure autoMode=true is passed
                 }
                 
-                if (current_model == Model.FLEX5000 && chkFWCATU.Checked && fwcAtuForm.ATUEnabledOnBandChange()) // atu tune on band change
+                if (current_model == Model.FLEX5000 && chkFWCATU.Checked && 
+                    fwcAtuForm.ATUEnabledOnBandChange()) // atu tune on band change
                 {  
                     switch(b)
                     {
@@ -23152,7 +23151,6 @@ namespace PowerSDR
 		}
 
 
-		//Added 03/18/07 BT BCI Reject
 		private int cat_bci_reject = 0;
 		public int CATBCIReject
 		{
@@ -23172,7 +23170,7 @@ namespace PowerSDR
 					chkBCI.Checked = false;
 			}
 		}
-		// Added 06/20/05 BT for CAT commands
+
 		private int cat_nr_status = 0;
 		public int CATNR
 		{
@@ -23186,7 +23184,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/20/05 BT for CAT commands
 		private int cat_anf_status = 0;
 		public int CATANF
 		{
@@ -23200,7 +23197,7 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/21/05 BT for CAT Commands
+
 		private int cat_nb1_status = 0;
 		public int CATNB1
 		{
@@ -23416,8 +23413,6 @@ namespace PowerSDR
             }
         }
 
-
-		// Added 06/22/05 BT for CAT commands
 		private int cat_cmpd_status = 0;
 		public int CATCmpd
 		{
@@ -23431,7 +23426,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/22/05 BT for CAT commands
 		private int cat_mic_status = 0;
 		public int CATMIC
 		{
@@ -23449,8 +23443,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/22/05 BT for CAT commands
-		// modified 07/22/05 to fix display problem
 		private int cat_filter_width = 0;
 		public int CATFilterWidth
 		{
@@ -23468,7 +23460,7 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 07/22/05 for cat commands
+
 		public int CATFilterShift
 		{
 			get
@@ -23484,7 +23476,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 07/22/05 for CAT commands
 		public int CATFilterShiftReset
 		{
 			set
@@ -23494,7 +23485,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/22/05 BT for CAT commands
 		private int cat_bin_status = 0;
 		public int CATBIN
 		{
@@ -23516,14 +23506,12 @@ namespace PowerSDR
 			}
 		}
 
-		// Added/repaired 7/10/05 BT for cat commands
 		public PreampMode CATPreamp
 		{
             set { RX1PreampMode = value; }
             get { return RX1PreampMode; }
 		}
 
-		// Added 06/30/05 BT for CAT commands
 		public int CATCWSpeed
 		{
 			get
@@ -23539,7 +23527,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/30/05 BT for CAT commands
 		private int cat_display_avg_status = 0;
 		public int CATDisplayAvg
 		{
@@ -23561,7 +23548,6 @@ namespace PowerSDR
 			}
 		}
 
-		// Added 06/30/05 BT for CAT commands
 		private int cat_squelch_status = 0;
 		public int CATSquelch
 		{
@@ -23604,7 +23590,6 @@ namespace PowerSDR
             }
         }
 
-		// Added 7/9/05 BT for cat commands
 		public string CATQMSValue
 		{
 			get{return this.txtMemoryQuick.Text;}
@@ -24373,7 +24358,7 @@ namespace PowerSDR
         private int tx_filter_low_save = 200;
         private int tx_filter_high_save = 3100;
 
-		// Added 06/24/05 BT for CAT commands
+
 		public bool CATVFOLock
 		{
 			get{return chkVFOLock.Checked;}
@@ -24386,8 +24371,6 @@ namespace PowerSDR
 			FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 			return fvi.FileVersion;
 		}
-
-		// Added 07/30/05 BT for cat commands next 8 functions
 
 		public string CATReadSigStrength()
 		{
