@@ -70,7 +70,7 @@ namespace PowerSDR.StarGate
             qso.Freq = console.TXFreq.ToString();
             qso.RstRcvd = RecReportTb.Text;
             qso.RstSent = SentReportTb.Text;
-            qso.Band = console.TXBand.ToString();
+            qso.Band = GetAdifBand();
 
             if (console.VFOBTX == true)
             {
@@ -93,6 +93,10 @@ namespace PowerSDR.StarGate
             }
 
             CouchDbHandler.SaveQSO(qso);
+            MessageBox.Show("QSO Saved to LogGate!");
+            call.Text = string.Empty;
+            RecReportTb.Text = string.Empty;
+            SentReportTb.Text = string.Empty;
 
         }
 
@@ -129,7 +133,19 @@ namespace PowerSDR.StarGate
             frequencyTb.Text = console.TXFreq.ToString();
             PowerTb.Text = console.PWR.ToString();
             ModeCombo.Text = console.RX1DSPMode.ToString();
-            BandTb.Text = console.TXBand.ToString();
+            BandTb.Text = GetAdifBand();
+
+            if (console.VFOBTX == true)
+            {
+                RxFreqTb.Text = console.VFOAFreq.ToString();
+            }
+        }
+        private string GetAdifBand()
+        {
+
+            string band = console.TXBand.ToString();
+            band = band.Substring(1);
+            return band;
         }
     }
 }

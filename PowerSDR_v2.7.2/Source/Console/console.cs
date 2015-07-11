@@ -43240,7 +43240,7 @@ namespace PowerSDR
             {
                 logGate = new LogGateForm(this);
             }
-            logGate.ShowDialog();
+            logGate.Show();
 
         }
     }
