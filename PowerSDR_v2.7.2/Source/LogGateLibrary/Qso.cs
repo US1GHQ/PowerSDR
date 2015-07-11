@@ -28,6 +28,7 @@ namespace LogGateLibrary
             set { call = value; }
         }
         private string band;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Band
         {
             get { return band; }
@@ -41,6 +42,7 @@ namespace LogGateLibrary
             set { mode = value; }
         }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Power
         {
             get { return power; }
@@ -55,6 +57,7 @@ namespace LogGateLibrary
         }
         private string freq;
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Freq
         {
             get { return freq; }
@@ -63,6 +66,7 @@ namespace LogGateLibrary
         private string freq_rx;
         private string rstRcvd;
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string RstRcvd
         {
             get { return rstRcvd; }
@@ -73,7 +77,8 @@ namespace LogGateLibrary
         {
             get { return rstSent; }
             set { rstSent = value; }
-        }     
+        }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Freq_rx
         {
             get { return freq_rx; }
@@ -81,6 +86,7 @@ namespace LogGateLibrary
         }
 
         private string band_rx;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Band_rx
         {
             get { return band_rx; }

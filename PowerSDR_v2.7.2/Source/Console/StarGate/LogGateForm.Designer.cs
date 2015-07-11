@@ -52,6 +52,8 @@
             this.UserNameLbl = new System.Windows.Forms.Label();
             this.BandTb = new System.Windows.Forms.TextBox();
             this.BandLbl = new System.Windows.Forms.Label();
+            this.contextExch = new System.Windows.Forms.Label();
+            this.ContestExchTb = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +80,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ContestExchTb);
+            this.panel1.Controls.Add(this.contextExch);
             this.panel1.Controls.Add(this.BandTb);
             this.panel1.Controls.Add(this.BandLbl);
             this.panel1.Controls.Add(this.RxFreqTb);
@@ -96,12 +100,12 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 165);
+            this.panel1.Size = new System.Drawing.Size(590, 165);
             this.panel1.TabIndex = 15;
             // 
             // RxFreqTb
             // 
-            this.RxFreqTb.Location = new System.Drawing.Point(379, 39);
+            this.RxFreqTb.Location = new System.Drawing.Point(471, 34);
             this.RxFreqTb.Name = "RxFreqTb";
             this.RxFreqTb.ReadOnly = true;
             this.RxFreqTb.Size = new System.Drawing.Size(100, 20);
@@ -111,7 +115,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(307, 42);
+            this.label7.Location = new System.Drawing.Point(399, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 28;
@@ -252,7 +256,7 @@
             // 
             // frequencyTb
             // 
-            this.frequencyTb.Location = new System.Drawing.Point(379, 10);
+            this.frequencyTb.Location = new System.Drawing.Point(471, 5);
             this.frequencyTb.Name = "frequencyTb";
             this.frequencyTb.ReadOnly = true;
             this.frequencyTb.Size = new System.Drawing.Size(100, 20);
@@ -262,7 +266,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(307, 13);
+            this.label1.Location = new System.Drawing.Point(399, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 15;
@@ -319,7 +323,7 @@
             // 
             // BandTb
             // 
-            this.BandTb.Location = new System.Drawing.Point(379, 65);
+            this.BandTb.Location = new System.Drawing.Point(471, 60);
             this.BandTb.Name = "BandTb";
             this.BandTb.ReadOnly = true;
             this.BandTb.Size = new System.Drawing.Size(100, 20);
@@ -329,18 +333,36 @@
             // 
             this.BandLbl.AutoSize = true;
             this.BandLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BandLbl.Location = new System.Drawing.Point(307, 68);
+            this.BandLbl.Location = new System.Drawing.Point(399, 63);
             this.BandLbl.Name = "BandLbl";
             this.BandLbl.Size = new System.Drawing.Size(36, 13);
             this.BandLbl.TabIndex = 30;
             this.BandLbl.Text = "Band";
+            // 
+            // contextExch
+            // 
+            this.contextExch.AutoSize = true;
+            this.contextExch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextExch.Location = new System.Drawing.Point(220, 110);
+            this.contextExch.Name = "contextExch";
+            this.contextExch.Size = new System.Drawing.Size(110, 13);
+            this.contextExch.TabIndex = 31;
+            this.contextExch.Text = "Context Exchange";
+            // 
+            // ContestExchTb
+            // 
+            this.ContestExchTb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.ContestExchTb.Location = new System.Drawing.Point(336, 104);
+            this.ContestExchTb.Name = "ContestExchTb";
+            this.ContestExchTb.Size = new System.Drawing.Size(235, 20);
+            this.ContestExchTb.TabIndex = 32;
             // 
             // LogGateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(529, 290);
+            this.ClientSize = new System.Drawing.Size(614, 290);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SaveBtn);
@@ -348,6 +370,7 @@
             this.Name = "LogGateForm";
             this.Text = "LogGateForm";
             this.Activated += new System.EventHandler(this.LogGateForm_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogGateForm_FormClosing);
             this.Load += new System.EventHandler(this.LogGateForm_Load);
             this.Enter += new System.EventHandler(this.LogGateForm_Enter);
             this.panel1.ResumeLayout(false);
@@ -384,5 +407,7 @@
         private System.Windows.Forms.Label UserNameLbl;
         private System.Windows.Forms.TextBox BandTb;
         private System.Windows.Forms.Label BandLbl;
+        private System.Windows.Forms.TextBox ContestExchTb;
+        private System.Windows.Forms.Label contextExch;
     }
 }

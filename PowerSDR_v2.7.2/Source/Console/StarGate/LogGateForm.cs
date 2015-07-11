@@ -91,12 +91,16 @@ namespace PowerSDR.StarGate
                     return;
                 }
             }
-
+            if (string.IsNullOrWhiteSpace(contextExch.Text) == false)
+            {
+                qso.Fields.Add("Exchange", contextExch.Text);
+            }
             CouchDbHandler.SaveQSO(qso);
             MessageBox.Show("QSO Saved to LogGate!");
             call.Text = string.Empty;
             RecReportTb.Text = string.Empty;
             SentReportTb.Text = string.Empty;
+            contextExch.Text = string.Empty;
 
         }
 
@@ -146,6 +150,12 @@ namespace PowerSDR.StarGate
             string band = console.TXBand.ToString();
             band = band.Substring(1);
             return band;
+        }
+
+        private void LogGateForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
