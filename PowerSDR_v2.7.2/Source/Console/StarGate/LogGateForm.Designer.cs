@@ -50,6 +50,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.UserNameTb = new System.Windows.Forms.TextBox();
             this.UserNameLbl = new System.Windows.Forms.Label();
+            this.BandTb = new System.Windows.Forms.TextBox();
+            this.BandLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +78,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BandTb);
+            this.panel1.Controls.Add(this.BandLbl);
             this.panel1.Controls.Add(this.RxFreqTb);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.SentReportTb);
@@ -90,9 +94,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.frequencyTb);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 93);
+            this.panel1.Location = new System.Drawing.Point(12, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 138);
+            this.panel1.Size = new System.Drawing.Size(504, 165);
             this.panel1.TabIndex = 15;
             // 
             // RxFreqTb
@@ -116,7 +120,7 @@
             // SentReportTb
             // 
             this.SentReportTb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.SentReportTb.Location = new System.Drawing.Point(62, 70);
+            this.SentReportTb.Location = new System.Drawing.Point(79, 107);
             this.SentReportTb.Name = "SentReportTb";
             this.SentReportTb.Size = new System.Drawing.Size(100, 20);
             this.SentReportTb.TabIndex = 20;
@@ -124,7 +128,7 @@
             // RecReportTb
             // 
             this.RecReportTb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.RecReportTb.Location = new System.Drawing.Point(62, 44);
+            this.RecReportTb.Location = new System.Drawing.Point(79, 81);
             this.RecReportTb.Name = "RecReportTb";
             this.RecReportTb.Size = new System.Drawing.Size(100, 20);
             this.RecReportTb.TabIndex = 18;
@@ -133,7 +137,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(-1, 70);
+            this.label6.Location = new System.Drawing.Point(35, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 27;
@@ -143,7 +147,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(-1, 46);
+            this.label5.Location = new System.Drawing.Point(12, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 26;
@@ -153,7 +157,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(-1, -24);
+            this.label4.Location = new System.Drawing.Point(16, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 25;
@@ -163,7 +167,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-1, 13);
+            this.label3.Location = new System.Drawing.Point(35, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 24;
@@ -172,7 +176,7 @@
             // call
             // 
             this.call.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.call.Location = new System.Drawing.Point(62, -28);
+            this.call.Location = new System.Drawing.Point(79, 10);
             this.call.Name = "call";
             this.call.Size = new System.Drawing.Size(100, 20);
             this.call.TabIndex = 16;
@@ -223,7 +227,7 @@
             "VOI",
             "WINMOR",
             "WSPR"});
-            this.ModeCombo.Location = new System.Drawing.Point(62, 5);
+            this.ModeCombo.Location = new System.Drawing.Point(79, 42);
             this.ModeCombo.Name = "ModeCombo";
             this.ModeCombo.Size = new System.Drawing.Size(100, 21);
             this.ModeCombo.TabIndex = 17;
@@ -270,24 +274,26 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.UserNameTb);
             this.panel2.Controls.Add(this.UserNameLbl);
-            this.panel2.Location = new System.Drawing.Point(14, 16);
+            this.panel2.Location = new System.Drawing.Point(12, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(493, 71);
+            this.panel2.Size = new System.Drawing.Size(495, 44);
             this.panel2.TabIndex = 16;
             // 
             // PasswordTb
             // 
-            this.PasswordTb.Location = new System.Drawing.Point(232, 40);
+            this.PasswordTb.Location = new System.Drawing.Point(273, 16);
             this.PasswordTb.Name = "PasswordTb";
-            this.PasswordTb.ReadOnly = true;
+            this.PasswordTb.PasswordChar = '*';
             this.PasswordTb.Size = new System.Drawing.Size(100, 20);
             this.PasswordTb.TabIndex = 31;
+            this.PasswordTb.UseSystemPasswordChar = true;
+            this.PasswordTb.Leave += new System.EventHandler(this.PasswordTb_Leave);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(160, 43);
+            this.label8.Location = new System.Drawing.Point(206, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 32;
@@ -295,21 +301,39 @@
             // 
             // UserNameTb
             // 
-            this.UserNameTb.Location = new System.Drawing.Point(232, 11);
+            this.UserNameTb.Location = new System.Drawing.Point(79, 16);
             this.UserNameTb.Name = "UserNameTb";
-            this.UserNameTb.ReadOnly = true;
             this.UserNameTb.Size = new System.Drawing.Size(100, 20);
             this.UserNameTb.TabIndex = 30;
+            this.UserNameTb.Leave += new System.EventHandler(this.UserNameTb_Leave);
             // 
             // UserNameLbl
             // 
             this.UserNameLbl.AutoSize = true;
             this.UserNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserNameLbl.Location = new System.Drawing.Point(160, 14);
+            this.UserNameLbl.Location = new System.Drawing.Point(7, 21);
             this.UserNameLbl.Name = "UserNameLbl";
             this.UserNameLbl.Size = new System.Drawing.Size(69, 13);
             this.UserNameLbl.TabIndex = 29;
             this.UserNameLbl.Text = "User Name";
+            // 
+            // BandTb
+            // 
+            this.BandTb.Location = new System.Drawing.Point(379, 65);
+            this.BandTb.Name = "BandTb";
+            this.BandTb.ReadOnly = true;
+            this.BandTb.Size = new System.Drawing.Size(100, 20);
+            this.BandTb.TabIndex = 29;
+            // 
+            // BandLbl
+            // 
+            this.BandLbl.AutoSize = true;
+            this.BandLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BandLbl.Location = new System.Drawing.Point(307, 68);
+            this.BandLbl.Name = "BandLbl";
+            this.BandLbl.Size = new System.Drawing.Size(36, 13);
+            this.BandLbl.TabIndex = 30;
+            this.BandLbl.Text = "Band";
             // 
             // LogGateForm
             // 
@@ -323,6 +347,7 @@
             this.Controls.Add(this.CloseBtn);
             this.Name = "LogGateForm";
             this.Text = "LogGateForm";
+            this.Activated += new System.EventHandler(this.LogGateForm_Activated);
             this.Load += new System.EventHandler(this.LogGateForm_Load);
             this.Enter += new System.EventHandler(this.LogGateForm_Enter);
             this.panel1.ResumeLayout(false);
@@ -357,5 +382,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox UserNameTb;
         private System.Windows.Forms.Label UserNameLbl;
+        private System.Windows.Forms.TextBox BandTb;
+        private System.Windows.Forms.Label BandLbl;
     }
 }

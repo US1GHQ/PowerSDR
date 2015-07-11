@@ -37,7 +37,7 @@ namespace PowerSDR.StarGate
             ModeCombo.Text = console.RX1DSPMode.ToString();
 
             userName = Properties.Settings.Default.UserName;
-            password = Properties.Settings.Default.Password;  
+            password = Properties.Settings.Default.Password;
 
             if (string.IsNullOrWhiteSpace(userName))
             {
@@ -71,6 +71,7 @@ namespace PowerSDR.StarGate
             qso.RstRcvd = RecReportTb.Text;
             qso.RstSent = SentReportTb.Text;
             qso.Band = console.TXBand.ToString();
+
             if (console.VFOBTX == true)
             {
                 qso.Freq_rx = console.VFOAFreq.ToString();
@@ -78,7 +79,7 @@ namespace PowerSDR.StarGate
             }
             
 
-            CouchDbHandler.SetUrl("wa1gon", "kb1etc73", "localhost", "5984", "loggate");
+            CouchDbHandler.SetUrl(userName, password, "localhost", "5984", "loggate");
 
             GetDatabaseResponse dbStr = CouchDbHandler.GetDb("loggate");
             if (dbStr.Error == "not_found")
@@ -103,6 +104,32 @@ namespace PowerSDR.StarGate
         private void LogGateForm_Enter(object sender, EventArgs e)
         {
             PowerTb.Text = console.PWR.ToString();
+        }
+
+        private void PasswordTb_Leave(object sender, EventArgs e)
+        {
+            password = PasswordTb.Text;
+        }
+
+        private void UserNameTb_Leave(object sender, EventArgs e)
+        {
+            userName = UserNameTb.Text;
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                this.Text = "No Database User Defined";
+            }
+            else
+            {
+                this.Text = "Database User: " + userName;
+            }
+        }
+
+        private void LogGateForm_Activated(object sender, EventArgs e)
+        {
+            frequencyTb.Text = console.TXFreq.ToString();
+            PowerTb.Text = console.PWR.ToString();
+            ModeCombo.Text = console.RX1DSPMode.ToString();
+            BandTb.Text = console.TXBand.ToString();
         }
     }
 }

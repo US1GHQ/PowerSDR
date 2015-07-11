@@ -38,10 +38,11 @@ namespace StarGate.LogGate
                 return false;
             }
             string url = string.Format("http://{0}:{1}/", host, port);
-            if (string.IsNullOrWhiteSpace(host) && string.IsNullOrWhiteSpace(port))
+            if (string.IsNullOrWhiteSpace(password) && string.IsNullOrWhiteSpace(UserName))
             {
                 var urlBuilder = new MyCouchUriBuilder(url).SetDbName(dbName);
                 LogGateUrl = urlBuilder.Build().ToString();
+
                 urlBuilder = new MyCouchUriBuilder(url);
                 LogGateServerUrl = urlBuilder.Build().ToString();
                 return true;
@@ -50,6 +51,7 @@ namespace StarGate.LogGate
             {
                 var urlBuilder = new MyCouchUriBuilder(url).SetDbName(dbName).SetBasicCredentials(user, password);
                 LogGateUrl = urlBuilder.Build().ToString();
+
                 urlBuilder = new MyCouchUriBuilder(url).SetBasicCredentials(user, password);
                 LogGateServerUrl = urlBuilder.Build().ToString();
                 return true;

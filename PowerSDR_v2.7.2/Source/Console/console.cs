@@ -43233,9 +43233,13 @@ namespace PowerSDR
 
         }
 
+        private LogGateForm logGate = null;
         private void LogGateMenuItem_Click(object sender, EventArgs e)
         {
-            var logGate = new LogGateForm(this);
+            if (logGate == null)
+            {
+                logGate = new LogGateForm(this);
+            }
             logGate.ShowDialog();
 
         }
