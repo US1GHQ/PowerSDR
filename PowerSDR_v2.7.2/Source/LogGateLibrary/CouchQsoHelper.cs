@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace StarGate.LogGate
 {
-    public class CouchDbHandler
+    public class CouchQsoHelper
     {
         static public string UserName { get; set; }
         static public string Password { get; set; }

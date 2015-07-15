@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CouchHandler.cs" />
+    <Compile Include="CouchQsoHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Qso.cs" />
   </ItemGroup>

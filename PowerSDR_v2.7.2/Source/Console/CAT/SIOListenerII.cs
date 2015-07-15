@@ -194,63 +194,7 @@ namespace PowerSDR
 				Fpass = false;
 			}
 		}		
-#if UseParser
-		private char[] ParseLeftover = null; 
 
-		// segment incoming string into CAT commands ... handle leftovers from when we read a parial 
-		// 
-		private void ParseString(byte[] rxdata, uint count) 
-		{ 
-			if ( count == 0 ) return;  // nothing to do 
-			int cmd_char_count = 0; 
-			int left_over_char_count = ( ParseLeftover == null ? 0 : ParseLeftover.Length ); 
-			char[] cmd_chars = new char[count + left_over_char_count]; 			
-			if ( ParseLeftover != null )  // seed with leftovers from last read 
-			{ 
-				for ( int j = 0; j < left_over_char_count; j++ )  // wjt fixme ... use C# equiv of System.arraycopy 
-				{
-					cmd_chars[cmd_char_count] = ParseLeftover[j]; 
-					++cmd_char_count; 
-				}
-				ParseLeftover = null; 
-			}
-			for ( int j = 0; j < count; j++ )   // while we have chars to play with 
-			{ 
-				cmd_chars[cmd_char_count] = (char)rxdata[j]; 
-				++cmd_char_count; 
-				if ( rxdata[j] == ';' )  // end of cmd -- parse it and execute it 
-				{ 
-					string cmdword = new String(cmd_chars, 0, cmd_char_count); 
-					dbgWriteLine("cmdword: >" + cmdword + "<");  
-					// BT 06/08
-					string answer = parser.Get(cmdword);
-					byte[] out_string = AE.GetBytes(answer);
-					uint result = SIO.put(out_string, (uint) out_string.Length);
-
-					cmd_char_count = 0; // reset word counter 
-				}
-			} 
-			// when we get here have processed all of the incoming buffer, if there's anyting 
-			// in cmd_chars we need to save it as we've not pulled a full command so we stuff 
-			// it in leftover for the next time we come through 
-			if ( cmd_char_count != 0 ) 
-			{ 
-				ParseLeftover = new char[cmd_char_count]; 
-				for ( int j = 0; j < cmd_char_count; j++ )  // wjt fixme ... C# equiv of Sytsem.arraycopy 
-				{
-					ParseLeftover[j] = cmd_chars[j]; 
-				}
-			} 
-#if DBG_PRINT
-			if ( ParseLeftover != null) 
-			{
-				dbgWriteLine("Leftover >" + new String(ParseLeftover) + "<"); 
-			}
-#endif
-			return; 
-		}
-
-#endif
 
 		#endregion Methods
 

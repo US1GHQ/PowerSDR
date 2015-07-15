@@ -2,18 +2,26 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
+      <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\loggatelibrary\couchhandler.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\StarGate\LogGateForm.cs</string>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\StarGate\LogGateForm.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\console\console.cs</string>
       <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\console\console.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\LogGateLibrary\Qso.cs</string>
+      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\Console\database.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\Users\darryl\Desktop\PowerSDR.git\PowerSDR_v2.7.2\Source\LogGateLibrary\CouchHandler.cs</string>
+      <string>PowerSDR</string>
     </ArrayOfString>
+  </ArrayOfArrayOfString>
+  <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\console\stargate\loggateform.cs</string>
-      <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\console\stargate\loggateform.cs</string>
+      <string>c:\users\darryl\desktop\powersdr.git\powersdr_v2.7.2\source\loggatelibrary\qso.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

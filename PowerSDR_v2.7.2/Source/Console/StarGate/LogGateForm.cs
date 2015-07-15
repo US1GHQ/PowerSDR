@@ -79,12 +79,12 @@ namespace PowerSDR.StarGate
             }
             
 
-            CouchDbHandler.SetUrl(userName, password, "localhost", "5984", "loggate");
+            CouchQsoHelper.SetUrl(userName, password, "localhost", "5984", "loggate");
 
-            GetDatabaseResponse dbStr = CouchDbHandler.GetDb("loggate");
+            GetDatabaseResponse dbStr = CouchQsoHelper.GetDb("loggate");
             if (dbStr.Error == "not_found")
             {
-                string errorStr = CouchDbHandler.CreateDb("loggate");
+                string errorStr = CouchQsoHelper.CreateDb("loggate");
                 if (errorStr != null)
                 {
                     MessageBox.Show("Create Database returns: " + errorStr);
@@ -95,7 +95,7 @@ namespace PowerSDR.StarGate
             {
                 qso.Fields.Add("Exchange", contextExch.Text);
             }
-            CouchDbHandler.SaveQSO(qso);
+            CouchQsoHelper.SaveQSO(qso);
             MessageBox.Show("QSO Saved to LogGate!");
             call.Text = string.Empty;
             RecReportTb.Text = string.Empty;
