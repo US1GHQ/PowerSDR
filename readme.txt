@@ -11,3 +11,8 @@ The PowerSDR solution has been upgraded to Visual Studio 2013.
 
 Build complains that DttSP has a different linker and target directory.
 Since I have no plans to modify the DttSP, I have unloaded that project.  
+
+July ?, 2015
+
+Added logging support for CouchDb, so relax.
+
